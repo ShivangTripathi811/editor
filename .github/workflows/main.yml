@@ -1,0 +1,40 @@
+name: Build and Release GeeksCode
+
+on:
+  push:
+    branches:
+      - shivam # This ensures it runs whenever you push to 'shivam'
+  workflow_dispatch: # This adds a "Run workflow" button in the UI for manual testing
+jobs:
+  release:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        # Building for all three major OS platforms
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "yarn"
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build React Frontend
+        run: yarn build
+
+      - name: Build/Release Electron App
+        uses: samuelmeuli/action-electron-builder@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # This will automatically create a draft release on GitHub
+          release: true
+          # Use the build scripts from your package.json
+          build_script_name: build
