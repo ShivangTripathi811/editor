@@ -6,44 +6,55 @@
   "scripts": {
     "start": "concurrently --kill-others \"vite --config vite.config.js\" \"wait-on http://localhost:5173 && electron . --no-sandbox\"",
     "build": "vite build --config vite.config.js",
-    "build:linux": "vite build --config vite.config.js && electron-builder --linux AppImage",
+    "build:win": "yarn build && electron-builder --win",
+    "build:mac": "yarn build && electron-builder --mac",
+    "build:linux": "yarn build && electron-builder --linux",
+    "build:all": "yarn build && electron-builder -mwl",
     "electron": "electron . --no-sandbox",
     "dev": "concurrently --kill-others \"vite --config vite.config.js\" \"wait-on http://localhost:5173 && electron . --no-sandbox\""
   },
   "build": {
-  "appId": "com.geekscode.editor",
-  "productName": "GeeksCode",
-  "directories": {
-    "output": "dist_electron"
+    "appId": "com.geekscode.editor",
+    "productName": "GeeksCode",
+    "directories": {
+      "output": "dist_electron",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "preload.js",
+      "package.json",
+      "styles.css",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "src",
+        "to": "src",
+        "filter": ["**/*"]
+      }
+    ],
+    "asarUnpack": [
+      "node_modules/node-pty/**/*",
+      "node_modules/node-llama-cpp/**/*"
+    ],
+    "linux": {
+      "target": ["AppImage"],
+      "category": "Development"
+    },
+    "win": {
+      "target": ["nsis"],
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "category": "public.app-category.developer-tools",
+      "icon": "build/icon.icns"
+    },
+    "asar": true,
+    "npmRebuild": true
   },
-  "files": [
-    "dist/**/*",
-    "main.js",
-    "preload.js",
-    "package.json",
-    "styles.css" 
-  ],
-  "extraResources": [
-    {
-      "from": "src",
-      "to": "src",
-      "filter": ["**/*"]
-    }
-  ],
-  "linux": {
-    "target": "AppImage",
-    "category": "Development"
-  },
-  "win": {
-    "target": "nsis",
-    "icon": "build/icon.ico"
-  },
-  "mac": {
-    "target": "dmg",
-    "category": "public.app-category.developer-tools"
-  },
-  "asar": true
-},
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
     "@vitejs/plugin-react": "^4.2.1",
@@ -68,12 +79,11 @@
     "@electron/rebuild": "^4.0.3",
     "autoprefixer": "^10.4.24",
     "concurrently": "^9.2.1",
-    "electron-builder": "^26.7.0",
     "electron": "^40.4.1",
+    "electron-builder": "^26.7.0",
     "node-gyp": "^10.0.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.1",
     "wait-on": "^8.0.5"
   }
-
 }
