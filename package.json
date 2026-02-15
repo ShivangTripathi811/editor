@@ -25,8 +25,7 @@
       "main.js",
       "preload.js",
       "package.json",
-      "styles.css",
-      "node_modules/**/*"
+      "styles.css"
     ],
     "extraResources": [
       {
@@ -34,10 +33,6 @@
         "to": "src",
         "filter": ["**/*"]
       }
-    ],
-    "asarUnpack": [
-      "node_modules/node-pty/**/*",
-      "node_modules/node-llama-cpp/**/*"
     ],
     "linux": {
       "target": ["AppImage"],
@@ -52,8 +47,7 @@
       "category": "public.app-category.developer-tools",
       "icon": "build/icon.icns"
     },
-    "asar": true,
-    "npmRebuild": true
+    "asar": true
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
@@ -62,8 +56,6 @@
     "axios": "^1.13.5",
     "lucide-react": "^0.564.0",
     "monaco-editor": "^0.44.0",
-    "node-llama-cpp": "^3.15.1",
-    "node-pty": "^1.0.0",
     "pdf-parse": "1.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -74,6 +66,10 @@
     "vite": "^6.1.0",
     "xterm": "^5.3.0",
     "xterm-addon-fit": "^0.8.0"
+  },
+  "optionalDependencies": {
+    "node-llama-cpp": "^3.15.1",
+    "node-pty": "^1.0.0"
   },
   "devDependencies": {
     "@electron/rebuild": "^4.0.3",
