@@ -2,8 +2,6 @@ name: Build and Release GeeksCode
 
 on:
   push:
-    branches:
-      - main  # Change this to 'shivam' if that's your branch
   workflow_dispatch:
 
 jobs:
@@ -13,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest]
     
     steps:
       - name: Checkout Code
@@ -22,10 +20,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'yarn'
       
-      # Install system dependencies for Linux
       - name: Install Linux Dependencies
         if: runner.os == 'Linux'
         run: |
@@ -47,49 +44,27 @@ jobs:
             libxrandr2 \
             libgbm1 \
             libxkbcommon0 \
-            libasound2 \
             libpango-1.0-0 \
-            libcairo2
+            libcairo2 \
+            libasound2t64
       
-      # Install Python for native modules (Windows)
       - name: Setup Python
         if: runner.os == 'Windows'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       
-      # Install dependencies (--ignore-scripts skips problematic native builds)
       - name: Install Dependencies
         run: yarn install --frozen-lockfile --ignore-scripts
       
-      # Build Vite frontend
       - name: Build Frontend
         run: yarn build
       
-      # Verify build output
-      - name: Verify Build Output
-        run: |
-          if [ "$RUNNER_OS" == "Windows" ]; then
-            dir dist\
-          else
-            ls -la dist/
-          fi
-        shell: bash
-      
-      # Build Electron app
       - name: Build Electron App (Windows)
         if: runner.os == 'Windows'
         run: yarn electron-builder --win --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Build Electron App (macOS)
-        if: runner.os == 'macOS'
-        run: yarn electron-builder --mac --publish never
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Skip code signing for now
-          CSC_IDENTITY_AUTO_DISCOVERY: false
       
       - name: Build Electron App (Linux)
         if: runner.os == 'Linux'
@@ -97,33 +72,18 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-      # List built files for debugging
-      - name: List Build Artifacts
-        run: |
-          if [ "$RUNNER_OS" == "Windows" ]; then
-            dir dist_electron\
-          else
-            ls -la dist_electron/
-          fi
-        shell: bash
-      
-      # Upload artifacts for download
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: GeeksCode-${{ runner.os }}
           path: |
             dist_electron/*.exe
-            dist_electron/*.dmg
             dist_electron/*.AppImage
             dist_electron/*.zip
-            dist_electron/*.deb
-            dist_electron/*.rpm
           if-no-files-found: warn
       
-      # Create GitHub Release (only on push to main, not manual runs)
       - name: Create Release
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/main')
+        if: github.event_name == 'push'
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v1.0.${{ github.run_number }}
@@ -131,7 +91,6 @@ jobs:
           draft: true
           files: |
             dist_electron/*.exe
-            dist_electron/*.dmg
             dist_electron/*.AppImage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
