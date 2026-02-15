@@ -7,9 +7,8 @@
     "start": "concurrently --kill-others \"vite --config vite.config.js\" \"wait-on http://localhost:5173 && electron . --no-sandbox\"",
     "build": "vite build --config vite.config.js",
     "build:win": "yarn build && electron-builder --win",
-    "build:mac": "yarn build && electron-builder --mac",
     "build:linux": "yarn build && electron-builder --linux",
-    "build:all": "yarn build && electron-builder -mwl",
+    "build:all": "yarn build && electron-builder -wl",
     "electron": "electron . --no-sandbox",
     "dev": "concurrently --kill-others \"vite --config vite.config.js\" \"wait-on http://localhost:5173 && electron . --no-sandbox\""
   },
@@ -42,11 +41,6 @@
       "target": ["nsis"],
       "icon": "build/icon.ico"
     },
-    "mac": {
-      "target": ["dmg"],
-      "category": "public.app-category.developer-tools",
-      "icon": "build/icon.icns"
-    },
     "asar": true
   },
   "dependencies": {
@@ -72,7 +66,6 @@
     "node-pty": "^1.0.0"
   },
   "devDependencies": {
-    "@electron/rebuild": "^4.0.3",
     "autoprefixer": "^10.4.24",
     "concurrently": "^9.2.1",
     "electron": "^40.4.1",
