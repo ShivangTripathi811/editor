@@ -3,38 +3,89 @@ name: Build and Release GeeksCode
 on:
   push:
     branches:
-      - shivam # This ensures it runs whenever you push to 'shivam'
-  workflow_dispatch: # This adds a "Run workflow" button in the UI for manual testing
+      - main  # Change to 'shivam' if that's your branch
+  workflow_dispatch:
+
 jobs:
   release:
     runs-on: ${{ matrix.os }}
-
+    
     strategy:
+      fail-fast: false
       matrix:
-        # Building for all three major OS platforms
         os: [ubuntu-latest, windows-latest, macos-latest]
-
+    
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "yarn"
-
+          cache: 'yarn'
+      
+      # Install system dependencies for Linux
+      - name: Install Linux Dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxtst6 libxss1 libgtk-3-0 libglib2.0-0 libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libatspi2.0-0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libxkbcommon0 libasound2
+      
+      # Install dependencies
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
-
-      - name: Build React Frontend
+      
+      # Rebuild native modules for Electron
+      - name: Rebuild Native Modules
+        run: yarn electron-builder install-app-deps
+      
+      # Build Vite frontend
+      - name: Build Frontend
         run: yarn build
-
-      - name: Build/Release Electron App
-        uses: samuelmeuli/action-electron-builder@v1
+      
+      # Build Electron app
+      - name: Build Electron App (Windows)
+        if: runner.os == 'Windows'
+        run: yarn electron-builder --win --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build Electron App (macOS)
+        if: runner.os == 'macOS'
+        run: yarn electron-builder --mac --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build Electron App (Linux)
+        if: runner.os == 'Linux'
+        run: yarn electron-builder --linux --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Upload artifacts
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # This will automatically create a draft release on GitHub
-          release: true
-          # Use the build scripts from your package.json
-          build_script_name: build
+          name: GeeksCode-${{ matrix.os }}
+          path: |
+            dist_electron/*.exe
+            dist_electron/*.dmg
+            dist_electron/*.AppImage
+            dist_electron/*.zip
+          if-no-files-found: warn
+      
+      # Create Release (only on main branch push)
+      - name: Create Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}
+          name: Release v${{ github.run_number }}
+          draft: true
+          files: |
+            dist_electron/*.exe
+            dist_electron/*.dmg
+            dist_electron/*.AppImage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
