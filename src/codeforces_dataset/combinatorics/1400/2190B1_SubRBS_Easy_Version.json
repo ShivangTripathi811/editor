@@ -1,0 +1,18 @@
+{
+    "contestId": 2190,
+    "index": "B1",
+    "title": "B1. Sub-RBS (Easy Version)",
+    "statement": "This is the easy version of the problem. The difference between the versions is that in this version, you only need to evaluate for whole string $$$s$$$, $$$s$$$ is\nregular\n, and the constraints on $$$n$$$ are higher\n.\nWe say that a bracket sequence $$$a$$$ is\nbetter\nthan a bracket sequence $$$b$$$ if one of the following holds:\n$$$b$$$ is a prefix of $$$a$$$, but $$$a \\ne b$$$; or\nlet $$$i$$$ be the first position (if it exists) where $$$a_i \\neq b_i$$$, then $$$\\color{red}{a_i = \\texttt{(}}$$$ and $$$\\color{red}{b_i = \\texttt{)}}$$$.\nYou are given a\nregular bracket sequence\n$$$^{\\text{∗}}$$$ $$$s$$$ of even length $$$n$$$.\nAmong all non-empty\nsubsequences\n$$$^{\\text{†}}$$$ $$$t$$$ of $$$s$$$ that are\nregular bracket sequences\n, find the maximum possible length of $$$t$$$ such that $$$t$$$ is\nbetter\nthan $$$s$$$. If no such $$$t$$$ exists, report it.\n$$$^{\\text{∗}}$$$A regular bracket sequence is a bracket sequence that can be transformed into a correct arithmetic expression by inserting the characters $$$\\texttt{1}$$$ and $$$\\texttt{+}$$$ between the original characters of the sequence. For example:\nbracket sequences $$$\\texttt{()()}$$$ and $$$\\texttt{(())}$$$ are regular (the resulting expressions are $$$\\texttt{(1)+(1)}$$$ and $$$\\texttt{((1+1)+1)}$$$);\nbracket sequences $$$\\texttt{)(}$$$, $$$\\texttt{(}$$$, and $$$\\texttt{)}$$$ are not.\n$$$^{\\text{†}}$$$A sequence $$$a$$$ is a subsequence of a sequence $$$b$$$ if $$$a$$$ can be obtained from $$$b$$$ by the deletion of several (possibly, zero or all) element from arbitrary positions.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$2 \\le n \\le 2 \\cdot 10^5$$$, $$$n$$$ is even) — the length of the string $$$s$$$.\nThe second line of each test case contains a sequence $$$s$$$ of length $$$n$$$ consisting only of characters $$$\\texttt{(}$$$ and $$$\\texttt{)}$$$.\nIt is guaranteed that the given sequence $$$s$$$ is a\nregular bracket sequence\n.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, print a single integer — the maximum possible length of a non-empty subsequence $$$t$$$ of $$$s$$$ that is a\nregular bracket sequence\nand is\nbetter\nthan $$$s$$$. If no such $$$t$$$ exists, print $$$-1$$$.",
+    "note": "Note\nIn the first example, the only non-empty regular bracket subsequence of $$$s$$$ is $$$t = s = \\texttt{()}$$$. Since $$$t$$$ is not better than $$$s$$$, we output $$$-1$$$.\nIn the second example, we can choose $$$t = \\texttt{((()))}$$$. The first index where $$$t$$$ and $$$s$$$ differ is $$$i = 3$$$. Since $$$t_3 = \\texttt{(}$$$ and $$$s_3 = \\texttt{)}$$$, $$$t$$$ is better than $$$s$$$. We cannot choose a longer subsequence because the only longer regular bracket subsequence is $$$s$$$ itself, which is not better than $$$s$$$. Thus, we output $$$6$$$.",
+    "tags": [
+        "combinatorics",
+        "constructive algorithms",
+        "dp",
+        "greedy",
+        "strings",
+        "two pointers"
+    ],
+    "rating": 1400
+}

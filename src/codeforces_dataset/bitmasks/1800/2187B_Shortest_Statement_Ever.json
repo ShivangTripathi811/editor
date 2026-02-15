@@ -1,0 +1,16 @@
+{
+    "contestId": 2187,
+    "index": "B",
+    "title": "B. Shortest Statement Ever",
+    "statement": "You are given two non-negative integers $$$x$$$, $$$y$$$. Find two non-negative integers $$$p$$$ and $$$q$$$ such that $$$p\\;\\&\\;q=0$$$, and $$$|x-p|+|y-q|$$$ is minimized. Here, $$$\\&$$$ denotes the\nbitwise AND operation\n.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe only line of each test case contains two non-negative integers $$$x$$$ and $$$y$$$ ($$$0 \\le x,y < 2^{30}$$$).",
+    "outputSpecification": "Output\nFor each test case, output two non-negative integers $$$p$$$ and $$$q$$$ you found. If there are multiple pairs of $$$p$$$ and $$$q$$$ satisfying the conditions, you may output any of them.\nIt can be proven that under the constraints of the problem, any valid solution satisfies $$$\\max(p,q)<2^{31}$$$.",
+    "note": "Note\nIn the first test case, one valid pair would be $$$p=0$$$ and $$$q=0$$$, as $$$0\\,\\&\\,0=0$$$ and $$$|x-p|+|y-q|=|0-0|+|0-0|=0$$$ is the minimum over all pairs of $$$p$$$ and $$$q$$$.\nIn the third test case, one valid pair would be $$$p=3$$$ and $$$q=8$$$, as $$$3\\,\\&\\,8=0$$$ and $$$|x-p|+|y-q|=|3-3|+|8-6|=2$$$ is the minimum over all pairs of $$$p$$$ and $$$q$$$. Note that $$$(p,q)=(3,4)$$$ is also a valid pair.",
+    "tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "dp",
+        "greedy"
+    ],
+    "rating": 1800
+}

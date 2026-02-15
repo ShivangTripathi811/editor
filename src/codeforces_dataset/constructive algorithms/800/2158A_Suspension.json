@@ -1,0 +1,15 @@
+{
+    "contestId": 2158,
+    "index": "A",
+    "title": "A. Suspension",
+    "statement": "A game is being played which initially consists of $$$n$$$ players. On fouls, the referee is allowed to award yellow and red cards. The total number of yellow cards $$$y$$$ and red cards $$$r$$$ awarded to players is known for the game.\nThere are $$$2$$$ ways a player can be suspended:\nReceiving a red card.\nReceiving $$$2$$$ yellow cards.\nOnce a player is suspended, they are removed from the game and can't receive any more cards. Determine the maximum number of players suspended from the game possible.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 500$$$). The description of the test cases follows.\nThe first line of each test case contains an integer $$$n$$$ ($$$1 \\le n \\le 100$$$).\nThe second line of each test case contains two integers $$$y$$$ and $$$r$$$ ($$$0 \\le r \\le n$$$, $$$0 \\le y + r \\le 2n$$$).",
+    "outputSpecification": "Output\nFor each test case, print one line containing a single integer — denoting the maximum number of players suspended from the game possible.",
+    "note": "Note\nFor the first test case:\nOne of the possible ways to achieve maximum: Player $$$2$$$ receives a red card, Player $$$3$$$ receives a yellow card followed by a red card.\nThis way Player $$$2$$$ and $$$3$$$ are suspended.\nFor the second test case:\nNo cards are awarded at all, so no one is suspended.\nFor the third test case:\nOne of the possible ways to achieve maximum: Player $$$1$$$ receives $$$2$$$ yellow cards, Player $$$2$$$ receives $$$2$$$ yellow cards, and Player $$$4$$$ receives $$$2$$$ yellow cards.\nThis way Player $$$1$$$, $$$2$$$, and $$$4$$$ are suspended.",
+    "tags": [
+        "constructive algorithms",
+        "greedy",
+        "math"
+    ],
+    "rating": 800
+}

@@ -1,0 +1,17 @@
+{
+    "contestId": 2182,
+    "index": "G",
+    "title": "G. Short Garland",
+    "statement": "Monocarp wants to hang a garland on the Christmas tree.\nThe Christmas tree is a tree with $$$n$$$ vertices rooted at vertex $$$1$$$. The distance between two vertices of the tree is the number of edges on the shortest path between them, and the depth of a vertex is the distance from it to the root.\nThe garland consists of $$$n$$$ bulbs connected by wire and numbered from $$$1$$$ to $$$n$$$. The length of the wire between every two adjacent bulbs is $$$k$$$.\nThe garland must be hung on the tree according to the following rules:\nevery bulb must be placed on one of the vertices of the tree, and every vertex must have exactly one bulb on it;\nbulb $$$1$$$ must be placed on the root of the tree;\neach subsequent bulb has to be placed on such a vertex that its parent vertex has a bulb on it. If there are multiple such vertices, the vertex with the largest depth is chosen. If there are still multiple options, any of them can be chosen;\nfor each pair of subsequent bulbs, the distance between the vertices they are placed on must not exceed $$$k$$$.\nYour task is to count the number of ways to hang the garland while following all the rules and output it modulo $$$998244353$$$. Two ways are considered different if there exists at least one integer $$$i \\in [1, n]$$$ such that the $$$i$$$-th bulb is placed on different vertices in these two ways.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe first line of each test case contains two integers $$$n$$$ and $$$k$$$ ($$$2 \\le n \\le 3 \\cdot 10^5$$$; $$$1 \\le k < n$$$) — the number of vertices in the tree and the distance constraint between two consecutive bulbs.\nThe second line contains $$$n-1$$$ integers $$$p_2, p_3, \\dots, p_n$$$ ($$$1 \\le p_i < i$$$), where $$$p_i$$$ is the parent of the $$$i$$$-th vertex in the tree.\nAdditional constraint on the input: the sum of $$$n$$$ over all test cases does not exceed $$$3 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output one integer — the number of ways to hang the garland while following all the rules, modulo $$$998244353$$$.",
+    "note": "",
+    "tags": [
+        "combinatorics",
+        "data structures",
+        "dfs and similar",
+        "dp",
+        "trees"
+    ],
+    "rating": 2800
+}

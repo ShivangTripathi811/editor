@@ -1,0 +1,15 @@
+{
+    "contestId": 2162,
+    "index": "C",
+    "title": "C. Beautiful XOR",
+    "statement": "You are given two integers $$$a$$$ and $$$b$$$. You are allowed to perform the following operation any number of times (including zero):\nchoose any integer $$$x$$$ such that $$$0 \\le x \\le a$$$ (the current value of $$$a$$$, not initial),\nset $$$a := a \\oplus x$$$. Here, $$$\\oplus$$$ represents the\nbitwise XOR\noperator.\nAfter performing a sequence of operations, you want the value of $$$a$$$ to become exactly $$$b$$$.\nFind a sequence of at most $$$100$$$ operations (values of $$$x$$$ used in each operation) that transforms $$$a$$$ into $$$b$$$, or report that it is impossible.\nNote that you are not required to find the minimum number of operations, but any valid sequence of at most $$$100$$$ operations.",
+    "inputSpecification": "Input\nThe first line of input contains a single integer $$$t$$$ ($$$1 \\le t \\le 1000$$$) — the number of test cases.\nEach test case contains two integers $$$a$$$ and $$$b$$$ ($$$1 \\le a, b \\le 10^9$$$).",
+    "outputSpecification": "Output\nFor each test case, if it is impossible to obtain $$$b$$$ from $$$a$$$ using the allowed operations, print a single line containing $$$-1$$$.\nOtherwise, on the first line print a single integer $$$k$$$ ($$$0 \\le k \\le 100$$$) — the number of operations. On the second line print $$$k$$$ integers ($$$x_1, x_2, \\dots , x_k$$$) — the chosen values of $$$x$$$ in the order you apply them.\nIf there are multiple valid sequences, you may print any one of them.",
+    "note": "Note\nFor the first test case,\nchoose $$$x = 7$$$, now $$$a$$$ becomes equal to $$$9 \\oplus 7 = 14$$$.\nchoose $$$x = 8$$$, now $$$a$$$ becomes equal to $$$14 \\oplus 8 = 6$$$.\nThus, we can make $$$a = b$$$.\nFor the fourth test case, choosing $$$x = 5$$$ makes $$$a = b$$$.",
+    "tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "greedy"
+    ],
+    "rating": 1100
+}

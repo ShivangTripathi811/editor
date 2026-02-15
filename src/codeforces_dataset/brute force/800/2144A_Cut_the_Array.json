@@ -1,0 +1,16 @@
+{
+    "contestId": 2144,
+    "index": "A",
+    "title": "A. Cut the Array",
+    "statement": "You are given an array of $$$n$$$ non-negative integers $$$[a_1, a_2, \\dots, a_n]$$$.\nYour task is to cut it into three non-empty parts: a prefix, a middle part, and a suffix. Formally, you need to choose two integers $$$l$$$ and $$$r$$$ such that $$$1 \\le l  \\lt  r  \\lt  n$$$, and obtain three parts:\nthe prefix up the element at index $$$l$$$ inclusive (i.e., $$$[a_1, a_2, \\dots, a_l]$$$);\nthe central part from the element at index $$$l+1$$$ to the element at index $$$r$$$ inclusive (i.e., $$$[a_{l+1}, a_{l+2}, \\dots, a_r]$$$);\nthe suffix from the element at index $$$r+1$$$ to $$$n$$$ inclusive (i.e., $$$[a_{r+1}, a_{r+2}, \\dots, a_n]$$$).\nLet $$$s_1, s_2, s_3$$$ be the remainders of the sums of these parts modulo $$$3$$$. In other words:\n$$$s_1 = (\\sum\\limits_{i=1}^{l} a_i) \\bmod 3$$$;\n$$$s_2 = (\\sum\\limits_{i=l+1}^{r} a_i) \\bmod 3$$$;\n$$$s_3 = (\\sum\\limits_{i=r+1}^{n} a_i) \\bmod 3$$$.\nYour task is to find such boundaries $$$l$$$ and $$$r$$$ that either all numbers $$$s_1, s_2, s_3$$$ are different, or all numbers $$$s_1, s_2, s_3$$$ are the same.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 1000$$$) — the number of test cases.\nEach test case consists of two lines:\nthe first line contains a single integer $$$n$$$ ($$$3 \\le n \\le 40$$$);\nthe second line contains $$$n$$$ integers $$$a_1, a_2, \\dots, a_n$$$ ($$$0 \\le a_i \\le 40$$$).",
+    "outputSpecification": "Output\nFor each test case, if a suitable pair of integers $$$l$$$ and $$$r$$$ ($$$1 \\le l  \\lt  r  \\lt  n$$$) exists, output these two integers (if there are multiple suitable pairs, you can output any of them). Otherwise, output two integers equal to $$$0$$$.",
+    "note": "Note\nConsider the examples from the statement:\nin the first example, the array is cut into parts $$$[1, 2, 3]$$$, $$$[4, 5]$$$, $$$[6]$$$; $$$s_1 = s_2 = s_3 = 0$$$;\nin the second example, there is no suitable cut;\nin the third example, the array is cut into parts $$$[2]$$$, $$$[1]$$$, $$$[0]$$$; $$$s_1 = 2$$$, $$$s_2 = 1$$$, $$$s_3 = 0$$$;\nin the fourth example, the array is cut into parts $$$[7, 2]$$$, $$$[6, 2]$$$, $$$[4]$$$; $$$s_1 = 0$$$, $$$s_2 = 2$$$, $$$s_3 = 1$$$.",
+    "tags": [
+        "brute force",
+        "constructive algorithms",
+        "math",
+        "number theory"
+    ],
+    "rating": 800
+}

@@ -1,0 +1,19 @@
+{
+    "contestId": 2189,
+    "index": "F",
+    "title": "F. Zhora the Vacuum Cleaner",
+    "statement": "Once upon a time, Zhora the Vacuum Cleaner found a big container with nuts that is represented by a tree with $$$n$$$ vertices. Initially, in the $$$i$$$-th vertex, there are $$$a_i$$$ nuts. What Zhora the Vacuum Cleaner likes most is eating nuts, so he decided to eat all the nuts.\nTo save electricity, the vacuum cleaner can rearrange the nuts in the container beforehand. Zhora can choose a vertex $$$v$$$ of the tree, and for every vertex $$$u \\ne v$$$, in\nnon-increasing\norder of the length of path $$$uv$$$, if $$$u$$$ contains at least one nut, one nut from $$$u$$$ moves into the closest vertex to $$$v$$$ among $$$u$$$'s adjacent vertices. This operation requires $$$p$$$ electricity units.\nAfter performing several such operations (possibly none), Zhora the Vacuum Cleaner eats all the nuts from every vertex, spending $$$q$$$ electricity units per every vertex that contains nuts.\nWhat is the minimum amount of electricity units required to eat all the nuts?",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains three integers $$$n$$$, $$$p$$$, and $$$q$$$ ($$$2 \\le n \\le 10^5$$$, $$$0 \\le p, q \\le 10^6$$$) — the number of vertices in the container's tree and the required amounts of electricity for operations of types 1 and 2, respectively.\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$0 \\le a_i \\le 10^6$$$) — the quantities of nuts in the vertices.\nEach of the next $$$n - 1$$$ lines of each test case contains two integers $$$u$$$ and $$$v$$$ ($$$1 \\le u, v \\le n, u \\ne v$$$), representing an undirected tree edge from vertex $$$u$$$ to vertex $$$v$$$. It is guaranteed that the given edges form a tree.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output the minimum amount of electricity units required to eat all the nuts.",
+    "note": "Note\nIn the first test case, it is best to apply the movement operation to vertex $$$2$$$, and then eat all the $$$4$$$ nuts from vertex $$$2$$$, spending $$$1 + 1 = 2$$$ electricity units in total.\nIn the second test case, it is best to apply the movement operation twice to vertex $$$3$$$, and then eat all the $$$5$$$ nuts from vertex $$$3$$$, spending $$$1 + 1 + 100 = 102$$$ electricity units in total.\nIn the third test case, it is best just to eat all the nuts from vertices $$$1,2,4,5$$$, spending $$$10 + 10 + 10 + 10 = 40$$$ electricity units.\nIn the fourth test case, it is best to apply the movement operation twice to vertex $$$2$$$, and then eat all the nuts from vertex $$$2$$$, spending $$$6$$$ electricity units in total.",
+    "tags": [
+        "data structures",
+        "dfs and similar",
+        "dp",
+        "greedy",
+        "implementation",
+        "sortings",
+        "trees"
+    ],
+    "rating": 2800
+}

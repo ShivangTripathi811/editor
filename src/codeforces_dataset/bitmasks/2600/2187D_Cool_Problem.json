@@ -1,0 +1,15 @@
+{
+    "contestId": 2187,
+    "index": "D",
+    "title": "D. Cool Problem",
+    "statement": "There are two integer constants $$$x$$$ and $$$y$$$.\nFor a binary$$$^{\\text{∗}}$$$ string $$$r$$$ of length $$$n$$$, we define its\ngenerating array\nas an array $$$c=[c_0,c_1,\\ldots,c_n]$$$ such that $$$c_0=0$$$, and for each $$$1 \\le i \\le n$$$:\nIf $$$r_i=\\mathtt{0}$$$, then $$$c_i=x+c_{i-1}$$$;\nIf $$$r_i=\\mathtt{1}$$$, then $$$c_i=y-c_{i-1}$$$.\nAdditionally, we define $$$f(r)=\\sum\\limits_{i=1}^n c_i$$$.\nYou are given an incomplete binary string $$$s$$$ of length $$$n$$$, where some characters in it are missing, represented by $$$\\mathtt{?}$$$. An integer $$$k$$$ is called\ncool\nif and only if there exists a way to replace each $$$\\mathtt{?}$$$ in $$$s$$$ with either $$$\\mathtt{0}$$$ or $$$\\mathtt{1}$$$, such that $$$f(s)=k$$$.\nYour task is to calculate the sum of all\ncool\nintegers, modulo $$$998\\,244\\,353$$$.\n$$$^{\\text{∗}}$$$A binary string is a string where each character is either $$$\\mathtt{0}$$$ or $$$\\mathtt{1}$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains three integers $$$n$$$, $$$x$$$, and $$$y$$$ ($$$1 \\le n \\le 10^5$$$, $$$1 \\le x,y \\le 10^6$$$) — the length of $$$s$$$ and the given constants.\nThe second line contains the incomplete binary string $$$s$$$ of length $$$n$$$ ($$$s_i \\in \\{\\mathtt{0}, \\mathtt{1}, \\mathtt{?}\\}$$$).\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer — the sum of all\ncool\nintegers modulo $$$998\\,244\\,353$$$.",
+    "note": "Note\nIn the first test case, the string $$$s$$$ has already been determined, and its\ngenerating array\nis $$$[0, 1]$$$. Thus, $$$f(s)=1$$$, and the only\ncool\ninteger is $$$1$$$.\nIn the third test case, there are four ways to complete the string $$$s$$$:\n$$$s$$$\nGenerating array\n$$$f(s)$$$\n$$$\\mathtt{000}$$$\n$$$[0, 7, 14, 21]$$$\n$$$42$$$\n$$$\\mathtt{001}$$$\n$$$[0, 7, 14, -9]$$$\n$$$12$$$\n$$$\\mathtt{100}$$$\n$$$[0, 5, 12, 19]$$$\n$$$36$$$\n$$$\\mathtt{101}$$$\n$$$[0, 5, 12, -7]$$$\n$$$10$$$\nThus, the sum of all\ncool\nintegers is $$$42+12+36+10=100$$$.",
+    "tags": [
+        "bitmasks",
+        "dp",
+        "math"
+    ],
+    "rating": 2600
+}

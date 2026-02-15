@@ -1,0 +1,17 @@
+{
+    "contestId": 2145,
+    "index": "G",
+    "title": "G. Cost of Coloring",
+    "statement": "There is a sheet of paper divided into $$$n$$$ rows and $$$m$$$ columns. Initially, no cell of this sheet is colored.\nIn one operation, you can choose any column or row and color it (if some cells were previously colored, their color changes to the new one). During the first operation, cells are colored with color $$$1$$$; during operation $$$i  \\gt  1$$$, you can choose either color $$$c_{i-1}$$$ or $$$c_{i-1} + 1$$$, where $$$c_{i-1}$$$ is the color chosen during operation $$$(i-1)$$$.\nWe call the final coloring beautiful if the following conditions are met:\neach cell is colored;\nfor each color from $$$1$$$ to $$$k$$$, there is at least one cell colored in that color, and no other colors are used in the coloring.\nFor a beautiful final coloring, we define its value as the minimum number of operations required to achieve it.\nFor each $$$i$$$ from $$$\\min(n, m)$$$ to $$$n + m - 1$$$, calculate the number of beautiful colorings with value $$$i$$$. Two colorings are considered different if the color of at least one cell differs in these colorings.",
+    "inputSpecification": "Input\nThe input consists of a single line containing three integers $$$n, m, k$$$ ($$$2 \\le n, m \\le 2000$$$; $$$1 \\le k \\le n + m - 1$$$).",
+    "outputSpecification": "Output\nFor each $$$i$$$ from $$$\\min(n, m)$$$ to $$$n + m - 1$$$, output a single integer — the number of beautiful colorings with value $$$i$$$, taken modulo $$$998244353$$$.",
+    "note": "",
+    "tags": [
+        "combinatorics",
+        "divide and conquer",
+        "dp",
+        "fft",
+        "math"
+    ],
+    "rating": 2900
+}

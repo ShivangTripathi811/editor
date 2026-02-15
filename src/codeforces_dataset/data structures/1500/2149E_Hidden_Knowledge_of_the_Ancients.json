@@ -1,0 +1,14 @@
+{
+    "contestId": 2149,
+    "index": "E",
+    "title": "E. Hidden Knowledge of the Ancients",
+    "statement": "In the world of\nDeepwoken\n, there exists an ancient artifact —\nTablet of Infinite Knowledge\n, on which a sequence of $$$n$$$ mysterious symbols (each symbol is an integer) is engraved.\nIt is said that the true power of the artifact can only be revealed by finding all\nsacred fragments\n— continuous segments of the tablet that contain exactly $$$k$$$ distinct numbers, and their length must be between $$$l$$$ and $$$r$$$ (inclusive).\nFormally: Given a sequence $$$a$$$ of length $$$n$$$ and integers $$$k$$$, $$$l$$$, $$$r$$$. You need to find the number of such boundaries $$$b$$$ and $$$c$$$ such that:\n$$$1 \\le b \\le c \\le n$$$;\namong the elements [$$$a_{b}, a_{b + 1}, \\dots, a_{c}$$$] there are exactly $$$k$$$ distinct numbers;\n$$$l \\leq c - b + 1 \\leq r$$$.",
+    "inputSpecification": "Input\nEach test consists of several test cases.\nThe first line contains one integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe following describes the test cases.\nThe first line of each test case contains four integers: $$$n$$$, $$$k$$$, $$$l$$$, and $$$r$$$ $$$( 1 \\le k \\le n \\le 2 \\cdot 10^5, 1 \\le l \\le r \\le n)$$$.\nThe second line contains $$$n$$$ numbers $$$a_i$$$ $$$(1 \\le a_i \\le 10^9)$$$ — the mysterious symbols.\nIt is guaranteed that the total value of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test, output a single integer on a separate line — the number of continuous subarrays that meet the specified conditions.",
+    "note": "Note\nIn the first test case $$$a=[5]$$$, there is only one subarray $$$[5]$$$, which has a length of 1 and contains exactly $$$1$$$ distinct number.\nIn the fourth test case $$$a=[7,7,7,7]$$$, any subarray of identical numbers gives exactly $$$1$$$ distinct number. The start and end of possible subarrays are:\nLength $$$1$$$: $$$[1,1]$$$, $$$[2,2]$$$, $$$[3,3]$$$, $$$[4,4]$$$.\nLength $$$2$$$: $$$[1,2]$$$, $$$[2,3]$$$, $$$[3,4]$$$.\nIn total: $$$7$$$.\nIn the fifth test case $$$a=[1,2,1,2,3,2,1]$$$:\nLength $$$2$$$: all subarrays have only $$$2$$$ distinct numbers.\nLength $$$3$$$: $$$[3,5]$$$, $$$[5,7]$$$.\nLength $$$4$$$: $$$[2,5]$$$, $$$[3,6]$$$, $$$[4,7]$$$.\nIn total: $$$5$$$.",
+    "tags": [
+        "data structures",
+        "two pointers"
+    ],
+    "rating": 1500
+}

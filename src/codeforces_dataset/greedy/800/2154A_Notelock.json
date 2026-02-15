@@ -1,0 +1,14 @@
+{
+    "contestId": 2154,
+    "index": "A",
+    "title": "A. Notelock",
+    "statement": "Teto is playing the hit rhythm game\nosu!\n. The game can be described by a binary string$$$^{\\text{∗}}$$$ $$$s$$$ of length $$$n$$$ and a positive integer $$$k$$$ where the following will happen in order:\nYou will choose some positions in $$$s$$$ to protect.\nThen for each $$$i$$$ ($$$1 \\le i \\le n$$$) in increasing order, Teto can set $$$s_i$$$ to $$$\\mathtt{0}$$$ if all the following are true:\n$$$s_i = \\mathtt{1}$$$,\n$$$s_i$$$ is not protected,\nthe previous $$$k - 1$$$ elements do not contain $$$\\mathtt{1}$$$. More formally, $$$\\mathtt{1}$$$ does not occur in $$$s_{\\max(1, i - k + 1)},\\ldots,s_{i - 1}$$$.\nYou dislike Teto (for some reason). So determine the minimum number of positions you need to protect to force her to leave $$$s$$$ unchanged.\n$$$^{\\text{∗}}$$$A binary string is a string that only consists of characters $$$\\mathtt{0}$$$ and $$$\\mathtt{1}$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 100$$$). The description of the test cases follows.\nThe first line of each testcase contains integers $$$n$$$ and $$$k$$$ ($$$2 \\le n \\le 1000$$$; $$$2 \\le k \\le n$$$) — the length of $$$s$$$ and $$$k$$$.\nThe second line of each test case contains a binary string $$$s$$$ of length $$$n$$$ consisting of characters $$$\\mathtt{0}$$$ and $$$\\mathtt{1}$$$.\nThe sum of $$$n$$$ across all testcases does not exceed $$$1000$$$.",
+    "outputSpecification": "Output\nFor each testcase, output the minimum number of positions you need to protect to force Teto to leave the string unchanged.",
+    "note": "Note\nFor the first testcase, you can protect the first element and have: $$$s = \\mathtt{\\color{red}{1}1}$$$. Now Teto cannot change $$$s_1$$$ because it is protected and cannot change $$$s_2$$$ because $$$s_1 = \\mathtt{1}$$$. It can be proven this is optimal.\nFor the second testcase, you can protect only the first element and have $$$s = \\color{red}{\\mathtt{1}}\\mathtt{00001}$$$. Teto cannot change $$$s_1$$$ because it is protected and she cannot change $$$s_6$$$ because there is $$$\\mathtt{1}$$$ in the previous $$$k - 1$$$ elements ($$$\\color{blue}{\\mathtt{10000}}\\mathtt{1}$$$).\nFor the fourth testcase, you must protect $$$s_1,s_3,s_5,s_7$$$ and have $$$s = \\mathtt{\\color{red}{1}0\\color{red}{1}0\\color{red}{1}0\\color{red}{1}}$$$. It can be shown that this is optimal. For example, if you did not protect $$$s_3$$$, then Teto can change it to $$$\\mathtt{0}$$$ ($$$\\mathtt{\\color{red}{1}\\color{blue}{0}10\\color{red}{1}0\\color{red}{1}}$$$)",
+    "tags": [
+        "greedy",
+        "two pointers"
+    ],
+    "rating": 800
+}

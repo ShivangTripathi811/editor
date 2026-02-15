@@ -1,0 +1,14 @@
+{
+    "contestId": 2157,
+    "index": "I",
+    "title": "I. Hyper Smawk Bros",
+    "statement": "Vicious Hobo - Break the Targets\n⠀\nYou and Bob are playing Hyper Smawk Bros against each other, facing a single boss with health $$$n$$$.\nYou and Bob act alternately, and you start. On your turn, you may use an attack that deals an integer amount of damage $$$x$$$ in $$$[1, m]$$$, replacing $$$n$$$ with $$$n - x$$$. However, one cannot use the same $$$x$$$ that his opponent just used on the previous turn (on the very first move of the game, any $$$x$$$ in $$$[1, m]$$$ is allowed).\nThe winner is the first player to reduce the boss's health to $$$n \\leq 0$$$. Determine whether you can force a win if Bob plays optimally.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe only line of each test case contains two integers $$$n$$$, $$$m$$$ ($$$1 \\le n \\le 10^6$$$, $$$2 \\leq m \\leq 10^6$$$) — the starting health $$$n$$$ and the maximum damage per attack $$$m$$$.\nNote that there are no constraints on the sum of $$$n$$$ over all test cases, and there are no constraints on the sum of $$$m$$$ over all test cases.",
+    "outputSpecification": "Output\nFor each test case, output $$$\\texttt{YES}$$$ if you can force a win against Bob, and $$$\\texttt{NO}$$$ otherwise.\nThe judge is case-insensitive (for example, $$$\\texttt{YES}$$$, $$$\\texttt{Yes}$$$, $$$\\texttt{yes}$$$, $$$\\texttt{yEs}$$$ will all be recognized as positive answers).",
+    "note": "Note\nIn the first test case, you can win immediately by dealing damage $$$8$$$, so that $$$n$$$ becomes $$$6-8 = -2 \\leq 0$$$.\nIn the second test case,\nyou choose to deal damage $$$10$$$;\nBob can choose to deal any damage in $$$[1, 10]$$$ different from $$$10$$$;\nthen you can choose to deal damage $$$10$$$ and win.\nIn the third test case,\neither you start by dealing damage $$$1$$$, then Bob must deal damage $$$2$$$, then you must deal damage $$$1$$$, etc.;\nor you start by dealing damage $$$2$$$, then Bob must deal damage $$$1$$$, then you must deal damage $$$2$$$, etc.\nIn both cases, you lose.",
+    "tags": [
+        "dp",
+        "games"
+    ],
+    "rating": 3500
+}

@@ -1,0 +1,17 @@
+{
+    "contestId": 2180,
+    "index": "C",
+    "title": "C. XOR-factorization",
+    "statement": "Ostad thinks that the usual way of factoring numbers is too mathematical, so he invented a new notion called\nXOR-factorization\n, which is more computer-science-like. For a given integer $$$n$$$, a sequence of integers $$$a_1, a_2, \\ldots, a_k$$$ with $$$0 \\le a_i \\le n$$$ for all $$$i$$$ is called a\nXOR-factorization\nof $$$n$$$ if and only if $$$$$$ a_1 \\oplus a_2 \\oplus \\cdots \\oplus a_k = n, $$$$$$ where $$$\\oplus$$$ denotes the\nbitwise XOR operation\n.\nYou are given integers $$$n$$$ and $$$k$$$. Find a\nXOR-factorization\n$$$a_1, a_2, \\ldots, a_k$$$ of $$$n$$$ that maximizes the sum $$$a_1 + a_2 + \\cdots + a_k$$$.\nIt can be proven that under the problem conditions, a\nXOR-factorization\nalways exists.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nEach of the next $$$t$$$ lines contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le n \\le 10^9$$$, $$$1 \\le k \\le 10^5$$$).\nIt is guaranteed that the sum of $$$k$$$ over all test cases does not exceed $$$10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output $$$k$$$ integers $$$a_1, a_2, \\ldots, a_k$$$ such that $$$0 \\le a_i \\le n$$$.\nWe can show that an answer always exists. If there are multiple valid answers, you may print any of them in any order.",
+    "note": "Note\nIn the first test case, we can factor $$$5$$$ as $$$1 \\oplus 4 \\oplus 5 \\oplus 5$$$ with a sum of $$$15$$$, and it can be shown that no other\nXOR-factorization\nhas a higher sum.\nIn the second test case, we can factor $$$4$$$ as $$$4 \\oplus 4 \\oplus 4$$$ with a sum of $$$12$$$, which is trivially the maximum possible.",
+    "tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "dp",
+        "greedy",
+        "number theory"
+    ],
+    "rating": 1900
+}

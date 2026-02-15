@@ -1,0 +1,20 @@
+{
+    "contestId": 2171,
+    "index": "F",
+    "title": "F. Rae Taylor and Trees (hard version)",
+    "statement": "\"To think a commoner would even fathom sitting next to me. Know your place!\"\n— Claire François\nThis is the hard version of the problem. The only difference between the easy and hard versions is that the hard version asks you to construct an example of a satisfactory tree.\nAs an Earth mage, Rae has mastered the spell of growing trees! But Manaria brags that she can grow a more impressive species of trees. Rae remembers that the most rare type of tree can be grown using a formula represented by a certain permutation — please help her construct it!\nYou are given a permutation$$$^{\\text{∗}}$$$ $$$p$$$ of length $$$n$$$.\nDetermine if there exists an undirected tree with $$$n$$$ vertices labeled $$$1, 2, \\dots, n$$$, satisfying the following condition:\nLet $$$u$$$ and $$$v$$$ ($$$1\\leq {\\color{red}{u < v}} \\leq n$$$) be any two vertices connected by an edge. Then $$$u$$$ appears before $$$v$$$ in $$$p$$$.\nAdditionally, if there exists such a tree, output any of them.\n$$$^{\\text{∗}}$$$A permutation of length $$$n$$$ is an array that contains every integer from $$$1$$$ to $$$n$$$ exactly once, in any order.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\leq t \\leq 10^4$$$)  — the number of test cases.\nThe first line of each test case contains a single integer $$$n$$$ ($$$2\\leq n\\leq 2\\cdot 10^5$$$).\nThe second line of each test case contains $$$n$$$ integers, $$$p_1, p_2, \\dots, p_n$$$ ($$$1\\leq p_i\\leq n$$$). It is guaranteed that all $$$p_i$$$ are distinct.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2\\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output on a single line \"\nYes\n\" if there exists a tree satisfying the given condition, and \"\nNo\n\" otherwise.\nThen, if the answer is \"\nYes\n\", output $$$n-1$$$ lines. The $$$i$$$-th of these lines should contain two integers $$$u$$$ and $$$v$$$, denoting an edge connecting vertices $$$u$$$ and $$$v$$$.\nYou may output the answer in any case (upper or lower). For example, the strings \"\nyEs\n\", \"\nyes\n\", \"\nYES\n\", and \"\nyeS\n\" will be recognized as \"\nYes\n\".",
+    "note": "Note\nIn the first example, we can construct the tree given in the sample output. We have that\n$$$1 < 3$$$, and $$$1$$$ appears before $$$3$$$ in $$$p$$$,\n$$$1 < 4$$$, and $$$1$$$ appears before $$$4$$$ in $$$p$$$,\n$$$5 < 6$$$, and $$$5$$$ appears before $$$6$$$ in $$$p$$$,\n$$$2 < 6$$$, and $$$2$$$ appears before $$$6$$$ in $$$p$$$,\n$$$1 < 6$$$, and $$$1$$$ appears before $$$6$$$ in $$$p$$$.\nIn the second example, it can be shown that there does not exist a tree satisfying the given constraints.",
+    "tags": [
+        "binary search",
+        "constructive algorithms",
+        "data structures",
+        "dp",
+        "dsu",
+        "greedy",
+        "implementation",
+        "trees"
+    ],
+    "rating": 1600
+}

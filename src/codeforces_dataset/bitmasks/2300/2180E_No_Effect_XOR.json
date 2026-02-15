@@ -1,0 +1,17 @@
+{
+    "contestId": 2180,
+    "index": "E",
+    "title": "E. No Effect XOR",
+    "statement": "In the jungle, there is a lake with infinite lily pads on it. The lily pads are numbered with non-negative integers $$$0, 1, 2, 3, \\ldots$$$. The lily pads with numbers between $$$l$$$ and $$$r$$$ inclusive are called\nsuitable\n, while all other lily pads are not suitable for the frogs to sit on.\nCurrently, a single frog is sitting on each suitable lily pad.\nOstad is watching the lake and wants to reorder the frogs. To do so, Ostad can pick a positive integer $$$x$$$ and announce it to the frogs. After hearing the number, the frog sitting on the $$$i$$$-th lily pad will jump to the $$$(i \\oplus x)$$$-th one, where $$$\\oplus$$$ denotes the\nbitwise XOR operation\n.\nOstad likes the frogs, and therefore he wants to pick the number $$$x$$$ in such a way that all frogs stay within the range of suitable lily pads.\nHelp Ostad by counting how many different numbers $$$x$$$ Ostad can choose such that no frog jumps outside the suitable segment of the lily pads.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^5$$$). The description of the test cases follows.\nFor each test case, there is a single line containing two integers $$$l$$$ and $$$r$$$ ($$$1 \\leq l \\leq r \\leq 10^{15}$$$).",
+    "outputSpecification": "Output\nFor each test case, output a single integer denoting the number of valid values for $$$x$$$.",
+    "note": "Note\nIn the first test case, $$$x = 3$$$ is the only number that Ostad can choose, as $$$1 \\oplus 3 = 2$$$ and $$$2 \\oplus 3 = 1$$$, which are within the range $$$[1, 2]$$$.\nThere are no valid choices for Ostad in the second and third test cases. For the second case, since we require $$$x  \\gt  0$$$, the only frog that we have will leave the range. Similarly, in the third case, no valid $$$x$$$ exists to keep the frogs within the desired range.\nIn the fourth test case, Ostad can choose $$$1$$$, $$$2$$$, or $$$3$$$.\nLink to the visualizer",
+    "tags": [
+        "bitmasks",
+        "divide and conquer",
+        "dp",
+        "greedy",
+        "math"
+    ],
+    "rating": 2300
+}

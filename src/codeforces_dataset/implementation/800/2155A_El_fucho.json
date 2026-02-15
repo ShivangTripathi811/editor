@@ -1,0 +1,14 @@
+{
+    "contestId": 2155,
+    "index": "A",
+    "title": "A. El fucho",
+    "statement": "Juan and his friends are going to split themselves into $$$n$$$ teams and play a modified double-elimination football tournament, consisting of a\nwinners'\ngroup and a\nlosers'\ngroup. Initially, all teams belong to the winners' group.\nIn each round of the tournament, the following happens as long as one of the groups has\nat least two\nteams:\nAll teams in the winners' group pair up.\nIf there is an odd number of teams in the winners' group, there would be a team that didn't get paired up (and wouldn't play a match). That team stays in the winners' group.\nFor teams in the winners' that got paired up, each pair plays a football match in which there are\nno ties\n.\nIf a team wins, it stays in the winners' group.\nIf a team loses, it drops down to the losers' group in the\nnext round\n.\nAll teams in the losers' group pair up.\nIf there is an odd number of teams in the losers' group, there would be a team that didn't get paired up (and wouldn't play a match). That team stays in the losers' group.\nFor teams in the losers' that got paired up, each pair plays a football match in which there are\nno ties\n.\nIf a team wins, it stays in the losers' group.\nIf a team loses, it gets eliminated from the tournament.\nNote that in the above process, when a team loses a match in the winners' group, it drops down to the losers' group in the next round. That means, it is not considered for the pairing process in the current round's losers' group.\nAfter multiple iterations of the aforementioned process, both groups end up with a single team each. When this happens, both teams face off against each other in a match and a victor emerges.\nDetermine how many matches were played in total. It can be proved that no matter how the teams are paired up and which ones win and lose, the answer remains the same.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 100$$$). The description of the test cases follows.\nThe only line of each test case contains one positive integer $$$n$$$ ($$$2 \\le n \\le 500$$$) — the number of teams.",
+    "outputSpecification": "Output\nFor each test case, print the total number of matches played during the tournament.",
+    "note": "Note\nIn the first test case, it can be proved that exactly $$$2$$$ matches are played before a victor is declared.\nIn the second test case, the image below shows one possible tournament. Notice that $$$4$$$ matches were played in total.",
+    "tags": [
+        "implementation",
+        "math"
+    ],
+    "rating": 800
+}

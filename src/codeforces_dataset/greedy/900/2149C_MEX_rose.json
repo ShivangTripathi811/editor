@@ -1,0 +1,13 @@
+{
+    "contestId": 2149,
+    "index": "C",
+    "title": "C. MEX rose",
+    "statement": "You are given an array $$$a$$$ of length $$$n$$$ and a number $$$k$$$, where $$$0 \\le k \\le n$$$.\nIn one operation, you can choose any index $$$i$$$ ($$$1 \\le i \\le n$$$) and set $$$a_i$$$ to any integer value $$$x$$$ from the range $$$[0,n]$$$.\nFind the minimum number of such operations required to satisfy the condition: $$$\\operatorname{MEX}(a)$$$$$$^{\\text{∗}}$$$$$$=k$$$\n$$$^{\\text{∗}}$$$The minimum excluded (MEX) of a set of numbers $$$a_1,a_2,\\dots,a_n$$$ is the smallest non-negative integer $$$x$$$ that does not appear among the $$$a_i$$$.",
+    "inputSpecification": "Input\nEach test consists of several sets of input data.\nThe first line contains one integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of sets of input data. The description of the sets of input data follows.\nThe first line of each set of input data contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le n \\le 2 \\cdot 10^5,\\,\\, 0 \\le k \\le n$$$) — the length of the array $$$a$$$ and the required $$$\\operatorname{MEX}(a)$$$.\nThe second line contains $$$n$$$ integers $$$a_1,a_2,\\dots,a_n$$$ ($$$0 \\le a_i \\le n$$$) — the elements of the array $$$a$$$.\nIt is guaranteed that the sum of the values of $$$n$$$ across all sets of input data does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each set of input data, output one integer — the minimum number of operations required to satisfy the condition $$$\\operatorname{MEX}(a)=k$$$.",
+    "note": "Note\nIn the first set of input data, the array $$$a=[0]$$$, so $$$\\operatorname{MEX}=1$$$. $$$ \\\\ $$$ By removing zero (replacing it with any $$$x\\in[1,n]$$$), we get $$$\\operatorname{MEX}=0$$$. $$$ \\\\ $$$ Thus, exactly one operation is required.\nIn the third set of input data, the array contains all the numbers $$$0,1,2,3,4$$$, so $$$\\operatorname{MEX}(a)=5$$$ from the start.\nSince this matches the required $$$k$$$, no changes are needed and the minimum number of operations is $$$0$$$.",
+    "tags": [
+        "greedy"
+    ],
+    "rating": 900
+}

@@ -1,0 +1,14 @@
+{
+    "contestId": 2145,
+    "index": "B",
+    "title": "B. Deck of Cards",
+    "statement": "Monocarp has a deck of cards numbered from $$$1$$$ to $$$n$$$. Initially, the cards are arranged from smallest to largest, with $$$1$$$ on top and $$$n$$$ at the bottom.\nMonocarp performed $$$k$$$ actions on the deck. Each action was one of three types:\nremove the top card;\nremove the bottom card;\nremove either the top or bottom card.\nYour task is to determine the fate of each card: whether it remains in the deck, has been removed, or might be both.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe first line of each test case contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le k \\le n \\le 2 \\cdot 10^5$$$).\nThe second line contains a string $$$s$$$ of length $$$k$$$, consisting of characters\n0\n,\n1\n, and/or {2}. This string describes Monocarp's actions. If the $$$i$$$-th character is\n0\n, Monocarp removes the top card on the $$$i$$$-th action. If it's\n1\n, he removes the bottom card. If it's\n2\n, either the top or bottom card can be removed.\nAdditional constraint on the input: the sum of $$$n$$$ over all test cases doesn't exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, print a string consisting of $$$n$$$ characters. The $$$i$$$-th character should be\n+\n(plus sign) if the $$$i$$$-th card is still in the deck,\n-\n(minus sign) if it has been removed, or\n?\n(question mark) if its state is unknown.",
+    "note": "",
+    "tags": [
+        "greedy",
+        "implementation"
+    ],
+    "rating": 1000
+}

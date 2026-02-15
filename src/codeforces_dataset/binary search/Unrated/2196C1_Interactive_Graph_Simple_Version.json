@@ -1,0 +1,18 @@
+{
+    "contestId": 2196,
+    "index": "C1",
+    "title": "C1. Interactive Graph (Simple Version)",
+    "statement": "This is the simple version of the problem. The difference between the versions is that in this version, you can ask no more than $$$32 \\cdot (n + m)$$$ questions, and $$$n \\leq 15$$$. You can hack only if you solved all versions of this problem.\nThis is an interactive problem.\nThe jury has thought of a directed acyclic graph without loops and multiple edges, which has $$$n$$$ vertices and $$$m$$$ edges.\nYour task is to determine which edges are in this graph. To do this, you can ask questions of the form: what does the $$$k$$$-th path look like in the lexicographically$$$^{\\text{∗}}$$$ sorted list of all paths in the graph.\nA path in the graph is a sequence of vertices $$$u_{1}, u_{2}, \\dots, u_{l}$$$, such that for any $$$i  \\lt  l$$$, there exists an edge ($$$u_{i}, u_{i + 1}$$$) in the graph.\nYour task is to accomplish this by asking no more than $$$32 \\cdot (n + m)$$$ questions.\n$$$^{\\text{∗}}$$$A sequence $$$a$$$ is lexicographically smaller than a sequence $$$b$$$ if and only if one of the following holds:\n$$$a$$$ is a prefix of $$$b$$$, but $$$a \\ne b$$$; or\nin the first position where $$$a$$$ and $$$b$$$ differ, the sequence $$$a$$$ has a smaller element than the corresponding element in $$$b$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10$$$). The description of the test cases follows.\nEach test case consists of a single line with an integer $$$n$$$ ($$$1 \\le n \\le 15$$$) — the number of vertices in the graph.\nThe jury guarantees that the given graph does not contain cycles or multiple edges.\nNote that $$$m$$$ is unknown to you.",
+    "outputSpecification": "",
+    "note": "Note\nThe graph for the first test case.\nIn this graph, there are $$$15$$$ paths, which are arranged in lexicographic order as follows:\n$$$1$$$\n$$$1 \\to 2$$$\n$$$1 \\to 2 \\to 4$$$\n$$$1 \\to 2 \\to 5$$$\n$$$1 \\to 3$$$\n$$$1 \\to 3 \\to 4$$$\n$$$1 \\to 3 \\to 5$$$\n$$$2$$$\n$$$2 \\to 4$$$\n$$$2 \\to 5$$$\n$$$3$$$\n$$$3 \\to 4$$$\n$$$3 \\to 5$$$\n$$$4$$$\n$$$5$$$",
+    "tags": [
+        "binary search",
+        "combinatorics",
+        "dfs and similar",
+        "dp",
+        "graphs",
+        "interactive"
+    ],
+    "rating": "Unrated"
+}

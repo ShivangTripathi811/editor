@@ -1,0 +1,15 @@
+{
+    "contestId": 2165,
+    "index": "C",
+    "title": "C. Binary Wine",
+    "statement": "You are given $$$n$$$ integers $$$a_1,a_2,\\ldots,a_n$$$ within the range $$$[0,2^{30})$$$.\nYou can spend $$$1$$$ coin to increase any $$$a_i$$$ by $$$1$$$. You can perform this operation any number of times.\nYou need to solve $$$q$$$ queries; for each query, you are given an integer $$$c$$$, also in the range $$$[0,2^{30})$$$. You would like it if there exists a sequence $$$b$$$ of length $$$n$$$ with the following properties:\nFor every $$$1\\le i\\le n$$$, $$$0\\le b_i\\le a_i$$$.\n$$$b_1\\oplus b_2\\oplus\\ldots\\oplus b_n=c$$$, where $$$\\oplus$$$ denotes the\nbitwise XOR operation\n.\nPlease calculate the minimum number of coins you will have to spend, such that there exists a suitable $$$b$$$.\nThe queries are\nindependent\n, meaning that any operations you perform on the sequence $$$a$$$ will not impact future queries.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case consists of two integers $$$n,q$$$ ($$$1\\le n\\le5\\cdot10^5$$$, $$$1\\le q\\le5\\cdot10^4$$$) — the length of sequence $$$a$$$ and the number of queries.\nThe second line of each test case contains $$$n$$$ integers $$$a_1,a_2,\\ldots,a_n$$$ ($$$0\\le a_i<2^{30}$$$) — the initial sequence $$$a$$$.\nEach of the next $$$q$$$ lines contains a single integer $$$c$$$ ($$$0\\le c<2^{30}$$$) — the target XOR.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$5\\cdot10^5$$$.\nIt is guaranteed that the sum of $$$q$$$ over all test cases does not exceed $$$5\\cdot10^4$$$.",
+    "outputSpecification": "Output\nFor each query, output a single integer — the minimum coins you will have to spend, such that there exists a suitable $$$b$$$.",
+    "note": "Note\nIn the first test case, we spend $$$1$$$ coin to increase $$$a_2$$$ by $$$1$$$, resulting in sequence $$$[5,8]$$$. A suitable $$$b$$$ would be $$$[1,8]$$$. It can be shown one cannot spend less than $$$1$$$ coin to achieve the objective.\nIn the second test case, we can spend $$$7$$$ coins to increase $$$a_1$$$ by $$$7$$$, resulting in sequence $$$[16,9,8]$$$. A suitable $$$b$$$ would be $$$[16,9,1]$$$.",
+    "tags": [
+        "bitmasks",
+        "greedy",
+        "math"
+    ],
+    "rating": 2000
+}

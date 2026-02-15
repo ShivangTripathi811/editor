@@ -1,0 +1,16 @@
+{
+    "contestId": 2193,
+    "index": "E",
+    "title": "E. Product Queries",
+    "statement": "Today, Sabyrzhan was called to the board with an array $$$a$$$ of length $$$n$$$ and was assigned an officer's task — to answer $$$n$$$ questions.\nIn the $$$i$$$-th question, it is required to determine the minimum number of elements from the array that need to be selected from the board (it is allowed to use the same element multiple times) so that their product is exactly equal to $$$i$$$, or to report that it is impossible to achieve such a product.\nNote that at least one element must be selected.",
+    "inputSpecification": "Input\nEach test consists of several test cases. The first line contains one integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases. The description of the test cases follows.\nThe first line of each test case contains one integer $$$n$$$ ($$$1 \\le n \\le 3 \\cdot 10 ^ 5$$$).\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le n$$$).\nIt is guaranteed that the sum of the values of $$$n$$$ across all test cases does not exceed $$$3 \\cdot 10 ^ 5$$$.",
+    "outputSpecification": "Output\nFor the $$$i$$$-th question, output one integer — the minimum number of elements from the array required to obtain a product equal to $$$i$$$, or $$$−1$$$ if it is impossible to achieve such a product.",
+    "note": "Note\nConsider the first test case. The products can be obtained as follows:\n$$$1$$$ cannot be obtained.\n$$$2$$$ can be obtained by selecting $$$a_2$$$.\n$$$3$$$ can be obtained by selecting $$$a_1$$$.\n$$$4$$$ can be obtained by selecting $$$a_2$$$ twice.\n$$$5$$$ cannot be obtained.\n$$$6$$$ can be obtained by selecting $$$a_7$$$.\n$$$7$$$ can be obtained by selecting $$$a_5$$$.\n$$$8$$$ can be obtained by selecting $$$a_2$$$ three times.",
+    "tags": [
+        "dp",
+        "math",
+        "number theory",
+        "shortest paths"
+    ],
+    "rating": 1300
+}

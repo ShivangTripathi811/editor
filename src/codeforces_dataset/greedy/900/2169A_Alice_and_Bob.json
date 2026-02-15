@@ -1,0 +1,14 @@
+{
+    "contestId": 2169,
+    "index": "A",
+    "title": "A. Alice and Bob",
+    "statement": "Alice and Bob have a bag with $$$n$$$ marbles, with the integer $$$v_i$$$ written on the $$$i$$$-th marble. They play the following game: first, each player chooses an integer (let's denote the integer chosen by Alice as $$$a$$$, and the integer chosen by Bob as $$$b$$$). After that, they start drawing marbles from the bag in any order until the bag is empty. For each ball, the point goes to the one whose chosen integer is closer to the integer on the marble;\nin case of a tie, Alice gets the point\n.\nFor example, if $$$a = 10$$$, $$$b = 30$$$, then\nfor marbles with integers $$$10, 1, 7, 18, 20$$$, and many others, Alice gets the points (note that she will get a point for the marble $$$20$$$);\nfor marble with integer $$$59, 25, 30, 21$$$, and many others, Bob gets the points.\nBob has managed to find out in advance which integer Alice will choose. Help him to choose his integer in such a way as to maximize the number of points he receives.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nEach test case consists of two lines:\nThe first line contains two integers $$$n$$$ and $$$a$$$ ($$$1 \\le n \\le 3 \\cdot 10^5$$$; $$$1 \\le a \\le 10^9$$$) — the number of marbles in the bag and the number chosen by Alice, respectively.\nThe second line contains $$$n$$$ integers $$$v_1, v_2, \\dots, v_n$$$ ($$$1 \\le v_1 \\le v_2 \\le \\dots \\le v_n \\le 10^9$$$).\nAdditional constraint on the input: the sum of $$$n$$$ across all test cases does not exceed $$$3 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer $$$b$$$ ($$$0 \\le b \\le 2 \\cdot 10^9$$$) that Bob should choose to maximize the number of points he receives. If there are multiple such numbers, you may output any of them.",
+    "note": "Note\nIn the first test case, if Bob chooses $$$35$$$, he gets $$$5$$$ points for marbles $$$30, 40, 50, 60, 70$$$.\nIn the third test case, no matter which integer Bob chooses, he gets $$$0$$$ points.",
+    "tags": [
+        "greedy",
+        "implementation"
+    ],
+    "rating": 900
+}

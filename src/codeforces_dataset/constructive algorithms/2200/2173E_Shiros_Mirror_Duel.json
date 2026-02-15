@@ -1,0 +1,17 @@
+{
+    "contestId": 2173,
+    "index": "E",
+    "title": "E. Shiro's Mirror Duel",
+    "statement": "There's no such thing as luck in this world. The victor is decided before the game even starts.\n—\nNo Game No Life\nThis is an interactive problem.\nOne day, Sora and Shiro feel bored again, so they decide to settle it with a game.\nAt the beginning, Sora gives Shiro a permutation$$$^{\\text{∗}}$$$ $$$p_1,p_2,\\ldots,p_n$$$ of length $$$n$$$. In each operation, Shiro may select two distinct indices $$$x$$$ and $$$y$$$ ($$$1\\le x\\ne y\\le n$$$). Then Sora flips a fair coin:\nWith probability $$$0.5$$$, Sora swaps $$$p_x$$$ and $$$p_y$$$;\nWith probability $$$0.5$$$, Sora swaps $$$p_{n-x+1}$$$ and $$$p_{n-y+1}$$$.\nAfter the operation, Sora replies with the actual pair of indices that were swapped, so that Shiro can update her local permutation accordingly.\nShiro's goal is to sort the permutation $$$p$$$ in ascending order by using at most $$$\\lfloor 2.5n+800\\rfloor$$$ operations. Help her!\n$$$^{\\text{∗}}$$$A permutation of length $$$n$$$ is an array consisting of $$$n$$$ distinct integers from $$$1$$$ to $$$n$$$ in arbitrary order. For example, $$$[2,3,1,5,4]$$$ is a permutation, but $$$[1,2,2]$$$ is not a permutation ($$$2$$$ appears twice in the array), and $$$[1,3,4]$$$ is also not a permutation ($$$n=3$$$ but there is $$$4$$$ in the array).",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 100$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$1\\le n\\le 4000$$$) — the length of $$$p$$$.\nThe second line contains $$$n$$$ integers $$$p_1,p_2,\\ldots,p_n$$$ — the elements of $$$p$$$.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2\\cdot 10^4$$$.\nIt is guaranteed that there are $$$50$$$ tests in this problem.",
+    "outputSpecification": "",
+    "note": "Note\nIn the first test case, $$$n=5$$$ and the initial permutation is $$$[5,1,3,4,2]$$$.\nWe print\n? 1 5\n. The judge replies\n1 5\n, meaning positions $$$1$$$ and $$$5$$$ are swapped (no mirroring). The array becomes $$$[2,1,3,4,5]$$$.\nWe print\n? 4 5\n. The judge replies\n2 1\n, which is the mirror of $$${4,5}$$$ because with $$$n=5$$$ we have $$$n-4+1=2$$$ and $$$n-5+1=1$$$. Thus we must swap positions $$$2$$$ and $$$1$$$. The array becomes $$$[1,2,3,4,5]$$$.\nThe permutation is now sorted, so we print\n!\n. The answer line does not count toward the operation limit.\nIn the second test case, the given permutation is already increasing, so we just need to output\n!\n.",
+    "tags": [
+        "constructive algorithms",
+        "greedy",
+        "interactive",
+        "probabilities",
+        "sortings"
+    ],
+    "rating": 2200
+}

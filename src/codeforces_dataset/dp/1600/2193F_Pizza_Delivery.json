@@ -1,0 +1,14 @@
+{
+    "contestId": 2193,
+    "index": "F",
+    "title": "F. Pizza Delivery",
+    "statement": "Courier YF has earned the title of the best pizza delivery person GR. The manager does not like him, so he decided to give him a very difficult task. The manager provided him with $$$n$$$ coordinates of houses $$$(x_i, y_i)$$$ where he needs to deliver the pizza. He will deliver the pizza in the following way:\nGR pizza is prepared at the point ($$$Ax, Ay$$$) and YF starts the delivery from this point.\nTo deliver the pizza, he can move from the point ($$$x, y$$$) to\nthree\npoints ($$$x+1, y$$$), ($$$x, y+1$$$), ($$$x, y-1$$$).\nAfter he has delivered all the pizzas, he returns home to the point ($$$Bx, By$$$).\nEach move takes him exactly one second, and handing over the pizza to the customer takes $$$0$$$ seconds. The manager wants the delivery to be as fast as possible. You need to find the minimum delivery time for all GR pizzas. It is guaranteed that delivery is always possible.",
+    "inputSpecification": "Input\nEach test consists of several test cases. The first line contains one integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases. The description of the test cases follows.\nThe first line of each test case contains five integers $$$n$$$, $$$Ax$$$, $$$Ay$$$, $$$Bx$$$, $$$By$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$, $$$1 \\le Ax, Ay, Bx, By \\le 10^9$$$) — the number of houses for delivery, as well as the coordinates of the start and end points.\nThe second line of each test case contains $$$n$$$ integers $$$x_1, x_2, \\dots, x_n$$$ ($$$Ax \\lt x_i \\lt Bx$$$).\nThe third line of each test case contains $$$n$$$ integers $$$y_1, y_2, \\dots, y_n$$$ ($$$1 \\le y_i \\le 10^9$$$).\nIt is guaranteed that the sum of the values of $$$n$$$ across all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer on a separate line — the minimum time required for pizza delivery.",
+    "note": "Note\nConsider the second test case:\nMove from the point ($$$Ax, Ay$$$) to the point ($$$x_3, y_3$$$) in $$$4$$$ seconds.\nMove from the point ($$$x_3, y_3$$$) to the point ($$$x_1, y_1$$$) in $$$4$$$ seconds.\nMove from the point ($$$x_1, y_1$$$) to the point ($$$x_2, y_2$$$) in $$$2$$$ seconds.\nMove from the point ($$$x_2, y_2$$$) to the point ($$$Bx, By$$$) in $$$3$$$ seconds.\nIn total, the delivery takes $$$4 + 4 + 2 + 3 = 13$$$ seconds. It can be proven that it is impossible to deliver the pizza faster.",
+    "tags": [
+        "dp",
+        "greedy"
+    ],
+    "rating": 1600
+}

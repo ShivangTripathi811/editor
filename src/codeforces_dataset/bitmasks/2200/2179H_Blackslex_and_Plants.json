@@ -1,0 +1,17 @@
+{
+    "contestId": 2179,
+    "index": "H",
+    "title": "H. Blackslex and Plants",
+    "statement": "Blackslex has found solace in plants and trees amidst accumulated stress from strained relationships, stressful politics, and strenuous research.\nBlackslex has $$$n$$$ plants ordered in a straight line, consisting of plant $$$1, 2, 3, \\ldots n$$$. Initially, every plant contains $$$0$$$ millilitres of water.\nHe wants to perform $$$q$$$ watering operations as follows :\nGiven $$$l, r$$$ for each operation\nwater $$$f(i-l+1)$$$ millilitres of water onto the $$$i$$$-th plant for every $$$l \\leq i \\leq r$$$\nwhere $$$f(x)$$$ denotes the product of $$$x$$$ and the value of the least significant set bit of $$$x$$$ $$$^{\\text{∗}}$$$ Your task is to figure out the amount of water in each plant after all watering operations are done.\n$$$^{\\text{∗}}$$$The value of the least significant set bit of $$$x$$$ is the value of the rightmost set bit (bit that is 1) in the binary representation of $$$x$$$. For instance, the value of the least significant set bit of $$$10 = 1010_2$$$ is $$$0010_2 = 2$$$",
+    "inputSpecification": "Input\nThe first line contains an integer $$$t$$$ ($$$1 \\leq t \\leq 10^4$$$) — the number of test cases.\nThe first line of each test case contains two integers $$$n$$$, $$$q$$$ ($$$1 \\leq n, q \\leq 2\\cdot 10^5$$$) — the number of plants and the number of watering operations, respectively.\nThe next $$$q$$$ lines of each test case contain two integers $$$l$$$, $$$r$$$ ($$$1 \\leq l \\leq r \\leq n$$$) — the left bound and the right bound for each watering operation.\nIt is guaranteed that the sum of all values of $$$n$$$ and the sum of all values of $$$q$$$ across all test cases do not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output $$$n$$$ integers representing the amount of water in the $$$i$$$-th plant for each $$$i = 1, 2, 3, \\ldots, n$$$",
+    "note": "Note\nIn the first case, each operation will be performed as follows :\nThe first operation will :\nwater the $$$1$$$-st plant using $$$f(1-1+1) = f(1) = 1$$$ millilitres of water.\nwater the $$$2$$$-nd plant using $$$f(2 - 1 + 1) = f(2) = 4$$$ millilitres of water.\nwater the $$$3$$$-rd plant using $$$f(3 - 1 + 1) = f(3) = 3$$$ millilitres of water.\nwater the $$$4$$$-th plant using $$$f(4 - 1 + 1) = f(4) = 16$$$ millilitres of water.\nwater the $$$5$$$-th plant using $$$f(5 - 1 + 1) = f(5) = 5$$$ millilitres of water.\nThe second operation will :\nwater the $$$2$$$-nd plant using $$$f(2 - 2 + 1) = f(1) = 1$$$ millilitres of water.\nwater the $$$3$$$-rd plant using $$$f(3 - 2 + 1) = f(2) = 4$$$ millilitres of water.\nThe third operation will :\nwater the $$$2$$$-nd plant using $$$f(2 - 2 + 1) = f(1) = 1$$$ millilitres of water.\nwater the $$$3$$$-rd plant using $$$f(3 - 2 + 1) = f(2) = 4$$$ millilitres of water.\nwater the $$$4$$$-th plant using $$$f(4 - 2 + 1) = f(3) = 3$$$ millilitres of water.\nwater the $$$5$$$-th plant using $$$f(5 - 2 + 1) = f(4) = 16$$$ millilitres of water.\nHence, the total amount of water in each plant is :\n$$$1$$$ millilitres\n$$$4 + 1 + 1 = 6$$$ millilitres\n$$$3 + 4 + 4 = 11$$$ millilitres\n$$$16 + 3 = 19$$$ millilitres\n$$$5 + 16 = 21$$$ millilitres",
+    "tags": [
+        "bitmasks",
+        "data structures",
+        "dp",
+        "implementation",
+        "math"
+    ],
+    "rating": 2200
+}

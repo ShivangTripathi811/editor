@@ -1,0 +1,15 @@
+{
+    "contestId": 2179,
+    "index": "B",
+    "title": "B. Blackslex and Showering",
+    "statement": "After his IMO medalist friend showered for two hours so that \"he doesn't have to shower this again this week,\" Blackslex will be late for class!\nIn order to get to class, Blackslex must take the crowded elevator to many floors in a certain order. Because he is a hacker, he can skip visiting up to one floor without the other people knowing. His\ntime taken\nis the sum of the absolute differences between consecutive floor numbers. Find the minimum\ntime taken\n, given that he can skip up to one floor.\nMore formally, given an array $$$a = [a_1, a_2, \\ldots, a_n]$$$ of $$$n$$$ integers, you can choose up to one index $$$k \\in \\{1, 2, \\ldots, n\\}$$$ to erase such that the sum $$$$$$\\sum_{i=1}^{n-2} |b_i - b_{i+1}|$$$$$$ is minimized, where $$$b = [a_1, \\ldots, a_{k-1}, a_{k+1}, \\ldots, a_n]$$$ is the array after erasing element $$$a_k$$$. Report the minimum sum.",
+    "inputSpecification": "Input\nThe first line contains one integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe first line of each test case contains one integer $$$n$$$ ($$$3 \\le n \\le 2 \\cdot 10^5$$$) — the size of the array.\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le 100$$$).\nIt is guaranteed that the sum of $$$n$$$ does not exceed $$$2 \\cdot 10^5$$$ over all test cases.",
+    "outputSpecification": "Output\nFor each test case, output a single real number — the minimum\ntime taken\n.",
+    "note": "Note\nFor the first test case, one optimal index to remove from $$$[4, 15, 1, 7, 9]$$$ is $$$k = 2$$$. The array becomes $$$[4, 1, 7, 9]$$$ and the\ntime taken\nis $$$11$$$. For the second test case, the optimal index to remove is $$$k = 3$$$.",
+    "tags": [
+        "dp",
+        "greedy",
+        "implementation"
+    ],
+    "rating": 800
+}

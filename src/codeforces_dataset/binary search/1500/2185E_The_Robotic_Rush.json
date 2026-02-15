@@ -1,0 +1,16 @@
+{
+    "contestId": 2185,
+    "index": "E",
+    "title": "E. The Robotic Rush",
+    "statement": "There exists an infinitely long number line.\nOn the number line, there are $$$n$$$ robots and $$$m$$$ spikes, each located at a specific point on the number line. The $$$i$$$-th robot is located at position $$$a_i$$$, and the $$$i$$$-th spike is located at position $$$b_i$$$. If a robot touches a spike, it dies.\n$$$k$$$ instructions are transmitted to the robots, with each instruction being to either move left by one unit or to move right by one unit.\nFor each value $$$i$$$ ($$$1 \\leq i \\leq k$$$), output how many robots are still alive after the first $$$i$$$ instructions have been processed.",
+    "inputSpecification": "Input\nThe first line of the input contains a single integer $$$t$$$ ($$$1 \\leq t \\leq 10^4$$$) — the number of test cases.\nThe first line of each test case contains three integers $$$n, m, k$$$ ($$$1 \\le n, m, k \\le 2 \\cdot 10^5$$$) — the number of robots, spikes, and instructions respectively.\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$0 \\le a_i \\le 10^9$$$) — the locations of the robots. It is guaranteed that all elements of $$$a$$$ are distinct.\nThe third line contains $$$m$$$ integers $$$b_1, b_2, \\ldots, b_m$$$ ($$$0 \\le b_i \\le 10^9$$$) — the locations of the spikes. It is guaranteed that all elements of $$$b$$$ are distinct.\nThe fourth line contains a string of length $$$k$$$ — the instructions transmitted to the robots. Each character is either $$$\\texttt{L}$$$, representing an instruction to move to the left, or $$$\\texttt{R}$$$, representing an instruction to move to the right.\nIt is guaranteed that the sum of each of $$$n, m, k$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.\nAdditional constraint\n: it is guaranteed that there are no robots and spikes at the same position.",
+    "outputSpecification": "Output\nOutput $$$k$$$ integers, where the $$$i$$$-th integer indicates how many robots are alive after the first $$$i$$$ instructions have been processed.\nFor Python users, make sure to select PyPy3 / PyPy2 (depending on which version of Python you're using) instead of Python3 or Python2 when submitting.",
+    "note": "Note\nFor the first test case:\nThe first robot will move to positions $$$0 \\rightarrow -1 \\rightarrow 0 \\rightarrow 1$$$, so it will not die.\nThe second robot will move to positions $$$1 \\rightarrow 0 \\rightarrow 1 \\rightarrow 2$$$, so it will die after processing the third instruction, since there is a spike at position $$$2$$$.\nFor the second test case, both robots will die after moving once.",
+    "tags": [
+        "binary search",
+        "greedy",
+        "implementation",
+        "two pointers"
+    ],
+    "rating": 1500
+}

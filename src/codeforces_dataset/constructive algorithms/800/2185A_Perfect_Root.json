@@ -1,0 +1,14 @@
+{
+    "contestId": 2185,
+    "index": "A",
+    "title": "A. Perfect Root",
+    "statement": "A positive integer $$$x$$$ is a perfect root if there exists an integer $$$y$$$ such that $$$\\sqrt{y} = x$$$. For example, $$$5$$$ is a perfect root because $$$\\sqrt{25} = 5$$$.\nFor each test case, output $$$n$$$ distinct perfect roots. Note that the values only need to be distinct within each test case; you can use the same value in different test cases.",
+    "inputSpecification": "Input\nThe first line of the input contains a single integer $$$t$$$ ($$$1 \\leq t \\leq 20$$$) — the number of test cases.\nThe only line of each test case contains an integer $$$n$$$ ($$$1 \\leq n \\leq 20$$$) — the number of perfect roots to output.",
+    "outputSpecification": "Output\nFor each test case, output $$$n$$$ distinct perfect roots. Each perfect root $$$x$$$ must be in the range $$$1 \\leq x \\leq 10^9$$$.",
+    "note": "Note\nFor the first test case:\n$$$1$$$ is a perfect root because $$$\\sqrt{1} = 1$$$.\nFor the second test case:\n$$$2$$$ is a perfect root because $$$\\sqrt{4} = 2$$$.\n$$$4$$$ is a perfect root because $$$\\sqrt{16} = 4$$$.",
+    "tags": [
+        "constructive algorithms",
+        "math"
+    ],
+    "rating": 800
+}

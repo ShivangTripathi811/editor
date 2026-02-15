@@ -1,0 +1,15 @@
+{
+    "contestId": 2174,
+    "index": "C2",
+    "title": "C2. Beautiful Patterns (Hard Version)",
+    "statement": "This is the hard version of the problem. The difference between the versions is that in this version, $$$n \\le 2 \\cdot 10^5$$$. You can hack only if you solved all versions of this problem.\nUpon entering the ancient palace \"Palindrome-Palace\", you noticed that there are peculiar patterns on its walls. The pattern is a mosaic of size $$$1 \\times n$$$ made of pebbles, each painted in one of $$$m$$$ different colors.\nThe\ncorrectness\nof an arbitrary mosaic $$$s$$$ is defined as the number of non-empty subsegments of $$$s$$$ that are palindromes. The\nbeauty\nof the mosaic is defined as the square of its\ncorrectness\n. For example, for the mosaic\nrgrb\n, there are five palindromic subsegments:\nr\n,\ng\n,\nr\n,\nb\n, and\nrgr\n. Therefore, its\ncorrectness\nis $$$5$$$, and its\nbeauty\nis $$$25$$$.\nWhile wandering through this palace, you wondered: what is the expected value of the\nbeauty\nof the mosaic if the color of each of the $$$n$$$ pebbles is chosen uniformly and independently of the colors of the other pebbles? Print the answer modulo prime $$$p$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 1000$$$). The description of the test cases follows.\nThe only line of each test case contains 3 integers $$$n$$$, $$$m$$$, and $$$p$$$ ($$$1 \\leq n \\leq 2 \\cdot 10^5$$$; $$$1 \\leq m \\leq 10^7$$$; $$$m < p < 10^9$$$) representing the length of the mosaic, the number of different colors of pebbles, and the modulus for which the answer needs to be computed.\nIt is guaranteed that $$$p$$$ is a prime number. It is also guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$10^6$$$.",
+    "outputSpecification": "Output\nFor each test case, output the expected beauty of the mosaic modulo $$$p$$$.\nFormally, let $$$x = p$$$. It can be shown that the exact answer can be expressed as an irreducible fraction $$$\\frac{y}{z}$$$, where $$$y$$$ and $$$z$$$ are integers and $$$z \\not \\equiv 0 \\pmod{x}$$$. Output the integer equal to $$$y \\cdot z^{-1} \\bmod x$$$. In other words, output such an integer $$$t$$$ that $$$0 \\le t < x$$$ and $$$t \\cdot z \\equiv y \\pmod{x}$$$.",
+    "note": "Note\nIn the first test case, there are a total of four mosaics of length $$$2$$$ if only two different colors of pebbles can be used to construct them, with two of them having two palindromic subsegments, and the other two having three each. Thus, the expected value of the beauty of the mosaic is $$$\\left(\\frac{2^2}{4} + \\frac{2^2}{4} + \\frac{3^2}{4} + \\frac{3^2}{4}\\right) = 13 \\cdot 2^{-1} \\bmod 101 = 57$$$.\nIn the second test case, all subsegments of the mosaic of length 5 will be palindromes.",
+    "tags": [
+        "combinatorics",
+        "math",
+        "probabilities"
+    ],
+    "rating": 2500
+}

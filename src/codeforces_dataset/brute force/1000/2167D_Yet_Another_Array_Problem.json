@@ -1,0 +1,16 @@
+{
+    "contestId": 2167,
+    "index": "D",
+    "title": "D. Yet Another Array Problem",
+    "statement": "You are given an integer $$$n$$$ and an array $$$a$$$ of length $$$n$$$.\nFind the\nsmallest\ninteger $$$x$$$ ($$$2 \\le x \\le 10^{18}$$$) such that there exists an index $$$i$$$ ($$$1 \\le i \\le n$$$) with\n$$$\\gcd$$$\n$$$^{\\text{∗}}$$$$$$(a_i, x) = 1$$$. If no such $$$x$$$ exists within the range $$$[2,10^{18}]$$$, output $$$-1$$$.\n$$$^{\\text{∗}}$$$$$$\\gcd(x, y)$$$ denotes the\ngreatest common divisor (GCD)\nof integers $$$x$$$ and $$$y$$$.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nEach of the following $$$t$$$ test cases consists of two lines:\nThe first line contains a single integer $$$n$$$ ($$$1 \\le n \\le 10^{5}$$$) — the length of the array.\nThe second line contains $$$n$$$ space-separated integers $$$a_1, a_2, \\dots, a_n$$$ ($$$1 \\le a_i \\le 10^{18}$$$).\nIt is guaranteed that the total sum of $$$n$$$ across all test cases does not exceed $$$10^{5}$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer: the smallest $$$x$$$ ($$$2 \\le x \\le 10^{18}$$$) such that there exists an index $$$i$$$ with $$$\\gcd(a_i, x) = 1$$$. If there is no such $$$x$$$ in the range $$$[2,10^{18}]$$$, print $$$-1$$$.",
+    "note": "Note\nIn the first test case, $$$\\gcd(2,1)=1$$$, which is the smallest number satisfying the condition.\nIn the second test case:\n$$$\\gcd(2,6)=2$$$, $$$\\gcd(2,12)=2$$$, so $$$2$$$ cannot be the answer.\n$$$\\gcd(3,6)=3$$$, $$$\\gcd(3,12)=3$$$, so $$$3$$$ cannot be the answer.\n$$$\\gcd(4,6)=2$$$, $$$\\gcd(4,12)=4$$$, so $$$4$$$ cannot be the answer.\n$$$\\gcd(5,6)=1$$$, so the answer is $$$5$$$.\nIn the third test case:\n$$$\\gcd(2,24)=2$$$, $$$\\gcd(2,120)=2$$$, $$$\\gcd(2,210)=2$$$, so $$$2$$$ cannot be the answer.\n$$$\\gcd(3,24)=3$$$, $$$\\gcd(3,120)=3$$$, $$$\\gcd(3,210)=3$$$, so $$$3$$$ cannot be the answer.\n$$$\\gcd(4,24)=4$$$, $$$\\gcd(4,120)=4$$$, $$$\\gcd(4,210)=2$$$, so $$$4$$$ cannot be the answer.\n$$$\\gcd(5,24)=1$$$, so the answer is $$$5$$$.\nIn the fourth test case:\n$$$\\gcd(2,2)=2$$$, $$$\\gcd(2,4)=2$$$, $$$\\gcd(2,6)=2$$$, $$$\\gcd(2,10)=2$$$, so $$$2$$$ cannot be the answer.\n$$$\\gcd(3,2)=1$$$, so the answer is $$$3$$$.",
+    "tags": [
+        "brute force",
+        "implementation",
+        "math",
+        "number theory"
+    ],
+    "rating": 1000
+}

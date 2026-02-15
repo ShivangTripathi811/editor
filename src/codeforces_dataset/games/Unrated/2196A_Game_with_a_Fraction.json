@@ -1,0 +1,14 @@
+{
+    "contestId": 2196,
+    "index": "A",
+    "title": "A. Game with a Fraction",
+    "statement": "Alice and Bob have two integers $$$p$$$ and $$$q$$$, and they are playing a game with these numbers. The players take turns, with Alice going first. On their turn, a player can do one of two actions:\ndecrease $$$p$$$ by one (this action is possible if $$$p  \\gt  0$$$);\ndecrease $$$q$$$ by one (this action is possible if $$$q  \\gt  1$$$).\nThe game ends when $$$p = 0$$$ and $$$q = 1$$$.\nBob wins if at any point during the game the fraction $$$\\frac{p}{q}$$$ is equal to\nin value\nthe fraction $$$\\frac{2}{3}$$$. Otherwise, Alice wins.\nGiven the initial values of $$$p$$$ and $$$q$$$, determine the winner of the game if both players play optimally.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nEach input case consists of a single line containing two integers $$$p$$$ and $$$q$$$ ($$$1 \\le p, q \\le 10^{18}$$$).",
+    "outputSpecification": "Output\nFor each input case, output:\n\"\nAlice\n\" if Alice wins;\n\"\nBob\n\" if Bob wins.",
+    "note": "Note\nIn the first input case, the fraction is already equal to $$$\\frac{2}{3}$$$ by value, so Bob wins.\nIn the second input case, one possible sequence of the game is as follows:\ninitially $$$p = 10, q = 14$$$;\nafter Alice's turn $$$p = 9, q = 14$$$;\nafter Bob's turn $$$p = 9, q = 13$$$;\nafter Alice's turn $$$p = 9, q = 12$$$;\nafter Bob's turn $$$p = 8, q = 12$$$.\nBob wins, as $$$\\frac{8}{12}$$$ is equal to $$$\\frac{2}{3}$$$. It can be shown that in this example, with optimal play from both players, Bob always wins.\nFor the third input case, Alice's optimal strategy will be to decrease $$$q$$$ as long as possible. In this case, the game will end in favor of Alice regardless of Bob's actions.",
+    "tags": [
+        "games",
+        "math"
+    ],
+    "rating": "Unrated"
+}

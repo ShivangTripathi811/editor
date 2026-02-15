@@ -1,0 +1,15 @@
+{
+    "contestId": 2145,
+    "index": "C",
+    "title": "C. Monocarp's String",
+    "statement": "Monocarp has a string $$$s$$$ of length $$$n$$$, consisting of the letters '\na\n' and '\nb\n'. He wants to remove some (possibly zero) number of\nconsecutive\nletters from his string in such a way that the number of letters '\na\n' and '\nb\n' in the resulting string becomes equal. Monocarp can start removing letters from any position in the string $$$s$$$.\nMonocarp really likes his string $$$s$$$, so he wants to remove as few consecutive letters from it as possible.\nYour task is to determine the minimum number of consecutive letters from the string $$$s$$$ that need to be removed so that the number of letters '\na\n' and '\nb\n' in the resulting string becomes equal. If it is necessary to remove all letters from the string $$$s$$$ (i.e., make it empty), report this.",
+    "inputSpecification": "Input\nThe first line contains one integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nEach test case consists of two lines:\nthe first line contains one integer $$$n$$$ ($$$2 \\le n \\le 2 \\cdot 10^5$$$) — the number of characters in the string $$$s$$$;\nthe second line contains the string $$$s$$$ of length $$$n$$$, consisting of the letters '\na\n' and/or '\nb\n'.\nAdditional constraint on the input: the sum of values of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, print the answer as follows:\nIf in order to make the number of letters '\na\n' and '\nb\n' equal, it is necessary to remove all letters from the string $$$s$$$, output $$$-1$$$.\nOtherwise, output the minimum number of consecutive letters that Monocarp needs to remove from his string $$$s$$$ so that the number of letters '\na\n' and '\nb\n' becomes equal.",
+    "note": "Note\nIn the first example, Monocarp needs to remove the first three letters from his string. After that, his string will become \"\nab\n\". In this string, there is one letter '\na\n' and one letter '\nb\n'.\nIn the second example, the given string has three letters '\na\n' and three letters '\nb\n', so nothing needs to be removed.\nIn the third example, all letters of the string need to be removed, as there are no letters '\nb\n', so $$$-1$$$ should be printed.\nIn the fourth example, Monocarp can, for example, remove the fifth and sixth letters from his string. Then his string will become \"\naabbabbaab\n\". In this string, there are five letters '\na\n' and five letters '\nb\n'.\nIn the fifth example, all letters of the string need to be removed to make the number of letters '\na\n' and '\nb\n' equal, so $$$-1$$$ should be printed.",
+    "tags": [
+        "binary search",
+        "greedy",
+        "strings"
+    ],
+    "rating": 1300
+}

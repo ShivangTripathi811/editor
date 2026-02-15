@@ -1,0 +1,14 @@
+{
+    "contestId": 2184,
+    "index": "G",
+    "title": "G. Nastiness of Segments",
+    "statement": "Andrey remembered that he has $$$n$$$ blocks numbered from $$$1$$$ to $$$n$$$. On the block with number $$$i$$$, there is initially an integer $$$a_i$$$ written. He arranged them in a row in increasing order of their numbers: first is the block with number $$$1$$$, then the block with number $$$2$$$, and so on, with the block with number $$$n$$$ at the end.\nFor a certain segment of consecutive blocks $$$[l, r]$$$ ($$$1 \\le l \\le r \\le n$$$), we call an integer $$$d\\ (0 \\le d \\le r-l)$$$\nnasty\nif $$$\\min(a_l, a_{l+1}, \\ldots, a_{l+d}) = d$$$.\nAndrey is very curious, so he wants to perform $$$q$$$ operations of one of two types:\nChange the number $$$a_i$$$ written on the $$$i$$$-th block to $$$x$$$.\nDetermine the\nnastiness\nof the segment $$$[l,\\ r]\\ (1 \\le l \\le r \\le n)$$$. The nastiness of the segment refers to the number of nasty numbers $$$d\\ (0 \\le d \\le r-l)$$$ for the given segment.\nAndrey couldn't figure out how to process these queries quickly, so he turned to you for help. Help him perform the actions described above!",
+    "inputSpecification": "Input\nThe first line contains an integer $$$t$$$ $$$(1 \\le t \\le 10^4)$$$ — the number of test cases.\nThe first line of each test case contains two integers $$$n$$$ and $$$q$$$ $$$(1 \\le n, q \\le 2 \\cdot 10^5)$$$ — the number of blocks and the number of operations, respectively.\nThe next line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ $$$(1 \\le a_i \\le 2 \\cdot 10^5)$$$ — the initial numbers written on the blocks.\nThe following $$$q$$$ lines describe the operations to be performed.\nEach line starts with an integer $$$idx$$$ $$$(1 \\le idx \\le 2)$$$ — the type of operation.\nIf $$$idx = 1$$$, then two integers $$$i$$$ $$$(1 \\le i \\le n)$$$ and $$$x$$$ $$$(1 \\le x \\le 2 \\cdot 10^5)$$$ follow — the description of the first type of operation.\nIf $$$idx = 2$$$, then two integers $$$l$$$ and $$$r$$$ $$$(1 \\le l \\le r \\le n)$$$ follow — the description of the second type of operation.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$, and the sum of $$$q$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, for each operation of the second type, print an integer representing the nastiness of the segment.",
+    "note": "",
+    "tags": [
+        "binary search",
+        "data structures"
+    ],
+    "rating": 1900
+}

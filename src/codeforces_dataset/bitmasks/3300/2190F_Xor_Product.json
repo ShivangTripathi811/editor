@@ -1,0 +1,14 @@
+{
+    "contestId": 2190,
+    "index": "F",
+    "title": "F. Xor Product",
+    "statement": "For non-negative integers $$$x, y$$$ and a positive integer $$$k$$$, let $$$S(x, y, k)$$$ be the set of values $$$(x + i) \\oplus (y + j)$$$ for all $$$0 \\le i, j  \\lt  k$$$. Formally: $$$$$$ S(x, y, k) = \\{ (x + i) \\oplus (y + j) \\mid 0 \\le i, j  \\lt  k \\} $$$$$$ where $$$\\oplus$$$ denotes the bitwise XOR operation.\nDefine $$$f(x, k)$$$ as the maximum size of $$$S(x, y, k)$$$ over all non-negative integers $$$y$$$ (that is, $$$y \\ge 0$$$).\nYou are given integers $$$x$$$ and $$$k$$$. Compute $$$f(x, k)$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nEach of the next $$$t$$$ lines contains two integers $$$x$$$ and $$$k$$$ ($$$1 \\le x, k \\le 10^{17}$$$).",
+    "outputSpecification": "Output\nFor each test case, output a single integer — the value of $$$f(x, k)$$$.",
+    "note": "Note\nIn the first example, since $$$k=1$$$, the set $$$S$$$ will always contain exactly one element regardless of $$$y$$$. For instance, if we pick $$$y = 69$$$, we have $$$S(67, 69, 1) = \\{67 \\oplus 69\\} = \\{6\\}$$$, so $$$|S(x, y, k)| = 1$$$.\nIn the second example, we have $$$x = 7$$$ and $$$k = 3$$$. The optimal choice is $$$y = 8$$$. The values of $$$(x + i) \\oplus (y + j)$$$ are: $$$$$$ [7 \\oplus 8, 7 \\oplus 9, 7 \\oplus 10, 8 \\oplus 8, 8 \\oplus 9, 8 \\oplus 10, 9 \\oplus 8, 9 \\oplus 9, 9 \\oplus 10] $$$$$$ which simplifies to $$$[15, 14, 13, 0, 1, 2, 1, 0, 3]$$$. The set of distinct values is $$$S(7, 8, 3) = \\{0, 1, 2, 3, 13, 14, 15\\}$$$, so the size is $$$7$$$. It can be shown that no other $$$y$$$ yields a larger size. However, the choice of $$$y$$$ matters; for example, if you chose $$$y = 22$$$, you would get $$$S(7, 22, 3) = \\{16, 17, 30, 31\\}$$$ with size $$$4$$$, which is suboptimal.\nIn the sixth example, after countless calculations, we managed to figure out that the optimal $$$y$$$ is $$$278\\,302\\,368\\,699\\,121\\,665$$$, which gives an answer of $$$398\\,158\\,383\\,604\\,301\\,822$$$. The proof is left to the reader as a trivial exercise.",
+    "tags": [
+        "bitmasks",
+        "dp"
+    ],
+    "rating": 3300
+}

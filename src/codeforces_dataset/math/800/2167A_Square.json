@@ -1,0 +1,14 @@
+{
+    "contestId": 2167,
+    "index": "A",
+    "title": "A. Square?",
+    "statement": "You are given $$$4$$$ sticks of lengths $$$a$$$, $$$b$$$, $$$c$$$, and $$$d$$$. You can not break or bend them.\nDetermine whether it is possible to form a square$$$^{\\text{∗}}$$$ using the given sticks.\n$$$^{\\text{∗}}$$$A\nsquare\nis defined as a polygon consisting of $$$4$$$ vertices, of which all sides have equal length and all inner angles are equal. No two edges of the polygon may intersect each other.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe only line of each test case contains four integers $$$a$$$, $$$b$$$, $$$c$$$, and $$$d$$$ ($$$1 \\le a, b, c, d \\le 10$$$) — the lengths of the sticks.",
+    "outputSpecification": "Output\nFor each test case, print \"\nYES\n\" if it is possible to form a square using the given sticks, and \"\nNO\n\" otherwise.\nYou may print each letter in any case (uppercase or lowercase). For example, the strings \"\nyEs\n\", \"\nyes\n\", \"\nYes\n\", and \"\nYES\n\" will all be recognized as a positive answer.",
+    "note": "Note\nIn the first test case, we can prove that we can't make a square.\nIn the second, third, and sixth test cases, we can make a square like this:",
+    "tags": [
+        "math",
+        "sortings"
+    ],
+    "rating": 800
+}

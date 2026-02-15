@@ -1,0 +1,17 @@
+{
+    "contestId": 2184,
+    "index": "C",
+    "title": "C. Huge Pile",
+    "statement": "Andrei has a huge pile of $$$n$$$ apples. He can divide the pile into two smaller piles: if there are $$$x$$$ apples in the pile, he will get piles with $$$\\lfloor \\frac{x}{2} \\rfloor$$$$$$^{\\text{∗}}$$$ and $$$\\lceil \\frac{x}{2} \\rceil$$$$$$^{\\text{†}}$$$ apples. This division takes Andrei $$$1$$$ minute.\nAndrei wants to eat $$$k$$$ apples, but he doesn't want to count them at all. That is why he wants to obtain a pile that contains exactly $$$k$$$ apples. Determine whether it is possible to achieve this by performing pile divisions. If it is possible, find the minimum possible time for Andrei to obtain a pile with exactly $$$k$$$ apples.\n$$$^{\\text{∗}}$$$$$$\\lfloor \\frac{x}{2} \\rfloor$$$ — the largest integer $$$\\le \\frac{x}{2}$$$.\n$$$^{\\text{†}}$$$$$$\\lceil \\frac{x}{2} \\rceil$$$ — the smallest integer $$$\\ge \\frac{x}{2}$$$.",
+    "inputSpecification": "Input\nEach test consists of several test cases. The first line contains a single integer $$$t$$$ $$$(1 \\le t \\le 10^4)$$$ — the number of test cases. The following lines describe the test cases.\nIn the only line of each test case, two integers $$$n$$$ and $$$k$$$ are given — the number of apples in the huge pile and the number of apples that Andrei wants to obtain in one pile $$$(1 \\le n, k \\le 10^9)$$$.",
+    "outputSpecification": "Output\nFor each test case, output $$$-1$$$ if it is impossible to obtain a pile with exactly $$$k$$$ apples. Otherwise, output the minimum possible time required to obtain such a pile.",
+    "note": "Note\nIn the first test case, after the first division, two piles of $$$5$$$ apples will be created. If one of them is divided, it will result in piles with $$$2$$$ and $$$3$$$ apples, so the answer is $$$2$$$.\nIn the second test case, if the pile is divided into two, it will result in piles with $$$5$$$ and $$$6$$$ apples, so the answer is $$$1$$$.\nIn the third test case, it is only possible to obtain piles with $$$1$$$, $$$2$$$, $$$3$$$, $$$5$$$, $$$6$$$, $$$10$$$, $$$11$$$, or $$$21$$$ apples, so the answer is $$$-1$$$.",
+    "tags": [
+        "binary search",
+        "dfs and similar",
+        "dp",
+        "graphs",
+        "math"
+    ],
+    "rating": 1100
+}

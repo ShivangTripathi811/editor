@@ -1,0 +1,15 @@
+{
+    "contestId": 2190,
+    "index": "A",
+    "title": "A. Sorting Game",
+    "statement": "Alice and Bob play a game on a binary string $$$s$$$ of length $$$n$$$ (a string consisting only of characters $$$\\mathtt{0}$$$ and $$$\\mathtt{1}$$$). Alice moves first, and the players take alternate turns.\nIn one turn, a player chooses a sequence of indices $$$i_1, i_2, \\ldots, i_m$$$ ($$$1 \\le i_1  \\lt  i_2  \\lt  \\ldots  \\lt  i_m \\le n$$$) such that the characters at these positions form a\nnon-increasing\nsequence (that is, $$$s_{i_1} \\ge s_{i_2} \\ge \\ldots \\ge s_{i_m}$$$). The player then rearranges the characters at these positions to be sorted in\nnon-decreasing\norder.\nFormally, let the chosen characters consist of $$$z$$$ zeros and $$$o$$$ ones (where $$$z + o = m$$$). The move replaces the characters at positions $$$i_1, i_2, \\ldots, i_m$$$ with a sequence of $$$z$$$ zeros followed by $$$o$$$ ones. A move is valid if and only if it strictly\nmodifies\nthe string $$$s$$$ (which implies $$$z \\ge 1$$$ and $$$o \\ge 1$$$).\nThe player who cannot make a valid move loses.\nAssuming both players play optimally, determine the winner. If Alice wins, output a valid first move that is part of a winning strategy.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case consists of a single integer $$$n$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$) — the length of the string $$$s$$$.\nThe second line of each test case contains a binary string $$$s$$$ of length $$$n$$$ consisting of only characters $$$\\mathtt{0}$$$ and $$$\\mathtt{1}$$$.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output one or three lines:\nIf Bob wins with optimal play, print a single line containing \"\nBob\n\".\nOtherwise, print three lines. On the first line print \"\nAlice\n\". On the second line print an integer $$$m$$$ ($$$2 \\le m \\le n$$$), and on the third line print $$$m$$$ distinct integers $$$i_1, i_2, \\ldots, i_m$$$ ($$$1 \\le i_1  \\lt  i_2  \\lt  \\ldots  \\lt  i_m \\le n$$$) — the indices chosen for Alice's first move.\nThe sequence of indices you print must form a valid move according to the rules described in the statement. The indices must be printed in\nincreasing order\n. If there are multiple winning moves, you may output any of them.",
+    "note": "Note\nIn the first example, there is no way to make a move after which $$$s$$$ will change, so Bob wins immediately.\nIn the third example, Alice can choose a subsequence $$$[1, 2]$$$ and sort it, after which $$$s$$$ will turn into $$$\\mathtt{011}$$$. After that, Bob can't make a move, so Alice wins.",
+    "tags": [
+        "constructive algorithms",
+        "games",
+        "greedy"
+    ],
+    "rating": 1200
+}

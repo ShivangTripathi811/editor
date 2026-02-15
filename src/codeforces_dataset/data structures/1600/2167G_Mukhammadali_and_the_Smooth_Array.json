@@ -1,0 +1,14 @@
+{
+    "contestId": 2167,
+    "index": "G",
+    "title": "G. Mukhammadali and the Smooth Array",
+    "statement": "Muhammadali has an integer array $$$a_1,\\dots,a_n$$$. He can change (replace) any subset of positions; changing position $$$i$$$ costs $$$c_i$$$ and replaces $$$a_i$$$ with any integer of his choice. The positions that he does not change must retain their original values.\nAfter all changes, we call an index $$$i$$$ ($$$1 \\le i  \\lt  n$$$) a\ndrop\nif the final value at position $$$i$$$ is strictly greater than the final value at position $$$i+1$$$. Muhammadali wants the final array to contain no\ndrops\n.\nFind the minimum cost of changes required to ensure that there are no\ndrops\nin the array.",
+    "inputSpecification": "Input\nThe first line contains an integer $$$t$$$ ($$$1 \\le t \\le 5000$$$) — the number of test cases.\nEach test case consists of three lines:\nThe first line contains a single integer $$$n$$$ ($$$1 \\le n \\le 8000$$$) — the length of the arrays.\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\dots, a_n$$$ ($$$1 \\le a_i \\le 10^9$$$) — the elements of the array.\nThe third line contains $$$n$$$ integers $$$c_1, c_2, \\dots, c_n$$$ ($$$1 \\le c_i \\le 10^9$$$) — the costs of changes.\nIt is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$8000$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer — the minimum possible total cost required to eliminate all\ndrops\n.",
+    "note": "Note\nIn the first and second examples, the array already has no\ndrops\n, so no changes are needed.\nIn the third example, one of the optimal arrays is: $$$[2,3,5,6]$$$; to achieve this, all elements except the second need to be replaced, so the answer is $$$c_1 + c_3 + c_4 = 3$$$.",
+    "tags": [
+        "data structures",
+        "dp"
+    ],
+    "rating": 1600
+}

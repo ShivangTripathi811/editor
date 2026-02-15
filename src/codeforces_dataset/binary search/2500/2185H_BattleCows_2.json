@@ -1,0 +1,17 @@
+{
+    "contestId": 2185,
+    "index": "H",
+    "title": "H. BattleCows 2",
+    "statement": "Farmer John wants to host another tournament with $$$n$$$ cows, where the $$$i$$$-th cow has a skill level of $$$a_i$$$. The following process repeats until there is only one cow in the line.\nThe first cow in the line fights the second cow in the line, and the cow with the higher skill level wins. If there is a tie, the first cow wins.\nThe winning cow's skill level is set to $$$x + y$$$, where $$$x$$$ is the skill level of the winning cow and $$$y$$$ is the skill level of the losing cow.\nThe losing cow leaves the line.\nHowever, to maintain accuracy to the real USACOW competition, a cow is able to cheat up to $$$k$$$ times. This means that even if it loses the match, Farmer John will treat it as if the losing cow won the match, meaning that the losing cow's skill level will be set to $$$x + y$$$, where $$$x$$$ is the skill level of the winning cow and $$$y$$$ is the skill level of the losing cow, and the winning cow will leave the line.\nA position $$$x$$$ is good for a cow $$$i$$$ if cow $$$i$$$ can be removed from its original position and inserted at index $$$x$$$\nwithout changing the order of the other cows\nand be the only cow remaining in the line once the tournament has ended, assuming no other cow cheats.\nFor each cow in the line, calculate the number of good positions for that cow.",
+    "inputSpecification": "Input\nThe first line of the input contains a single integer $$$t$$$ ($$$1 \\leq t \\leq 10^4$$$) — the number of test cases.\nThe first line of each test case contains two integers $$$n$$$ and $$$k$$$ ($$$2 \\le n \\le 2 \\cdot 10^5$$$, $$$0 \\leq k  \\lt  n$$$) — the number of cows and the number of cheats a cow can use.\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le 10^9$$$) — the skill levels of the cows.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output $$$n$$$ integers, where the $$$i$$$-th integer denotes the number of good positions for cow $$$i$$$.",
+    "note": "Note\nFor the first test case, cow $$$2$$$ would lose no matter what it was positioned, and cow $$$1$$$ would win no matter where it was positioned.\nFor the second test case, both cows could win at position $$$1$$$, but could not win at position $$$2$$$, meaning that they each have $$$1$$$ good position.\nFor the third test case, let's look at cow $$$1$$$.\nIf cow $$$1$$$ were at position $$$1$$$, then it would win its first match, making its skill level equal to $$$2$$$, and could cheat to win its second match.\nIf cow $$$1$$$ were at position $$$2$$$, then it would have to cheat to win its first match, but would then lose its second match.\nIf cow $$$1$$$ were at position $$$3$$$, then it would have to cheat to win its first match, and would have no more matches.",
+    "tags": [
+        "binary search",
+        "brute force",
+        "data structures",
+        "dp",
+        "greedy"
+    ],
+    "rating": 2500
+}

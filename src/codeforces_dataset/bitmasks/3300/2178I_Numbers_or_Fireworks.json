@@ -1,0 +1,16 @@
+{
+    "contestId": 2178,
+    "index": "I",
+    "title": "I. Numbers or Fireworks",
+    "statement": "Now that all the presents have been delivered, the North Pole is finally at peace — and it's time to celebrate with a spectacular New Year's fireworks show!\nThe North Pole is modeled as the Cartesian plane, with $$$n$$$ cities located at distinct lattice points. You are also given an integer $$$k$$$.\nFor a proper subset$$$^{\\text{∗}}$$$ $$$T$$$ of the cities ($$$T$$$ may be empty), we define its\nexplosiveness\nas follows:\nA firework is launched from every city in $$$T$$$.\nFor each city $$$c$$$\nnot\nin $$$T$$$, let $$$f$$$ be the number of fireworks launched from cities that are exactly $$$\\sqrt{k}$$$ Euclidean distance$$$^{\\text{†}}$$$ away from $$$c$$$. Assign the number $$$(f+1)$$$ to this city $$$c$$$.\nThe\nexplosiveness\nof $$$T$$$ is the product of all numbers assigned in Step 2.\nCompute the sum of the\nexplosiveness\nof $$$T$$$ over all $$$2^n-1$$$ proper subsets $$$T$$$ of the cities. Since the answer may be large, output it modulo $$$998\\,244\\,353$$$.\n$$$^{\\text{∗}}$$$A proper subset is any subset which is not equal to the whole set.\n$$$^{\\text{†}}$$$The Euclidean distance between two points $$$(x, y)$$$ and $$$(p, q)$$$ is defined as $$$\\sqrt{(x - p)^2 + (y - q)^2}$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 1000$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$ and $$$k$$$ ($$$2\\le n\\le 31$$$, $$$1\\leq k \\leq2\\cdot 10^4$$$).\nThen $$$n$$$ lines follow, the $$$i$$$-th line containing two integers $$$x_i$$$ and $$$y_i$$$ ($$$1\\leq x_i, y_i\\leq 100$$$) — the $$$x$$$ and $$$y$$$ coordinates of the $$$i$$$-th city, respectively. It is guaranteed that the coordinates of the cities are pairwise distinct.\nIt is guaranteed that the sum of $$$n^3$$$ over all test cases does not exceed $$$31^3$$$.",
+    "outputSpecification": "Output\nFor each test case, print a single integer — the sum, modulo $$$998\\,244\\,353$$$, of the\nexplosiveness\nover all proper subsets $$$T$$$ of the cities.",
+    "note": "Note\nIn the first test case, below are the $$$2^3-1=7$$$ possible placements of fireworks. The numbers assigned to cities not in $$$T$$$ are circled.\nThe total\nexplosiveness\nis $$$(1\\cdot 1\\cdot 1)+(1\\cdot 2)+(2\\cdot 1)+(2\\cdot 2)+(3)+(2)+(2)=16$$$.\nIn the second test case, there are $$$2^2-1=3$$$ possible placements of fireworks. For every placement, since $$$(1,1)$$$ and $$$(100,100)$$$ have a Euclidean distance of $$$\\sqrt{(100-1)^2+(100-1)^2}=\\sqrt{19\\,602}\\neq\\sqrt{20\\,000}$$$, none of the cities will have fireworks that are exactly $$$\\sqrt{k}$$$ away. Thus, the number $$$1$$$ is assigned to every city without fireworks. Therefore, the\nexplosiveness\nis $$$1$$$ for every $$$T$$$, and the answer is $$$1+1+1=3$$$.",
+    "tags": [
+        "bitmasks",
+        "combinatorics",
+        "dp",
+        "graphs"
+    ],
+    "rating": 3300
+}

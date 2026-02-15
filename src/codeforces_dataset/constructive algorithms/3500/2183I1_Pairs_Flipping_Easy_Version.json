@@ -1,0 +1,13 @@
+{
+    "contestId": 2183,
+    "index": "I1",
+    "title": "I1. Pairs Flipping (Easy Version)",
+    "statement": "This is the easy version of the problem. The difference between the versions is that in this version, the restriction on the number of\n1\n's remaining in the final string is more lenient. You can hack only if you solved all versions of this problem.\nYou are given a binary string $$$s_1s_2\\ldots s_n$$$ containing only characters\n0\nand\n1\n. You may perform $$$\\lfloor\\frac{n}{2}\\rfloor$$$ operations. On the $$$x$$$-th operation, you may perform the following:\nSelect an integer $$$l$$$ such that $$$0 \\leq l \\leq n-x$$$. If $$$l=0$$$, then nothing is done. Otherwise, the characters $$$s_l$$$ and $$$s_{l+x}$$$ are both flipped. That is, for each character, if it is $$$0$$$, then it is changed to $$$1$$$, and vice versa.\nYour task is to find a series of operations such that the number of\n1\n's remaining in the binary string is at most $$$15$$$. It can be shown that under the constraints of this problem, this is always possible.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^5$$$). The description of the test cases follows.\nThe first line of each test case contains an integer $$$n$$$ ($$$3 \\leq n \\leq 2\\cdot 10^6$$$).\nThe second line of each test case contains a binary string $$$s_1s_2\\ldots s_n$$$ ($$$s_i \\in \\{0,1\\}$$$).\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2\\cdot 10^6$$$.",
+    "outputSpecification": "Output\nFor each test case, output $$$\\lfloor\\frac{n}{2}\\rfloor$$$ numbers on a new line: the chosen $$$l$$$ for operation $$$1,2,\\ldots,\\lfloor\\frac{n}{2}\\rfloor (0 \\leq l_x \\leq n-x)$$$. You should guarantee that after all operations, there are at most $$$15$$$\n1\nremaining in the string.\nIf there are multiple solutions, output any.",
+    "note": "Note\nIn the fourth test case:\nInitially, $$$s=$$$\n111111111\n. Since $$$n=9$$$, we perform $$$\\lfloor\\frac{9}{2}\\rfloor=4$$$ operations.\nThe first operation has $$$l=6$$$. Therefore, characters $$$6$$$ and $$$6+1=7$$$ are flipped. Now, $$$s=$$$\n111110011\n.\nThe second operation has $$$l=2$$$. Therefore, characters $$$2$$$ and $$$2+2=4$$$ are flipped. Now, $$$s=$$$\n101010011\n.\nThe third operation has $$$l=0$$$. Therefore, nothing is done.\nThe fourth operation has $$$l=2$$$. Therefore, characters $$$2$$$ and $$$2+4=6$$$ are flipped. Now, $$$s=$$$\n111011011\n.\nSince the final string has $$$7$$$\n1\n's and $$$7 \\leq 15$$$, this solution is correct.",
+    "tags": [
+        "constructive algorithms"
+    ],
+    "rating": 3500
+}

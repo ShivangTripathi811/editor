@@ -1,0 +1,14 @@
+{
+    "contestId": 2171,
+    "index": "A",
+    "title": "A. Shizuku Hoshikawa and Farm Legs",
+    "statement": "Nothing's ever been the same since... that summer with her.\n— Shizuku Hoshikawa\nKaori wants to spend the day with Shizuku! However, the zoo is closed, so they are visiting Farmer John's farm instead.\nAt Farmer John's farm, Shizuku counts $$$n$$$ legs.\nIt is known that\nonly chickens and cows live on the farm; a chicken has $$$2$$$ legs, while a cow has $$$4$$$.\nCount how many different configurations of Farmer John's farm are possible. Two configurations are considered different if they contain either a different number of chickens, a different number of cows, or both.\nNote that Farmer John's farm may contain zero chickens or zero cows.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\leq t \\leq 100$$$)  — the number of test cases.\nThe only line of each test case contains a single integer $$$n$$$ ($$$1\\leq n \\leq 100$$$).",
+    "outputSpecification": "Output\nFor each test case, output a single integer, the number of different configurations of Farmer John's farm that are possible.",
+    "note": "Note\nFor $$$n=4$$$, there are two possible configurations of Farmer John's farm:\nhe can have two chickens and zero cows, or\nhe can have zero chickens and one cow.\nIt can be shown that these are the only possible configurations of Farmer John's farm.\nFor $$$n=3$$$, it can be shown that there are no possible configurations of Farmer John's farm.",
+    "tags": [
+        "brute force",
+        "math"
+    ],
+    "rating": 800
+}

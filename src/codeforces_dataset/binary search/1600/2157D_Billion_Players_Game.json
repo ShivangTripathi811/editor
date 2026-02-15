@@ -1,0 +1,18 @@
+{
+    "contestId": 2157,
+    "index": "D",
+    "title": "D. Billion Players Game",
+    "statement": "NemesisTheory - Rose At Nightfall\n⠀\nYou are following the world championship of the Billion Players Game. There are $$$10^9$$$ players competing, and you want to predict the final ranking $$$p$$$ of Godflex, your favorite streamer. After analyzing recent matches, you are sure that $$$l \\leq p \\leq r$$$, but you don't know anything else.\nThere are $$$n$$$ offers made by the in-game bookmaker. In the $$$i$$$-th offer, the bookmaker suggests an estimation $$$a_i$$$ for Godflex's final ranking. For each offer, you must choose exactly one of the following actions:\nIgnore the offer.\nAccept the offer by claiming that $$$p \\leq a_i$$$. If you are right, you earn $$$|p-a_i|$$$ robocoins; otherwise you lose $$$|p-a_i|$$$ robocoins.\nAccept the offer by claiming that $$$p \\geq a_i$$$. If you are right, you earn $$$|p-a_i|$$$ robocoins; otherwise you lose $$$|p-a_i|$$$ robocoins.\nAfter you decide how to deal with all the offers, the actual Billion Players Game is played. Godflex gets a position $$$p$$$ in $$$[l, r]$$$, and then all the offers are settled up.\nYour total score is the number of robocoins you are guaranteed to earn, that is, the minimum number of robocoins you earn over all possible values of $$$p$$$ in $$$[l, r]$$$. Find the maximum possible score you can guarantee.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains three integers $$$n$$$, $$$l$$$, $$$r$$$ ($$$1 \\leq n \\leq 2 \\cdot 10^5$$$, $$$1 \\leq l \\leq r \\leq 10^9$$$) — the number of offers and the possible range of Godflex's final ranking.\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\leq a_i \\leq 10^9$$$) — the bookmaker's estimations of Godflex's ranking in each offer.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single line containing an integer: the maximum possible score you can guarantee.",
+    "note": "Note\nIn the first test case, there is only one offer.\nIf you ignore the offer, your score is $$$0$$$;\nif you accept the offer claiming that $$$p \\leq 3$$$, your score is $$$-2$$$ (reached when $$$p = 5$$$, which makes you lose $$$|5-3| = 2$$$ robocoins);\nif you accept the offer claiming that $$$p \\geq 3$$$, your score is $$$-2$$$ (reached when $$$p = 1$$$, which makes you lose $$$|1-3| = 2$$$ robocoins).\nSo the maximum possible score is $$$0$$$.\nIn the second test case, it is optimal to accept the offers claiming that $$$p \\geq 50$$$ and $$$p \\leq 200$$$. Since $$$p$$$ must be $$$100$$$, you gain $$$|100-50| + |100-200| = 150$$$ robocoins.",
+    "tags": [
+        "binary search",
+        "greedy",
+        "math",
+        "sortings",
+        "ternary search",
+        "two pointers"
+    ],
+    "rating": 1600
+}

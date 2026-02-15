@@ -1,0 +1,15 @@
+{
+    "contestId": 2194,
+    "index": "D",
+    "title": "D. Table Cut",
+    "statement": "Given a table of size $$$n \\times m$$$, where each cell contains either $$$0$$$ or $$$1$$$. The task is to divide it into two parts with a cut that goes from the top left corner to the bottom right corner. The cut lines can only go right or down.\nLet $$$a$$$ be the number of ones in one part of the table after the cut, and $$$b$$$ be the number of ones in the other part of the table. The goal is to maximize the value of $$$a \\cdot b$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$ and $$$m$$$ ($$$1 \\leq n, m \\leq 3 \\cdot 10^{5}$$$, $$$2 \\leq n \\cdot m \\leq 3 \\cdot 10^{5}$$$) — the number of rows and columns in the table, respectively.\nEach of the following $$$n$$$ lines contains $$$m$$$ integers, where the $$$j$$$-th number in the $$$i$$$-th line corresponds to the value $$$a_{i, j}$$$ ($$$0 \\leq a_{i, j} \\leq 1$$$).\nIt is guaranteed that the sum of $$$n \\cdot m$$$ across all test cases does not exceed $$$3 \\cdot 10^{5}$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single number in the first line of the output data — the maximum value of the product.\nIn the second line, output a string consisting of $$$n$$$ characters  '\nD\n' and $$$m$$$ characters  '\nR\n', representing the direction of the next cut, where '\nD\n' means a cut downwards, and '\nR\n' — a cut to the right.",
+    "note": "Note\nThe images show the correct cuts for each of the first and second test cases, at which the maximum value of the product is achieved.",
+    "tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation"
+    ],
+    "rating": "Unrated"
+}

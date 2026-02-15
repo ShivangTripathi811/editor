@@ -1,0 +1,14 @@
+{
+    "contestId": 2159,
+    "index": "E",
+    "title": "E. Super-Short-Polynomial-San",
+    "statement": "This problem might be well-known in some countries, but how do other countries learn about such problems if nobody poses them?\n—\nXXI Open Cup, Grand Prix of Tokyo\nYou are given three integers $$$a,b,c$$$.\nLet $$$F(n)$$$ be the polynomial of degree $$$2n$$$ defined as follows.\n$$$$$$F(n)=\\left ({a x^2+b x+c}\\right) ^n$$$$$$\nYou are asked to solve $$$q$$$ queries of the following kind.\n$$$n\\;k$$$: Please find the value of the sum $$$\\displaystyle \\sum_{i=0}^{k}{\\left [ {x^i} \\right] F(n)}$$$ modulo $$$10^9+7$$$$$$^{\\text{∗}}$$$.\nHowever, it might be too easy for you if this problem ends here. So here is a twist$$$^{\\text{†}}$$$: You are asked to solve the queries\nonline\n.\n$$$^{\\text{∗}}$$$Here, $$$[x^a]F(n)$$$ denotes the coefficient of $$$x^a$$$ of the polynomial $$$F(n)$$$.\n$$$^{\\text{†}}$$$I hope it isn't too hard for you after the twist. Even a toddler knows one way to solve it. You just have to optimize that method by a factor of $$$8\\,000\\,000$$$.",
+    "inputSpecification": "Input\nThe first line contains three integers $$$a$$$, $$$b$$$, $$$c$$$ ($$$1 \\le a,b,c \\le 10^9+6$$$).\nThe second line contains the number of queries $$$q$$$ ($$$1 \\le q \\le 3 \\cdot 10^5$$$).\nEach of the $$$q$$$ following lines contains two integers $$$n_i'$$$ and $$$k_i'$$$ denoting the query in encrypted format.\nYou must decrypt the queries as follows.\nLet the answer to the $$$i$$$-th query modulo $$$10^9+7$$$ be $$$ans_i$$$. Here, $$$ans_0$$$ is defined to be $$$0$$$.\nThen, the values of $$$n$$$ and $$$k$$$ for the $$$i$$$-th query are $$$n_i = n_i' \\oplus ans_{i-1}$$$ and $$$k_i = k_i' \\oplus ans_{i-1}$$$ ($$$0 \\le n_i \\le 3\\cdot 10^5$$$, $$$0 \\le k_i \\le 2n_i$$$).\nDo note that\nboth\nthe sum of $$$n_i$$$\nand\nthe sum of $$$k_i$$$ over all queries\nare not bounded\n.",
+    "outputSpecification": "Output\nFor each query, print the answer modulo $$$10^9+7$$$ on a new line.",
+    "note": "Note\nThe decrypted example input is as follows.\n3 2 1\n11\n0 0\n1 0\n1 1\n1 2\n2 0\n2 1\n2 2\n2 3\n2 4\n31415 9265\n200000 69420\nHere, the polynomial $$$F(n)$$$ corresponds to\nA084608\nfrom OEIS. Don't worry about the link; there's nothing so useful there. Trust me.",
+    "tags": [
+        "math",
+        "meet-in-the-middle"
+    ],
+    "rating": 3500
+}

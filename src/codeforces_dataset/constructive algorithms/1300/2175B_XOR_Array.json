@@ -1,0 +1,14 @@
+{
+    "contestId": 2175,
+    "index": "B",
+    "title": "B. XOR Array",
+    "statement": "You are given three integers $$$n$$$, $$$l$$$, and $$$r$$$.\nYou need to generate an array $$$a$$$ of positive ($$$1 \\leq a_i \\leq 10^9$$$) integers of length $$$n$$$. Let $$$f(x, y)$$$, for $$$1 \\le x \\le y \\le n$$$, be the bitwise XOR$$$^{\\text{∗}}$$$ value $$$a_x \\oplus a_{x+1} \\oplus \\ldots \\oplus a_y$$$. You need to make sure that $$$$$$\\begin{cases} f(x, y) = 0\\quad \\text{when }x = l\\text{ and }y = r; \\text{and}\\\\ f(x, y) \\ne 0\\quad \\text{when }x \\ne l \\text{ or } y \\ne r. \\end{cases}$$$$$$\n$$$^{\\text{∗}}$$$$$$\\oplus$$$ denotes the\nbitwise XOR operation\n.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe only line of each test case contains three integers $$$n$$$, $$$l$$$, and $$$r$$$ ($$$2 \\leq n \\leq 4\\cdot 10^5$$$, $$$1 \\leq l \\lt r \\leq n$$$).\nIt is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$5\\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, print a single line containing $$$n$$$ integers $$$a_1, a_2, \\ldots a_n$$$.\nWe can show that an answer always exists. If there are multiple solutions, print any of them.",
+    "note": "Note\nIn the first test case, $$$f(1, 3) = 9 \\oplus 8 \\oplus 1 = 0$$$, while all other non-empty subarrays have non-zero bitwise XOR:\n$$$f(1, 2) = 9 \\oplus 8 = 1 \\ne 0$$$,\n$$$f(2, 3) = 8 \\oplus 1 = 9 \\ne 0$$$,\n$$$f(1, 1) = 9 \\ne 0$$$,\n$$$f(2, 2) = 8 \\ne 0$$$,\n$$$f(3, 3) = 1 \\ne 0$$$.\nIn the second test case, $$$2 \\oplus 7 \\oplus 5 = 0$$$, while, for example, $$$7 \\oplus 5 \\oplus 4 = 6 \\ne 0$$$.",
+    "tags": [
+        "constructive algorithms",
+        "math"
+    ],
+    "rating": 1300
+}

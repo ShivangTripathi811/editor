@@ -1,0 +1,18 @@
+{
+    "contestId": 2158,
+    "index": "D",
+    "title": "D. Palindrome Flipping",
+    "statement": "You are given two binary strings $$$s$$$ and $$$t$$$, each of the same length $$$n$$$. You are allowed to perform the following operation:\nPick indices $$$l$$$, $$$r$$$ ($$$1 \\le \\color{red}{l  \\lt  r} \\le n$$$) such that substring $$$s_{l,r}$$$ is a palindrome and flip all bits in substring $$$s_{l,r}$$$.\nThe goal is to finally make $$$s$$$ equal to $$$t$$$, performing any of the above operations at most $$$2n$$$ times (possibly none).\nA substring $$$s_{l,r}$$$ of a string $$$s$$$ is the contiguous sequence of characters starting from index $$$l$$$ and ending at index $$$r$$$ (both inclusive), where $$$1 \\leq l  \\lt  r \\leq |s|$$$. Here $$$|s|$$$ denotes the length of the string $$$s$$$.\nA string is a palindrome if it reads the same forwards and backwards. For example, the strings\n101\nand\n00\nare palindromes, while\n10\nis not.\nFlipping all bits in a substring means changing each\n0\nto\n1\nand each\n1\nto\n0\nin that substring. For example, flipping the substring\n101\nresults in\n010\n.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$T$$$ ($$$1 \\le T \\le 5\\cdot 10^3$$$). The description of the test cases follows.\nThe first line of each test case contains an integer $$$n$$$ ($$$4 \\le n \\le 100$$$) — the length of the strings $$$s$$$ and $$$t$$$.\nThe next two lines of each test case contain the binary strings $$$s$$$ and $$$t$$$, respectively.\nIt is guaranteed that the sum of $$$n^2$$$ over all test cases does not exceed $$$5\\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, if it is impossible to achieve the goal, print $$$-1$$$.\nOtherwise, the first line should contain an integer $$$k$$$ ($$$0 \\leq k \\leq 2n$$$) — the number of operations.\nFor each of the next $$$k$$$ lines, print two integers $$$l, r$$$ ($$$1 \\leq l  \\lt  r \\leq n$$$) — the indices you choose in each operation. Note that $$$s_{l,r}$$$ must be a palindrome at this stage.",
+    "note": "Note\nFor the first test case:\nInitially, $$$s = \\mathtt{01011}$$$ and $$$t = \\mathtt{10000}$$$.\nFirst, we choose $$$l=1$$$ and $$$r=3$$$. This is a valid operation since $$$s_{1,3} = \\mathtt{010}$$$ is a palindrome. After flipping $$$s_{1,3}$$$, $$$s = \\mathtt{10111}$$$.\nThen, we choose $$$l=3$$$ and $$$r=5$$$. This is a valid operation since $$$s_{3,5} = \\mathtt{111}$$$ is a palindrome. After flipping $$$s_{3,5}$$$, $$$s = \\mathtt{10000}$$$.\nNow, $$$s$$$ is equal to $$$t$$$.\nFor the second test case:\nInitially, $$$s = \\mathtt{1010101}$$$ and $$$t = \\mathtt{0101010}$$$.\nFirst, we choose $$$l=1$$$ and $$$r=7$$$. This is a valid operation since $$$s_{1,7} = \\mathtt{1010101}$$$ is a palindrome. After flipping $$$s_{1,7}$$$, $$$s = \\mathtt{0101010}$$$.\nNow, $$$s$$$ is equal to $$$t$$$.\nFor the third test case:\nInitially, $$$s$$$ is equal to $$$t$$$. No operations are needed.",
+    "tags": [
+        "brute force",
+        "constructive algorithms",
+        "graphs",
+        "implementation",
+        "shortest paths",
+        "strings"
+    ],
+    "rating": 2000
+}

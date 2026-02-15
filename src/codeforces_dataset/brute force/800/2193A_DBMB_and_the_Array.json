@@ -1,0 +1,14 @@
+{
+    "contestId": 2193,
+    "index": "A",
+    "title": "A. DBMB and the Array",
+    "statement": "DBMB had a birthday yesterday. He was gifted an array $$$a$$$ of $$$n$$$ elements and a number $$$x$$$. But there is one problem: he only likes arrays where the sum of the elements equals $$$s$$$. To make the array appealing to him, you can perform the following operation any number of times:\nChoose an index $$$i$$$ ($$$1 \\le i \\le n$$$) and add $$$x$$$ to the number $$$a_i$$$.\nFor example, if he was given the array $$$[1, 2, 3, 5]$$$ and $$$x = 2$$$, you can choose index $$$3$$$ and get the array $$$[1, 2, 5, 5]$$$. Your task is to determine whether the array can appeal to DBMB after any number of operations.",
+    "inputSpecification": "Input\nEach test consists of several test cases. The first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 1000$$$) — the number of test cases. The following describes the test cases.\nThe first line of each test case contains three integers $$$n$$$, $$$s$$$, $$$x$$$ ($$$1 \\le n, x \\le 10$$$, $$$1 \\le s \\le 100$$$).\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\dots a_n$$$ ($$$1 \\le a_i \\le 10$$$) — the elements of the array gifted to DBMB.",
+    "outputSpecification": "Output\nFor each test case, output \"\nYES\n\" if the array can appeal to DBMB. Otherwise, output \"\nNO\n\".\nYou can output each letter in any case (lowercase or uppercase). For example, the strings \"\nyEs\n\", \"\nyes\n\", \"\nYes\n\", and \"\nYES\n\" will be accepted as a positive answer.",
+    "note": "Note\nIn the second test case, $$$a = [1, 2, 3]$$$, applying the operation on $$$a_2$$$ gives us $$$a = [1, 4, 3]$$$. The sum of the array equals $$$s$$$.",
+    "tags": [
+        "brute force",
+        "math"
+    ],
+    "rating": 800
+}

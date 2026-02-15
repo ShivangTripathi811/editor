@@ -1,0 +1,13 @@
+{
+    "contestId": 2184,
+    "index": "A",
+    "title": "A. Social Experiment",
+    "statement": "Right now, the largest social experiment in the history of Codeforces is taking place, involving $$$n$$$ people. They are required to form teams of $$$2-3$$$ people, after which each team chooses one of two civilizations to participate in the social experiment.\nThe organizers of this social experiment want to know what the possible difference in the number of people in the civilizations could be. Find the minimum possible difference.",
+    "inputSpecification": "Input\nEach test consists of several test cases. The first line contains a single integer $$$t$$$ $$$(1 \\le t \\le 10^4)$$$ — the number of test cases. The following lines describe the test cases.\nIn the only line of each test case, there is an integer $$$n$$$ — the number of people participating in the social experiment $$$(2 \\le n \\le 10^{4})$$$.",
+    "outputSpecification": "Output\nFor each number $$$n$$$, output the minimum possible difference between the number of people in the civilizations.",
+    "note": "Note\nIn the first test case, only one team can be formed, which will choose one of the civilizations, while the other will have no one, so the answer is $$$2$$$.\nIn the second test case, two teams can be formed: one with two people and the other with three. These teams will choose different civilizations; thus, the answer will be $$$1$$$.\nIn the third test case, four teams of three people will be formed, with the first two choosing the first civilization and the remaining two choosing the second. The answer is $$$0$$$.",
+    "tags": [
+        "math"
+    ],
+    "rating": 800
+}

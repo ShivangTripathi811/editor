@@ -1,0 +1,15 @@
+{
+    "contestId": 2176,
+    "index": "A",
+    "title": "A. Operations with Inversions",
+    "statement": "Given an array $$$a_1, a_2, \\ldots, a_n$$$. In one operation, you can choose a pair of indices $$$i, j$$$ such that $$$1 \\le i < j \\le n$$$, $$$a_i > a_j$$$, and remove the element at index $$$j$$$ from the array. After that, the size of the array will decrease by $$$1$$$, and the relative order of the elements will not change.\nDetermine the maximum number of operations that can be performed on the array if they are applied optimally.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 50$$$). The description of the test cases follows.\nThe first line of each test case contains an integer $$$n$$$ ($$$1 \\le n \\le 100$$$) — the size of the initial array.\nThe second line of each test case contains $$$n$$$ natural numbers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le n$$$).",
+    "outputSpecification": "Output\nFor each test case, output the maximum number of operations that you can perform on the given array.",
+    "note": "Note\nIn the first example, we can first choose the pair $$$i = 2$$$, $$$j = 3$$$ with values $$$a_2 = 2$$$, $$$a_3 = 1$$$ and remove $$$a_3$$$. The resulting array will be $$$a = [3, 2]$$$. After that, we can remove the second element by choosing the pair $$$i = 1$$$, $$$j = 2$$$. The total number of operations is $$$2$$$.\nIn the second, third, and fifth examples, no operations can be performed since there are no suitable pairs.\nIn the fourth example, we can remove the second and fifth elements. It can be shown that this is the optimal answer and there is no solution that removes more elements.",
+    "tags": [
+        "greedy",
+        "implementation",
+        "math"
+    ],
+    "rating": 800
+}

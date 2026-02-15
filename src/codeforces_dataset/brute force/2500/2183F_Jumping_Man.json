@@ -1,0 +1,17 @@
+{
+    "contestId": 2183,
+    "index": "F",
+    "title": "F. Jumping Man",
+    "statement": "You have a tree rooted at node $$$1$$$ with $$$n$$$ nodes. Each node has a lowercase English letter written on it.\nFor each integer $$$i$$$ from $$$1$$$ to $$$n$$$, please solve the following problem independently:\nConsider the set of strings formed by the following process:\nChoose any node $$$u$$$ that is in the subtree of $$$i$$$ as your starting location.\nRepeat 0 or more times:\nSuppose you are currently on node $$$x$$$. Select a node $$$v$$$ that is in the subtree$$$^{\\text{∗}}$$$ of node $$$x$$$, but you may\nnot\nchoose $$$v=x$$$. Move to node $$$v$$$. This process can be terminated at any point.\nThe characters obtained from all nodes you passed through (in order) are concatenated to form a string.\nYou performed the above process exactly once for every possible path. Two paths are considered different if one node is visited in one path but not another.\nNow, you have obtained many strings. You want to know the sum of the square of the number of occurrences for each type of string. Since this answer might be very large, output its value modulo $$$998\\,244\\,353$$$.\n$$$^{\\text{∗}}$$$A node $$$v$$$ is in another node $$$x$$$'s subtree if and only if the shortest path from node $$$1$$$ to node $$$v$$$ passes through node $$$x$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 5000$$$). The description of the test cases follows.\nFor each test case, the first line contains an integer $$$n$$$ ($$$1 \\le n \\le 5000$$$).\nThe next line is a string of length $$$n$$$ containing only lowercase English letters, where the $$$i$$$-th character represents the letter on the $$$i$$$-th node.\nThis is followed by $$$n-1$$$ lines, each containing two integers $$$u$$$ and $$$v$$$ ($$$1 \\leq u,v \\leq n, u \\neq v$$$) representing an edge of the tree.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$5000$$$.",
+    "outputSpecification": "Output\nFor each test case, output $$$n$$$ numbers on a new line: the answer for $$$i=1,2,\\ldots,n$$$, modulo $$$998\\,244\\,353$$$.",
+    "note": "Note\nFor the first test case:\nFor nodes $$$2$$$ and $$$3$$$, the only string that is possible to get from the process is\nb\n. Therefore, the answer is $$$1$$$ for both.\nFor node $$$1$$$, the possible strings are\na\n,\nab\n,\nab\n,\nb\n, and\nb\n. Overall,\na\nis obtainable in one way, while\nab\nand\nb\nare obtainable in two ways. Therefore, the answer for node $$$1$$$ is $$$1^2+2^2+2^2=9$$$.\nIn the fourth test case, for node $$$1$$$, the possible strings are:\naaaa\n(obtainable $$$1$$$ way)\naaa\n(obtainable $$$4$$$ ways)\naa\n(obtainable $$$6$$$ ways)\na\n(obtainable $$$4$$$ ways)\nTherefore, the answer for node $$$1$$$ is $$$1^2+4^2+6^2+4^2=69$$$.",
+    "tags": [
+        "brute force",
+        "combinatorics",
+        "dfs and similar",
+        "dp",
+        "trees"
+    ],
+    "rating": 2500
+}

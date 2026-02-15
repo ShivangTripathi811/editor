@@ -1,0 +1,16 @@
+{
+    "contestId": 2171,
+    "index": "H",
+    "title": "H. Shiori Miyagi and Maximum Array Score",
+    "statement": "\"Are you stupid, Sendai-san?\"\n— Shiori Miyagi\nFor the cost of 5000 yen, Miyagi can ask Sendai to do whatever she wants! Today, Miyagi demands that Sendai make her an array... specifically, Miyagi only wants a very particular type of array.\nFor arbitrary integers $$$b\\geq 2$$$ and $$$x\\geq 1$$$, define $$$v(b, x)$$$ to be the maximal $$$k$$$ satisfying $$$b^k \\mid x$$$; that is, the maximal $$$k$$$ such that $$$x$$$ is a multiple of $$$b^k$$$. It can be shown that this is always a well-defined, nonnegative integer.\nYou are given integers $$$n$$$ and $$$m$$$ satisfying $$$n\\leq m$$$. Find the maximum value of $$$\\sum_{i=2}^n v(i, a_i)$$$ across all arrays $$$a$$$ of length $$$n$$$ satisfying the following conditions:\n$$$a$$$ is\nstrictly increasing\n; that is, for all $$$1\\leq i\\leq n-1$$$, $$$a_i  \\lt  a_{i+1}$$$, and\nfor all $$$1\\leq i\\leq n$$$, $$$1\\leq a_i\\leq m$$$.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\leq t \\leq 10^4$$$)  — the number of test cases.\nThe only line of each test case contains two integers $$$n$$$ and $$$m$$$ ($$$2\\leq n\\leq m \\leq 2\\cdot 10^5$$$).\nIt is guaranteed that the sum of $$$m$$$ over all test cases does not exceed $$$2\\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer, the maximum value of $$$\\sum_{i=2}^n v(i, a_i)$$$ across all arrays $$$a$$$ of length $$$n$$$ satisfying the given conditions.",
+    "note": "Note\nIn the first example, one possible array is $$$a = [6, 8, 9, 16]$$$ which yields a value of $$$3 + 2 + 2 = 7$$$.\nIt can be shown that this is the maximum value of $$$\\sum_{i=2}^n v(i, a_i)$$$ across all arrays $$$a$$$ of length $$$n$$$ satisfying the given conditions.",
+    "tags": [
+        "binary search",
+        "data structures",
+        "dp",
+        "sortings"
+    ],
+    "rating": 2400
+}

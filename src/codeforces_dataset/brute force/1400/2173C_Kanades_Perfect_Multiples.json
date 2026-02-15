@@ -1,0 +1,16 @@
+{
+    "contestId": 2173,
+    "index": "C",
+    "title": "C. Kanade's Perfect Multiples",
+    "statement": "We've carved those memories into ourselves... No matter how hard they were, they're the lives we carried out!\n—\nAngel Beats!\nIn the afterlife school, Kanade studies a peculiar number game.\nShe gives you two integers $$$n$$$ and $$$k$$$, as well as an array $$$a$$$ consisting of $$$n$$$ integers, where $$$1 \\le a_i \\le k$$$ holds.\nFor an integer set $$$B = \\{b_1, b_2, \\ldots, b_m\\}$$$ where $$$1\\le b_i\\le k$$$, we call it\ncomplete\nif and only if\nboth of the following hold:\nFor each $$$1\\le i\\le n$$$, at least one divisor of $$$a_i$$$ is contained in $$$B$$$;\nFor each $$$1\\le j\\le m$$$, all positive multiples of $$$b_j$$$ which are less than or equal to $$$k$$$ appear in the array $$$a$$$ at least once.\nYou have to find a\ncomplete\nset $$$B$$$ with\nminimum\npossible size, or determine that no such set exists.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$ and $$$k$$$ ($$$1\\le n\\le 2\\cdot 10^5$$$, $$$1\\le k\\le 10^9$$$) — the length of $$$a$$$ and the upper bound of elements of $$$a$$$.\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1\\le a_i\\le k$$$) — the elements of $$$a$$$.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2\\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case:\nIf no\ncomplete\nset $$$B$$$ exists, print a single integer $$$-1$$$ in the only line of output.\nOtherwise:\nFirst print a single integer $$$m$$$ ($$$1\\le m\\le n$$$) in the first line of output — the size of $$$B$$$. Note that you have to minimize the size of $$$B$$$.\nThen output $$$m$$$ integers $$$b_1, b_2, \\ldots, b_m$$$ ($$$1 \\le b_i \\le k$$$) in the second line — the set you constructed.\nIf there are multiple answers, you may print any of them.",
+    "note": "Note\nIn the first test case, $$$B=\\{2,3\\}$$$ works. For $$$b=2$$$, all multiples $$$\\{2,4,6\\}$$$ (up to $$$k=6$$$) appear in $$$a$$$; for $$$b=3$$$, multiples $$$\\{3,6\\}$$$ appear. Every $$$a_i$$$ is divisible by $$$2$$$ or $$$3$$$. No single $$$b$$$ can satisfy both conditions, so $$$m=2$$$ is minimal.\nIn the second test case, $$$B=\\{1\\}$$$ satisfies both rules since every number is divisible by $$$1$$$ and all multiples of $$$1$$$ up to $$$k$$$ appear.",
+    "tags": [
+        "brute force",
+        "constructive algorithms",
+        "greedy",
+        "number theory"
+    ],
+    "rating": 1400
+}

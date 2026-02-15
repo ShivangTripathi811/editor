@@ -1,0 +1,15 @@
+{
+    "contestId": 2196,
+    "index": "D",
+    "title": "D. Double Bracket Sequence",
+    "statement": "Given a string $$$s$$$ of even length, consisting of the characters \"\n(\n\", \"\n)\n\", \"\n[\n\" and \"\n]\n\", which are brackets of two types (round and square).\nWe call a string $$$t$$$\nbeautiful\nif it satisfies two conditions simultaneously:\nThe subsequence of\nall\nround brackets forms a correct bracket sequence$$$^{\\text{∗}}$$$;\nThe subsequence of\nall\nsquare brackets forms a correct bracket sequence.\nFor example, the string \"\n[(][)[]]()\n\" is\nbeautiful\n, as the subsequence of all round brackets in it \"\n()()\n\" forms a correct bracket sequence and the subsequence of all square brackets in it \"\n[][[]]\n\" forms a correct bracket sequence.\nYou would like to turn $$$s$$$ into any\nbeautiful\nstring; for this, you can change the characters: in one operation, you can choose a position $$$i$$$, such that $$$1 \\le i \\le n$$$ and change the character $$$s_{i}$$$ to any round or square bracket.\nWhat is the minimum number of operations required to transform $$$s$$$ into any\nbeautiful\nstring?\n$$$^{\\text{∗}}$$$A bracket sequence is called correct if by inserting the symbols \"\n+\n\" and \"\n1\n\" into it, one can obtain a valid mathematical expression. For example, the sequences \"\n(())()\n\", \"\n[]\n\" and \"\n(()(()))\n\" are correct, while \"\n)(\n\", \"\n[[]\n\" and \"\n(()))(\n\" are not.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains one integer $$$n$$$ ($$$2 \\le n \\le 2 \\cdot 10^{5}$$$) — the length of the string $$$s$$$. It is guaranteed that $$$n$$$ is even.\nThe second line of each test case contains a string $$$s$$$ of length $$$n$$$, consisting only of the characters \"\n(\n\", \"\n)\n\", \"\n[\n\" and \"\n]\n\".\nIt is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$2 \\cdot 10^5$$$",
+    "outputSpecification": "Output\nFor each test case, output a single integer — the answer to the problem.",
+    "note": "Note\nIn the first test case, from $$$s$$$ you can obtain \"\n[]\n\" by changing the second character.\nIn the second test case, from $$$s$$$, in $$$2$$$ operations, you can obtain \"\n[][]\n\", by changing the characters at positions $$$2$$$ and $$$4$$$.\nIn the third test case, from $$$s$$$, in $$$2$$$ operations, you can obtain \"\n()[]\n\", by changing the characters at positions $$$1$$$ and $$$4$$$.\nIn the fourth test case, $$$s$$$ is already\nbeautiful\n, as it can be divided into the subsequences \"\n()\n\" and \"\n[]\n\".",
+    "tags": [
+        "data structures",
+        "dp",
+        "greedy"
+    ],
+    "rating": "Unrated"
+}

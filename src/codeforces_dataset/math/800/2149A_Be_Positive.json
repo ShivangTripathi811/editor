@@ -1,0 +1,13 @@
+{
+    "contestId": 2149,
+    "index": "A",
+    "title": "A. Be Positive",
+    "statement": "Given an array $$$a$$$ of $$$n$$$ elements, where each element is equal to $$$-1$$$, $$$0$$$, or $$$1$$$. In one operation, you can choose an index $$$i$$$ and increase $$$a_i$$$ by $$$1$$$ (that is, assign $$$a_i := a_i + 1$$$). Operations can be performed any number of times, choosing any indices.\nThe goal is to make the product of all elements in the array strictly positive with the minimum number of operations, that is, $$$a_1 \\cdot a_2 \\cdot a_3 \\cdot \\ldots \\cdot a_n > 0$$$. Find the minimum number of operations.\nIt is guaranteed that this is always possible.",
+    "inputSpecification": "Input\nEach test consists of several test cases.\nThe first line contains one integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases. The description of the test cases follows.\nThe first line of each test case contains one integer $$$n$$$ ($$$1 \\le n \\le 8$$$) — the length of the array $$$a$$$.\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\dots, a_n$$$, where $$$-1 \\le a_i \\le 1$$$ — the elements of the array $$$a$$$.",
+    "outputSpecification": "Output\nFor each test case, output one integer — the minimum number of operations required to make the product of the elements in the array strictly positive.",
+    "note": "Note\nIn the first test case: from $$$[-1, 0, 1]$$$, you can obtain $$$[1, 1, 1]$$$ in $$$3$$$ operations.\nIn the second test case: it is enough to perform $$$0 \\to 1$$$ (1 operation). In the resulting array $$$a=[-1,-1,1,1]$$$, the product of all elements is $$$1$$$.\nIn the third test case: turning two zeros into ones (2 operations), and one $$$-1$$$ into $$$1$$$ (another 2 operations), for a total of $$$4$$$.",
+    "tags": [
+        "math"
+    ],
+    "rating": 800
+}

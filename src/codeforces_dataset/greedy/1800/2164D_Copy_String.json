@@ -1,0 +1,16 @@
+{
+    "contestId": 2164,
+    "index": "D",
+    "title": "D. Copy String",
+    "statement": "Given two strings $$$s$$$ and $$$t$$$ of length $$$n$$$, you aim to transform $$$s$$$ into $$$t$$$ through a series of the following operations:\nConstruct a new string $$$s'$$$ of length $$$n$$$,where $$$s'_1=s_1$$$. For each $$$1 < i \\le n$$$, $$$s'_i$$$ can be either $$$s_i$$$ or $$$s_{i-1}$$$. Then replace $$$s$$$ with $$$s'$$$.\nYour task is to achieve this transformation using\nthe minimum number of operations\n. You also need to output the solution by printing the constructed string $$$s'$$$ after each operation. If the transformation cannot be achieved in less than or equal to $$$k_{\\mathrm{max}}$$$ operations, output\n-1\n.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$, $$$k_{\\mathrm{max}}$$$ ($$$1 \\le n \\cdot k_{\\mathrm{max}} \\le 10^6$$$) — the length of two strings and the maximum number of operations that can be used.\nThe second line of each test case contains one string $$$s$$$ of length $$$n$$$.\nThe third line of each test case contains one string $$$t$$$ of length $$$n$$$.\nIt is guaranteed that the sum of $$$nk_{\\mathrm{max}}$$$ over all test cases does not exceed $$$10^6$$$.\nIt is guaranteed that both $$$s$$$ and $$$t$$$ consist of lowercase Latin letters.",
+    "outputSpecification": "Output\nFor each test case:\nIf you cannot achieve the transformation in less than or equal to $$$k_{\\mathrm{max}}$$$ operations, simply output\n-1\nin one line.\nOtherwise, on the first line, output one integer $$$k \\le k_{\\mathrm{max}}$$$ — the minimum number of operations. Then $$$k$$$ lines follow, each line contains one string of length $$$n$$$ — the string after each operation.\nIf there are multiple solutions, output any.",
+    "note": "Note\nIn the first test case, obviously $$$s$$$ can be transformed to $$$t$$$ in one operation.\nIn the second test case, initially $$$s=t$$$, so no operation is needed.\nIn the fourth test case, although $$$s$$$ can be transformed to $$$t$$$ in two operations, but $$$k_{\\mathrm{max}}=1$$$, so the answer is\n-1\n.",
+    "tags": [
+        "greedy",
+        "implementation",
+        "strings",
+        "two pointers"
+    ],
+    "rating": 1800
+}

@@ -1,0 +1,16 @@
+{
+    "contestId": 2178,
+    "index": "H",
+    "title": "H. Create or Duplicate",
+    "statement": "Santa realized that hand-drawing circles takes too long, so he has turned to magic to meet his production quotas.\nThere are three types of presents with distinct values $$$a$$$, $$$b$$$, and $$$c$$$. Initially, Santa has\nexactly one\npresent of each type.\nYou are given two integers $$$m$$$ and $$$k$$$, representing Santa's favorite number and the cost of duplication, respectively. Santa can cast the following two types of spells any number of times (possibly zero):\nCreate — Choose a type of present and create one additional present of that type. This spell costs $$$x$$$ mana, where $$$x\\in \\{a,b,c\\}$$$ is the value of the chosen type.\nDuplicate — Choose a type of present and duplicate all presents of that type. This spell costs $$$k$$$ mana.\nSanta wants to perform a sequence of spells such that the sum of the values of all presents is a multiple of $$$m$$$ after the spells.\nDetermine the minimum amount of mana Santa needs to achieve this. It can be shown that, under the given constraints, such a sequence of spells always exists.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe only line of each test case contains five integers $$$a$$$, $$$b$$$, $$$c$$$, $$$m$$$, and $$$k$$$ ($$$1\\leq a< b< c< m\\leq 5\\cdot 10^5$$$, $$$1\\leq k\\leq 5\\cdot 10^5$$$).\nIt is guaranteed that the sum of $$$m$$$ over all test cases does not exceed $$$5\\cdot 10^5$$$.\nIt is guaranteed that the sum of $$$k$$$ over all test cases does not exceed $$$5\\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer — the minimum amount of mana Santa needs to make the sum of the values of all presents a multiple of $$$m$$$.",
+    "note": "Note\nLet $$$\\ell$$$ be the list of values of presents and $$$\\operatorname{sum}(\\ell)$$$ be the sum of all elements in $$$\\ell$$$.\nIn the first test case, below is an optimal sequence of operations:\n#\nOperation\nValue\n$$$\\ell$$$ after operation\n$$$\\operatorname{sum}(\\ell)$$$\nCost\n0\n—\n—\n$$$[1, 2, 3]$$$\n$$$6$$$\n—\n1\nCreate\n$$$3$$$\n$$$[1, 2, 3, 3]$$$\n$$$9$$$\n$$$3$$$\n2\nCreate\n$$$3$$$\n$$$[1, 2, 3, 3, 3]$$$\n$$$12$$$\n$$$3$$$\n3\nDuplicate\n$$$3$$$\n$$$[1, 2, 3, 3, 3, 3, 3, 3]$$$\n$$$21$$$\n$$$4$$$\n$$$21=7\\cdot 3$$$\nTotal: $$$10$$$\nIn the second test case, it is optimal to not perform any operations because $$$3+4+5=12$$$ is already a multiple of $$$12$$$.\nIn the third test case, below is an optimal sequence of operations:\n#\nOperation\nValue\n$$$\\ell$$$ after operation\n$$$\\operatorname{sum}(\\ell)$$$\nCost\n0\n—\n—\n$$$[3, 12, 14]$$$\n$$$29$$$\n—\n1\nDuplicate\n$$$12$$$\n$$$[3, 12, 12, 14]$$$\n$$$41$$$\n$$$1$$$\n2\nDuplicate\n$$$14$$$\n$$$[3, 12, 12, 14, 14]$$$\n$$$55$$$\n$$$1$$$\n3\nCreate\n$$$14$$$\n$$$[3, 12, 12, 14, 14, 14]$$$\n$$$69$$$\n$$$14$$$\n4\nDuplicate\n$$$3$$$\n$$$[3, 3, 12, 12, 14, 14, 14]$$$\n$$$72$$$\n$$$1$$$\n$$$72=18\\cdot 4$$$\nTotal: $$$17$$$",
+    "tags": [
+        "bitmasks",
+        "graphs",
+        "number theory",
+        "shortest paths"
+    ],
+    "rating": 3300
+}

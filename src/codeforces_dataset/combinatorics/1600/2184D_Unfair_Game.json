@@ -1,0 +1,15 @@
+{
+    "contestId": 2184,
+    "index": "D",
+    "title": "D. Unfair Game",
+    "statement": "Bob is tired of losing to Alice and, to ensure he doesn't lose again, decided to choose a game in which he is guaranteed to win. Bob has thought of a number from $$$1$$$ to $$$n$$$, where it is known that $$$n = 2^d$$$ for some non-negative integer $$$d$$$. Initially, Alice\nknows\nwhether the chosen number is even or not.\nIn one move, Alice can either halve the number or subtract $$$1$$$. Alice can only halve the number if the current number is even. Only Alice takes turns.\nAfter her move, Alice receives a response from Bob: either $$$-1$$$, which means the number has become $$$0$$$ and Alice has won, or a non-negative integer $$$x$$$. If we denote the current number as $$$a$$$, then for $$$x$$$ the following conditions hold simultaneously:\n$$$a$$$ is divisible by $$$2^x$$$.\n$$$a$$$ is not divisible by $$$2^{x+1}$$$.\nFor example, if $$$a=5$$$, then $$$x=0$$$, since $$$5$$$ is divisible by $$$2^0=1$$$ and not divisible by $$$2^1=2$$$, and if $$$a=12$$$, then $$$x=2$$$, since $$$12$$$ is divisible by $$$2^2=4$$$ and not divisible by $$$2^3=8$$$.\nIt can be shown that for any integer $$$a  \\gt  0$$$, there exists a unique such $$$x$$$.\nBob is still afraid that Alice will win, so the game will have no more than $$$k$$$ moves. Additionally, Bob wants to maximize his chances of winning, so he wants to play as many games as possible. Given $$$n$$$ and $$$k$$$, calculate the number of initial numbers from $$$1$$$ to $$$n$$$ such that Alice, playing optimally, cannot win in no more than $$$k$$$ moves.",
+    "inputSpecification": "Input\nThe first line contains an integer $$$t$$$ $$$(1 \\le t \\le 10^4)$$$ — the number of test cases.\nThe only line of each test case contains $$$2$$$ integers $$$n$$$ and $$$k$$$ $$$(1 \\le n, k \\le 10^9)$$$ — the limit on the chosen number and the maximum number of Alice's moves, respectively. It is guaranteed that $$$n = 2^d$$$ for some non-negative integer $$$d$$$.",
+    "outputSpecification": "Output\nFor each test case, output the number of integers from $$$1$$$ to $$$n$$$ such that Alice, playing optimally, cannot win in at most $$$k$$$ moves.",
+    "note": "Note\nIn the first sample, $$$a=2$$$, $$$a=3$$$, and $$$a=4$$$ are suitable because from $$$a=1$$$ one can reach $$$0$$$ in $$$1$$$ operation, while for the other values, it can be shown that at least $$$2$$$ operations are required.\nIn the second sample, $$$a=3$$$ and $$$a=4$$$ are suitable because for $$$a=2$$$, Alice can win in $$$2$$$ operations.\nIn the third, fourth, and fifth samples, there are no suitable $$$a$$$, because for $$$a=3$$$ and $$$a=4$$$, Alice can win in $$$3$$$ operations.",
+    "tags": [
+        "combinatorics",
+        "dp",
+        "math"
+    ],
+    "rating": 1600
+}

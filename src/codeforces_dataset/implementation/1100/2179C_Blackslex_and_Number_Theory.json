@@ -1,0 +1,16 @@
+{
+    "contestId": 2179,
+    "index": "C",
+    "title": "C. Blackslex and Number Theory",
+    "statement": "Blackslex worked too hard and started dreaming about numbers. Solve the following task from his dreams.\nYou are given an array $$$a_1, a_2, \\ldots, a_n$$$.\nIn one operation you choose an index $$$i$$$ ($$$1 \\le i \\le n$$$) and an integer $$$x$$$ which is at least $$$k$$$ and set $$$$$$ a_i := a_i \\bmod x, $$$$$$ where $$$u \\bmod v$$$ denotes the remainder of dividing $$$u$$$ by $$$v$$$.\nYour goal is to make all elements of the array identical. Among all positive integers $$$k$$$, determine the maximum $$$k$$$ for which there exists a finite sequence of the above operations that makes all array elements equal.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe first line of each test case contains a single integer $$$n$$$ ($$$2 \\le n \\le 2 \\cdot 10^5$$$).\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le 10^9$$$, all values of $$$a$$$ are distinct).\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, print a single integer — the maximum positive integer $$$k$$$ such that it is possible to make all elements of the array identical using any number of operations with moduli $$$x$$$ restricted to $$$k \\le x$$$.",
+    "note": "",
+    "tags": [
+        "implementation",
+        "math",
+        "number theory",
+        "sortings"
+    ],
+    "rating": 1100
+}

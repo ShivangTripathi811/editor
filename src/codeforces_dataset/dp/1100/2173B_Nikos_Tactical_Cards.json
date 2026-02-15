@@ -1,0 +1,15 @@
+{
+    "contestId": 2173,
+    "index": "B",
+    "title": "B. Niko's Tactical Cards",
+    "statement": "Niko is playing a game. Her score is denoted by an integer $$$k$$$ which is $$$0$$$ initially.\nThe game has $$$n$$$ turns. On the $$$i$$$-th turn, Niko is given a red card with an integer $$$a_i$$$ on it, as well as a blue card with an integer $$$b_i$$$ on it. She must choose exactly\none\nof the cards and update her score according to her choice:\nIf she chooses the red card, her score becomes $$$k - a_i$$$, where $$$k$$$ is her score before the turn.\nIf she chooses the blue card, her score becomes $$$b_i - k$$$, where $$$k$$$ is her score before the turn.\nAfter this, the game proceeds to the next turn, or ends if it is the $$$n$$$-th turn.\nYour task is to find the maximum possible score Niko can obtain at the end of the game.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^3$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$1 \\le n \\le 10^5$$$) — the number of turns.\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$-10^9 \\le a_i \\le 10^9$$$).\nThe third line of each test case contains $$$n$$$ integers $$$b_1, b_2, \\ldots, b_n$$$ ($$$-10^9 \\le b_i \\le 10^9$$$).\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer — the maximum possible score Niko can obtain at the end of the game.",
+    "note": "Note\nIn the first test case, one optimal strategy is as follows:\nTurn\n0\n1\n2\n3\nCard Chosen\n—\nBlue\nRed\nRed\nScore\n$$$0$$$\n$$$-3 - 0 = -3$$$\n$$$-3 - (-8) = 5$$$\n$$$5 - (-1) = 6$$$\nIn the second test case, one optimal strategy is as follows:\nTurn\n0\n1\n2\n3\n4\n5\nCard Chosen\n—\nBlue\nBlue\nBlue\nBlue\nRed\nScore\n$$$0$$$\n$$$-5$$$\n$$$8$$$\n$$$-9$$$\n$$$13$$$\n$$$12$$$",
+    "tags": [
+        "dp",
+        "greedy",
+        "math"
+    ],
+    "rating": 1100
+}

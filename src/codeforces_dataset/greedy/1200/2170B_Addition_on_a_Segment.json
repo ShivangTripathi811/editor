@@ -1,0 +1,14 @@
+{
+    "contestId": 2170,
+    "index": "B",
+    "title": "B. Addition on a Segment",
+    "statement": "You start with an integer array $$$a$$$, which initially consists of $$$n$$$ zeros. You have to perform the following action\nexactly\n$$$n$$$ times:\nchoose two integers $$$l$$$ and $$$r$$$ ($$$1 \\le l \\le r \\le n$$$) and assign $$$a_{i} = a_{i} + 1$$$ for each $$$i$$$ such that $$$l \\le i \\le r$$$.\nYou are given an array $$$b$$$, consisting of $$$n$$$ integers. Your task is to choose such values $$$l$$$ and $$$r$$$ for each action that:\nafter all $$$n$$$ actions are performed, it's possible to reorder the elements in such a way that $$$a$$$ becomes equal to $$$b$$$;\nthe maximum value of $$$r - l + 1$$$ over all actions is as large as possible.\nWhat's the maximum possible value of $$$r - l + 1$$$?",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains one integer $$$n$$$ ($$$1 \\le n \\le 2 \\cdot 10^{5}$$$) — the length of the array $$$b$$$.\nThe second line of each test case contains $$$n$$$ integers $$$b_{i}$$$ ($$$0 \\le b_{i} \\le n$$$) — the elements of the array $$$b$$$.\nAdditional constraints on the input:\nthere exists at least one way to choose $$$l$$$ and $$$r$$$ for each action and reorder the elements at the end so that $$$a$$$ becomes equal to $$$b$$$;\nthe sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output one integer — the answer to the problem.",
+    "note": "Note\nConsider the first test case. If the $$$n$$$ actions were as follows:\n$$$l = 3$$$ and $$$r = 3$$$\n$$$l = 1$$$ and $$$r = 3$$$\n$$$l = 3$$$ and $$$r = 3$$$\n$$$l = 3$$$ and $$$r = 3$$$\n$$$l = 3$$$ and $$$r = 3$$$\nThe array $$$a = [1, 1, 5, 0, 0]$$$, so you can reorder the elements to make it equal to $$$[0, 5, 1, 0, 1]$$$. As can be seen in this case, the maximum value of $$$r - l + 1$$$ is $$$3$$$. It can be shown that this is the optimal answer.\nIn the second test case:\n$$$l = 1$$$ and $$$r = 3$$$\n$$$l = 2$$$ and $$$r = 3$$$\n$$$l = 3$$$ and $$$r = 3$$$\nThe answer is $$$3$$$.",
+    "tags": [
+        "greedy",
+        "math"
+    ],
+    "rating": 1200
+}

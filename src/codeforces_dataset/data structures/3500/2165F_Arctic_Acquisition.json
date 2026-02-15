@@ -1,0 +1,14 @@
+{
+    "contestId": 2165,
+    "index": "F",
+    "title": "F. Arctic Acquisition",
+    "statement": "You are given a permutation$$$^{\\text{∗}}$$$ $$$a_1,a_2,\\ldots,a_n$$$ of length $$$n$$$.\nAn interval $$$[l,r]$$$ ($$$1\\le l\\le r\\le n$$$) is\njagged\nif and only if it contains a 21435-subsequence; that is, there exist integers $$$i_1,i_2,i_3,i_4,i_5$$$ such that $$$l\\le i_1<i_2<i_3<i_4<i_5\\le r$$$, and $$$a_{i_2}<a_{i_1}<a_{i_4}<a_{i_3}<a_{i_5}$$$.\nYour task is to calculate how many of the $$$\\frac{n(n+1)}2$$$ intervals are\njagged\n.\n$$$^{\\text{∗}}$$$A permutation of length $$$n$$$ is an array consisting of $$$n$$$ distinct integers from $$$1$$$ to $$$n$$$ in arbitrary order. For example, $$$[2,3,1,5,4]$$$ is a permutation, but $$$[1,2,2]$$$ is not a permutation ($$$2$$$ appears twice in the array), and $$$[1,3,4]$$$ is also not a permutation ($$$n=3$$$ but there is $$$4$$$ in the array).",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$1\\le n\\le10^6$$$) — the length of the permutation.\nThe second line of each test case contains $$$n$$$ distinct integers $$$a_1,a_2,\\ldots,a_n$$$ ($$$1\\le a_i\\le n$$$).\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$10^6$$$.",
+    "outputSpecification": "Output\nFor each test case, output the number of\njagged\nsubarrays.",
+    "note": "Note\nIn the first test case, the only\njagged\nsubarray is $$$[1,5]$$$, containing $$$[2,1,4,3,5]$$$ as a subsequence.\nIn the third test case, the subarray $$$[1,8]$$$ is\njagged\nbecause it contains $$$[9,6,11,10,13]$$$ as a subsequence, which is a 21435-subsequence.",
+    "tags": [
+        "data structures",
+        "greedy"
+    ],
+    "rating": 3500
+}

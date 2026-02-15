@@ -1,0 +1,16 @@
+{
+    "contestId": 2184,
+    "index": "F",
+    "title": "F. Cherry Tree",
+    "statement": "You are given a rooted tree with $$$n$$$ vertices$$$^{\\text{∗}}$$$. The vertices of the tree are numbered with integers from $$$1$$$ to $$$n$$$. The root of the tree is vertex number $$$1$$$.\nIn each leaf$$$^{\\text{†}}$$$ of the tree, there grows one cherry. You want to collect all the cherries, and to do this, you perform the following action several times:\nYou choose any vertex of the tree $$$v$$$ (including the root or a leaf) and \"shake\" it. After that, cherries fall from all the leaves that are descendants$$$^{\\text{‡}}$$$ of vertex $$$v$$$ (if vertex $$$v$$$ itself is a leaf, then a cherry falls from it). If cherries have already fallen from any leaf before, the tree will break, so such a situation must be avoided.\nAccording to an ancient legend of the cherry orchard, the number of vertices you shake should be a multiple of three.\nIs it possible to collect all the cherries in this way?\n$$$^{\\text{∗}}$$$A tree with $$$n$$$ vertices is an undirected connected graph with $$$n$$$ vertices and $$$n - 1$$$ edges. A rooted tree is a tree in which one of the vertices is special and is called the root.\n$$$^{\\text{†}}$$$A leaf is a vertex that has no descendants.\n$$$^{\\text{‡}}$$$The descendants of vertex $$$v$$$ are all vertices $$$u \\neq v$$$ such that on the shortest path from the root to $$$u$$$, vertex $$$v$$$ is encountered.",
+    "inputSpecification": "Input\nEach test consists of several test cases. The first line contains a single integer $$$t$$$ $$$(1 \\le t \\le 10^4)$$$ — the number of test cases. The following lines describe the test cases.\nThe first line of each test case contains a single integer $$$n$$$ ($$$2 \\leq n \\leq 2 \\cdot 10^5$$$).\nThe next $$$n - 1$$$ lines of each test case contain two integers $$$u$$$ and $$$v$$$ ($$$1 \\leq u, v \\leq n, u \\neq v$$$) — the vertices connected by the next edge of the tree.\nIt is guaranteed that the graph in each data set is a tree.\nIt is guaranteed that the sum of $$$n$$$ across all input data sets does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each input data set, output \"\nYES\n\" on a separate line if it is possible to collect all the cherries. Otherwise, output \"\nNO\n\".\nYou can print each letter in any case (upper or lower). For example, \"\nYeS\n\", \"\nno\n\" and \"\nyES\n\" are all acceptable.",
+    "note": "Note\nIn the first test case, you can shake vertices $$$2, 3, 4$$$.\nIn the second test case, the only way to shake a number of vertices that is a multiple of three is to shake all the vertices. However, doing so would break the tree, so this is not allowed.\nIn the third test case, you can, for example, shake vertices $$$2, 7, 9$$$.",
+    "tags": [
+        "dfs and similar",
+        "dp",
+        "graphs",
+        "trees"
+    ],
+    "rating": 1900
+}

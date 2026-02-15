@@ -1,0 +1,55 @@
+Title: Friendly Numbers
+Tags: binary search, brute force, math
+Rating: Unrated
+--------------------
+A. Friendly Numbers
+time limit per test
+1 second
+memory limit per test
+256 megabytes
+input
+standard input
+output
+standard output
+For an integer $$$x$$$, we call another integer $$$y$$$
+friendly
+if the following condition holds:
+$$$y - d(y) = x$$$, where $$$d(y)$$$ is the sum of the digits of $$$y$$$.
+For a given integer $$$x$$$, determine how many
+friendly
+numbers it has.
+Input
+Each test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \le t \le 500$$$). The description of the test cases follows.
+Each test case consists of a single line containing one integer $$$x$$$ ($$$1 \le x \le 10^{9}$$$).
+Output
+For each test case, output one integer — the answer to the problem.
+Example
+Input
+3
+1
+18
+998244360
+Output
+0
+10
+10
+Note
+The number $$$1$$$ does not have any
+friendly
+numbers.
+The number $$$18$$$ has $$$10$$$
+friendly
+numbers: These are all the numbers from $$$20$$$ to $$$29$$$. For example, $$$20 - d(20) = 20 - 2 = 18$$$.
+The number $$$998\,244\,360$$$ has $$$10$$$
+friendly
+numbers:
+$$$998\,244\,400$$$
+$$$998\,244\,401$$$
+$$$998\,244\,402$$$
+$$$998\,244\,403$$$
+$$$998\,244\,404$$$
+$$$998\,244\,405$$$
+$$$998\,244\,406$$$
+$$$998\,244\,407$$$
+$$$998\,244\,408$$$
+$$$998\,244\,409$$$

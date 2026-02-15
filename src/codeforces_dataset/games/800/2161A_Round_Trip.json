@@ -1,0 +1,16 @@
+{
+    "contestId": 2161,
+    "index": "A",
+    "title": "A. Round Trip",
+    "statement": "They say that if you do 1000 rounds, there's a secret cartoon in the end (c)\nPetya and Vasya love participating in Codeforces contests. Vasya made a bet with Petya that he will take part in more rated rounds than him. Initially, Vasya's rating is $$$R_0$$$. There will be $$$n$$$ rounds conducted in total, each of one of two types:\ndiv. 1 — rated for all participants\ndiv. 2 — rated for participants with rating strictly less than $$$X$$$, and unrated for all others,\nIn an unrated round, Vasya cannot change his rating. If Vasya's rating before a rated round was $$$R$$$, then for any\nnon-negative\ninteger $$$x$$$ between $$$R-D$$$ and $$$R+D$$$ (inclusive) Vasya can adopt a strategy such that his rating becomes exactly $$$x$$$ afterwards (here $$$D$$$ is a positive integer). Note that rating may never become negative.\nHelp Vasya determine the maximum number of rated rounds he can participate in.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 1000$$$). The description of the test cases follows.\nThe first line of each test case contains four integers: $$$R_0, X, D, n$$$ ($$$0 \\leq R_0 \\leq 10^9$$$, $$$1 \\leq X \\leq 10^9$$$, $$$1 \\leq D, n \\leq 1000$$$) — Vasya's initial rating, the rating threshold between divisions, the maximum rating delta, and the number of rounds.\nThe second line of each test case contains a string of size $$$n$$$. The string will only contain the characters \"\n1\n\" and \"\n2\n\", representing div. 1 and div. 2 rounds respectively.\nThe sum of $$$n$$$ across all test cases does not exceed $$$3 \\cdot 10^4$$$.",
+    "outputSpecification": "Output\nFor each test case, print a single integer — the maximum number of rated rounds Vasya can participate in.",
+    "note": "Note\nIn the first example, since $$$R_0 \\geq X$$$, each div. 2 round is\nunrated\nfor Vasya, so his rating never changes. Therefore, he cannot make any round rated for himself, and the answer is $$$0$$$.\nIn the second example, one of the optimal sequences of ratings after each round is: $$$2098 \\rightarrow 2103 \\rightarrow 2101 \\rightarrow 2099 \\rightarrow 2097 \\rightarrow 2097 \\rightarrow 2092$$$.",
+    "tags": [
+        "games",
+        "greedy",
+        "implementation",
+        "math"
+    ],
+    "rating": 800
+}

@@ -1,0 +1,13 @@
+{
+    "contestId": 2181,
+    "index": "F",
+    "title": "F. Fragmented Nim",
+    "statement": "The classical game of Nim goes as follows. There are $$$n$$$ piles of stones, and pile $$$i$$$ initially consists of $$$a_i$$$ stones. Alice and Bob take turns; Alice goes first. On their turn, a player chooses any non-empty pile and removes any positive number of stones from it. The player who takes the last stone wins.\nAfter playing a lot of Nim, Alice and Bob decided to vary the rules a little bit. In this variation, the player whose turn it is does not choose a pile —\ntheir opponent\ndoes it for them! However, the player still gets to decide the number of stones to remove from that pile.\nAlice still moves first. On Alice's turn Bob chooses any non-empty pile, and then Alice removes any positive number of stones from it. Similarly, on Bob's turn Alice chooses any non-empty pile, and then Bob removes any positive number of stones from it.\nFor the given configuration of stones in the piles, determine who will win if both players follow the optimal strategy.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$, denoting the number of piles ($$$1 \\le n \\le 2 \\cdot 10^5$$$).\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$, denoting the number of stones in the piles ($$$1 \\le a_i \\le 10^9$$$).\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, print the name of the winner of the game if both players follow the optimal strategy: \"\nAlice\n\" or \"\nBob\n\".",
+    "note": "Note\nIn the first test case, here's one possible way the game could proceed:\nBob chooses the first pile. Alice removes $$$1$$$ stone from it.\nAlice chooses the third pile. Bob removes $$$2$$$ stones from it.\nBob chooses the third pile. Alice removes $$$1$$$ stone from it.\nAlice chooses the second pile. Bob removes $$$2$$$ stones from it and wins.\nIn the second test case, Bob chooses the only pile, and Alice wins by removing the only stone from it.",
+    "tags": [
+        "games"
+    ],
+    "rating": 1600
+}

@@ -1,0 +1,15 @@
+{
+    "contestId": 2159,
+    "index": "A",
+    "title": "A. MAD Interactive Problem",
+    "statement": "This is an interactive problem.\nThere is a secret sequence $$$a_1, a_2, \\ldots, a_{2n-1},a_{2n}$$$, which contains each integer from $$$1$$$ to $$$n$$$\nexactly twice\n.\nYour task is to guess the sequence by using queries of the following type:\n\"? $$$k\\;j_1\\;j_2\\;\\ldots\\;j_k$$$\" — select the integer $$$k$$$ ($$$1 \\le k \\le 2n$$$) and $$$k$$$\ndistinct\nindices $$$j_1, j_2, \\ldots, j_k$$$ ($$$1 \\le j_1 , j_2 , \\ldots , j_k \\le 2n$$$). In response to the query, the jury will return $$$\\text{MAD}([a_{j_1}, a_{j_2}, \\ldots, a_{j_k}])$$$.\nWe define the $$$\\operatorname{MAD}$$$ (Maximum Appearing Duplicate) of an integer sequence as the largest integer that appears at least twice. Specifically, if there is no number that appears at least twice, the $$$\\operatorname{MAD}$$$ value is $$$0$$$. Some examples are as follows:\n$$$\\operatorname{MAD}([1, 2, 1]) = 1$$$;\n$$$\\operatorname{MAD}([2, 2, 3, 3]) = 3$$$;\n$$$\\operatorname{MAD}([1, 2, 3, 4]) = 0$$$.\nPlease identify the secret sequence\nusing at most $$$3n$$$ queries\n.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 3000$$$). The description of the test cases follows.\nThe first line of each test case contains one integer $$$n$$$ ($$$2 \\le n \\le 300$$$).\nIt is guaranteed that the sum of $$$n^2$$$ over all test cases does not exceed $$$10^5$$$.\nAfter you read this line of input, the interaction begins with your first query.",
+    "outputSpecification": "",
+    "note": "Note\nIn the first test case, the hidden sequence is $$$a=[2,2,1,1]$$$.\nFor the query \"\n? 2 2 1\n\", the jury returns $$$2$$$ because $$$\\operatorname{MAD}([a_2, a_1]) = \\operatorname{MAD}([2, 2]) = 2$$$.\nFor the query \"\n? 2 1 3\n\", the jury returns $$$0$$$ because $$$\\operatorname{MAD}([a_1, a_3]) = \\operatorname{MAD}([2, 1]) = 0$$$.\nFor the query \"\n? 3 1 3 4\n\", the jury returns $$$1$$$ because $$$\\operatorname{MAD}([a_1, a_3, a_4]) = \\operatorname{MAD}([2 ,1, 1]) = 1$$$.\nNote that the example interaction is only for understanding statements and does\nnot\nguarantee finding a unique sequence $$$a$$$.",
+    "tags": [
+        "constructive algorithms",
+        "implementation",
+        "interactive"
+    ],
+    "rating": 1700
+}

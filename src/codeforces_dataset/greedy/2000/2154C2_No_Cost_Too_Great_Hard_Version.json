@@ -1,0 +1,15 @@
+{
+    "contestId": 2154,
+    "index": "C2",
+    "title": "C2. No Cost Too Great (Hard Version)",
+    "statement": "This is the hard version of the problem. The difference between the versions is that in this version, $$$1 \\le b_i \\le 10^9$$$ for all $$$i$$$ ($$$1 \\le i \\le n$$$). You can hack only if you solved all versions of this problem.\nYou find yourself with two arrays of positive integers $$$a$$$ and $$$b$$$, both of length $$$n$$$. You will perform the following operation any number of times (possibly none):\nselect an integer $$$i$$$ ($$$1 \\le i \\le n$$$) and increase $$$a_i$$$ by $$$1$$$. This has a cost of $$$b_i$$$.\nDetermine the minimum total cost to make it so that there exists two integers $$$i, j$$$ where $$$1 \\le i < j \\le n$$$ and $$$\\gcd(a_i, a_j)$$$$$$^{\\text{∗}}$$$$$$ > 1$$$.\n$$$^{\\text{∗}}$$$$$$\\gcd(x, y)$$$ denotes the\ngreatest common divisor (GCD)\nof integers $$$x$$$ and $$$y$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each testcase contains an integer $$$n$$$ ($$$2 \\le n \\le 2 \\cdot 10^5$$$) — the length of the array $$$a$$$.\nThe second line of each testcase contains $$$n$$$ integers $$$a_1,a_2,\\ldots,a_n$$$ ($$$1 \\le a_i \\le 2 \\cdot 10^5$$$).\nThe third line of each testcase contains $$$n$$$ integers $$$b_1,b_2,\\ldots,b_n$$$ ($$$\\color{red}{1 \\le b_i \\le 10^9}$$$).\nThe sum of $$$n$$$ across all testcases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each testcase, output the minimum cost.",
+    "note": "Note\nIn the first testcase we can do the following: $$$[\\color{red}1, 1] \\xrightarrow{x = 1} [2, \\color{red}1] \\xrightarrow{x = 2} [2, 2]$$$, this has cost $$$1 + 2 = 3$$$. Now $$$\\gcd(a_1, a_2) = \\gcd(2, 2) = 2$$$ and so $$$\\gcd(a_1, a_2) > 1$$$. It can be proven that this is the minimum cost required.\nIn the second testcase it is already true that $$$\\gcd(a_1, a_2) = 4$$$ and so $$$\\gcd(a_1, a_2) > 1$$$. So no operations are required.",
+    "tags": [
+        "greedy",
+        "math",
+        "number theory"
+    ],
+    "rating": 2000
+}

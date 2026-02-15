@@ -1,0 +1,16 @@
+{
+    "contestId": 2167,
+    "index": "F",
+    "title": "F. Tree, TREE!!!",
+    "statement": "Roots change, but the tree stands strong — so should your logic.\nBehruzbek received\na tree\n$$$^{\\text{∗}}$$$ with $$$n$$$ nodes. For a chosen\nroot\n$$$^{\\text{†}}$$$ $$$r$$$, Behruzbek wants to find\ncuteness\nof the tree.\nConsider every set of $$$k$$$ distinct nodes of the tree. For each such set, compute its\nlowest common ancestor\n(\nLCA\n) in the tree when it is rooted at $$$r$$$. Let $$$S_r$$$ be the set of all distinct nodes obtained this way; then\ncuteness\nof the tree is $$$|S_r|$$$, where $$$|S|$$$ means the number of distinct elements.\nAfter discovering the\ncuteness\nof trees, Behruzbek became interested in finding the\nkawaiiness\nof the tree!\nKawaiiness\nis defined as:\n$$$$$$ \\sum_{r = 1}^{n} |S_r| = |S_1| + |S_2| + \\dots + |S_n| $$$$$$\nUnfortunately, Behruzbek is feeling sleepy now. Please help Behruzbek by finding the\nkawaiiness\nof the tree!\n$$$^{\\text{∗}}$$$A tree is a connected graph without cycles.\n$$$^{\\text{†}}$$$A rooted tree is a tree where one vertex is special and called the root.",
+    "inputSpecification": "Input\nThe first line contains the number of test cases $$$t$$$ ($$$1 \\leq t \\leq 10^{4}$$$).\nThe first line of each test case contains two integers $$$n$$$ and $$$k$$$ ($$$2 \\leq k \\leq n \\leq 2\\cdot 10^{5}$$$) — the number of vertices in the tree and the number of distinct integers to be chosen.\nThe following $$$n-1$$$ lines of each test case describe the tree. Each of the lines contains two integers $$$u$$$ and $$$v$$$ ($$$1 \\leq u,v \\leq n$$$, $$$u \\ne v$$$) that indicate an edge between vertex $$$u$$$ and $$$v$$$. It is guaranteed that these edges form a tree.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2\\cdot 10^{5}$$$.",
+    "outputSpecification": "Output\nFor each test case, output one integer — the value of $$$\\sum\\limits_{r=1}^n |S_r|$$$.",
+    "note": "Note\nLet $$$f(i) = |S_i|$$$\nFor the third example:\nRoot is $$$1$$$, only $$$1$$$ and $$$2$$$ nodes can be obtained. For example, we can choose: $$$LCA(4, 5, 6) = 1$$$ and $$$LCA(2, 4, 5) = 2$$$. As a result, $$$f(1) = 2$$$.\nRoot is $$$2$$$, only $$$1$$$ and $$$2$$$ nodes can be obtained. For example, we can choose: $$$LCA(1, 3, 6) = 1$$$ and $$$LCA(1, 4, 5) = 2$$$. As a result, $$$f(2) = 2$$$.\nRoot is $$$3$$$, $$$f(3) = 3$$$. For example, node $$$3$$$ can be obtained by choosing: $$$LCA(2, 4, 6) = 3$$$.\nRoot is $$$4$$$, $$$f(4) = 3$$$. For example, node $$$2$$$ can be obtained by choosing: $$$LCA(1, 3, 5) = 2$$$.\nRoot is $$$5$$$, $$$f(5) = 3$$$. For example, node $$$2$$$ can be obtained by choosing: $$$LCA(3, 4, 6) = 2$$$.\nRoot is $$$6$$$, $$$f(6) = 4$$$. For example, node $$$3$$$ can be obtained by choosing: $$$LCA(3, 4, 5) = 2$$$.\nOverall, $$$2 + 2 + 3 + 3 + 3 + 4 = 17$$$.",
+    "tags": [
+        "dfs and similar",
+        "dp",
+        "math",
+        "trees"
+    ],
+    "rating": 1600
+}

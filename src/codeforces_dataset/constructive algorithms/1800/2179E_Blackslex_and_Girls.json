@@ -1,0 +1,15 @@
+{
+    "contestId": 2179,
+    "index": "E",
+    "title": "E. Blackslex and Girls",
+    "statement": "After failing to pick up a girl using De Bruijn sequence of fixed-length bitstrings, Blackslex has turned his attention towards politics.\nDue to his high charisma, he is now in charge of drawing borders for the $$$n$$$ voting districts of his country. In Blackslex's country, there are $$$x$$$ voters for party A and $$$y$$$ voters for party B. Using his amazing drawing skills, he can allocate voters from any party into any district of his choice.\nHis history with bitstrings has led him to wonder if he can allocate voters such that the winner of each district follows a certain bitstring pattern. To avoid suspicion, he must also allocate at least $$$p_i$$$ voters into each district. Tell him if it is possible!\nFormally, you are given a binary string $$$s$$$ of length $$$n$$$, an array $$$p$$$ of length $$$n$$$, and two integers $$$x$$$ and $$$y$$$.\nYou want to determine whether there exist two arrays of nonnegative integers $$$a$$$ and $$$b$$$ of length $$$n$$$ that satisfy the following conditions:\n$$$a_1 + a_2 + \\dots + a_n = x$$$\n$$$b_1 + b_2 + \\dots + b_n = y$$$\nFor every $$$1 \\leq i \\leq n$$$, $$$a_i + b_i \\geq p_i$$$\nFor every $$$1 \\leq i \\leq n$$$:\nIf $$$s_i = 0$$$ then $$$a_i  \\gt  b_i$$$\nIf $$$s_i = 1$$$ then $$$b_i  \\gt  a_i$$$",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\leq t \\leq 10^4$$$) — the number of test cases.\nThe first line of each test case contains three integers $$$n$$$, $$$x$$$, and $$$y$$$ ($$$1 \\leq n \\leq 2 \\cdot 10^5$$$, $$$1 \\leq x, y \\leq 10^9$$$).\nThe second line contains a binary string $$$s$$$ of length $$$n$$$.\nThe third line contains $$$n$$$ integers $$$p_1, p_2, \\dots, p_n$$$ ($$$1 \\leq p_i \\leq 10^9$$$).\nThe sum of $$$n$$$ across all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, print (case-insensitive)\nYES\nif there exist arrays $$$a, b$$$ satisfying all conditions, or\nNO\notherwise.",
+    "note": "Note\nIn the first test case, one of the possible distributions of voters is: $$$a = [2, 0, 3]$$$ and $$$b = [0, 4, 1]$$$.\nIn the third test case, one of the possible distributions of voters is: $$$a = [2, 2]$$$ and $$$b = [1, 1]$$$.\nFor the other test cases, it can be shown that there are no distributions of voters that satisfy the conditions.",
+    "tags": [
+        "constructive algorithms",
+        "geometry",
+        "math"
+    ],
+    "rating": 1800
+}

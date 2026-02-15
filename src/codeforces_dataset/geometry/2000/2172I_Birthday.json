@@ -1,0 +1,13 @@
+{
+    "contestId": 2172,
+    "index": "I",
+    "title": "I. Birthday",
+    "statement": "Anon and Soyo are good friends. To celebrate Anon's birthday, Soyo decides to buy a cake. After careful selection, she chooses a round strawberry cake to share with Anon at home.\nThe cake is modeled as a circle centered at the origin $$$(0, 0)$$$ with radius $$$r$$$. There are $$$n$$$ strawberries on the cake, where the $$$i$$$-th strawberry is located at $$$(x_i, y_i)$$$. The distance of any strawberry from the origin is at most $$$0.9r$$$.\nSoyo wants to cut the cake into two pieces with a single straight line. Since Anon loves strawberries, Soyo wants Anon's piece contains all of them. If a strawberry lies on the cutting line, Soyo can assign it to either piece.\nSoyo wants to make the smaller piece as large as possible. Please help Soyo determine the maximum possible area of the smaller piece, given that all strawberries lie on the same piece.",
+    "inputSpecification": "Input\nThe first line contains two integers $$$n$$$ and $$$r$$$, representing the number of strawberries on the cake and the radius of the cake, respectively.\nThe $$$i$$$-th of the following $$$n$$$ lines contains two integers $$$x_i$$$ and $$$y_i$$$, representing the coordinates of the $$$i$$$-th strawberry.\n$$$1 \\leq n \\leq 2 \\times 10^5$$$\n$$$1 \\leq r \\leq 10^6$$$\n$$$\\sqrt{{x_i}^2 + {y_i}^2} \\leq 0.9r$$$\nAll strawberries are at distinct points.",
+    "outputSpecification": "Output\nPrint a single real number in one line, representing the maximum possible area of the smaller piece, given that all strawberries lie on the same piece.\nYour answer will be accepted if the absolute or relative error does not exceed $$$10^{-6}$$$. Formally, let your answer be $$$a$$$, and the jury's answer be $$$b$$$. Your answer is considered correct if $$${\\frac{\\left\\vert a - b \\right\\vert}{\\max(1, \\left\\vert b \\right\\vert)} \\leq 10^{-6}}$$$.",
+    "note": "",
+    "tags": [
+        "geometry"
+    ],
+    "rating": 2000
+}

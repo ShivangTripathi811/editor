@@ -1,0 +1,16 @@
+{
+    "contestId": 2174,
+    "index": "E1",
+    "title": "E1. Game of Scientists (Version 1)",
+    "statement": "The two versions have different constraints on $$$k$$$, $$$c$$$. Solving one of the two versions does not necessarily solve the other. You may want to read both versions. Hacks are disabled in both versions.\nThis is an interactive problem.\nDuring the time of the Ottoman Empire, many scientists were at work. You decided to study their daily life and stumbled upon an interesting game that was popular at that time. One scientist would think of an integer $$$x$$$, such that $$$1 \\leq x \\leq c$$$. Another scientist would try to guess it. He could specify the base of the numeral system $$$2 \\leq b \\leq c$$$ and would receive as a response the sum of the digits of the number $$$x$$$ in base $$$b$$$, if $$$x \\geq b$$$, or $$$-1$$$ if $$$x < b$$$.\nYou wrote a program that can think of a number $$$x$$$ and respond to the question. Now you want to play with it and learn to guess using $$$\\leq k$$$ queries.",
+    "inputSpecification": "Input\nThe first line contains three integers $$$t$$$, $$$k$$$, $$$c$$$ ($$$1 \\leq t \\leq 10^4$$$, $$$\\mathbf{k = 4}$$$, $$$\\mathbf{c = 4 \\cdot 10^{18}}$$$). You must guess the number from $$$1$$$ to $$$c$$$ $$$t$$$ times, using $$$\\leq k$$$ queries. All $$$t$$$ games will be played consecutively and are independent.",
+    "outputSpecification": "",
+    "note": "Note\nIn the first game, the hidden number is $$$1000000_{10} = 100_{1000} = 11110100001001000000_2$$$. The sums of digits are $$$1$$$, $$$1$$$, and $$$7$$$ in these bases.\nIn the second game, the hidden number is $$$1$$$. The query with $$$b = 2$$$ returns $$$-1$$$.\nIn the third game, the hidden number is $$$42_{10} = 132_{5}$$$.",
+    "tags": [
+        "chinese remainder theorem",
+        "constructive algorithms",
+        "interactive",
+        "math"
+    ],
+    "rating": 3100
+}

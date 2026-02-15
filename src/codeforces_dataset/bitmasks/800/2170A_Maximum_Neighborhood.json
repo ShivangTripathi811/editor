@@ -1,0 +1,17 @@
+{
+    "contestId": 2170,
+    "index": "A",
+    "title": "A. Maximum Neighborhood",
+    "statement": "Consider an $$$n \\times n$$$ grid filled with numbers as follows:\nthe first row contains integers from $$$1$$$ to $$$n$$$ from left to right;\nthe second row contains integers from $$$(n+1)$$$ to $$$2n$$$ from left to right;\nthis pattern continues until the $$$n$$$-th row, which contains integers from $$$(n^2-n+1)$$$ to $$$n^2$$$ from left to right.\nLet's define the cost of a cell as its value plus the sum of its neighboring cells' values. Two cells are considered neighboring if they share a side.\nYour task is to calculate the maximum cost among all cells in the grid.\nThe grid for $$$n = 4$$$ and the optimal answer for it. The yellow cell has the maximum possible cost; the green cells are its neighbors. The cost of the cell is $$$15+11+14+16=56$$$.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 100$$$) — the number of test cases.\nThe only line of each test case contains a single integer $$$n$$$ ($$$1 \\le n \\le 100$$$).",
+    "outputSpecification": "Output\nFor each test case, print a single integer — the maximum cost among all cells in the grid.",
+    "note": "Note\nIn the first example, there is only $$$1$$$ cell with the cost $$$1$$$.\nIn the second example, the cell with value $$$4$$$ has the maximum cost: $$$4 + 2 + 3 = 9$$$.\nIn the third example, the cell with value $$$8$$$ has the maximum cost: $$$8 + 5 + 7 + 9 = 29$$$.\nIn the fourth example, the cell with value $$$15$$$ has the maximum cost: $$$15 + 11 + 14 + 16 = 56$$$.\nIn the fifth example, the cell with value $$$19$$$ has the maximum cost: $$$19 + 14 + 18 + 20 + 24 = 95$$$.",
+    "tags": [
+        "bitmasks",
+        "brute force",
+        "greedy",
+        "implementation",
+        "math"
+    ],
+    "rating": 800
+}

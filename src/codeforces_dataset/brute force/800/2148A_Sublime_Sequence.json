@@ -1,0 +1,15 @@
+{
+    "contestId": 2148,
+    "index": "A",
+    "title": "A. Sublime Sequence",
+    "statement": "Farmer John has an integer $$$x$$$. He creates a sequence of length $$$n$$$ by alternating integers $$$x$$$ and $$$-x$$$, starting with $$$x$$$.\nFor example, if $$$n = 5$$$, the sequence looks like: $$$x, -x, x, -x, x$$$.\nHe asks you to find the sum of all integers in the sequence.",
+    "inputSpecification": "Input\nThe first line contains an integer $$$t$$$ ($$$1 \\leq t \\leq 100$$$)  — the number of test cases.\nThe only line of input for each test case is two integers $$$x$$$ and $$$n$$$ ($$$1 \\leq x, n \\leq 10$$$).",
+    "outputSpecification": "Output\nFor each test case, output the sum of all integers in the sequence.",
+    "note": "",
+    "tags": [
+        "brute force",
+        "hashing",
+        "math"
+    ],
+    "rating": 800
+}

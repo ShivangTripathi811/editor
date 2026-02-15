@@ -1,0 +1,16 @@
+{
+    "contestId": 2183,
+    "index": "H",
+    "title": "H. Minimise Cost",
+    "statement": "For any sequence $$$b$$$ of length $$$m$$$, we define its cost function $$$f(b)$$$ as: $$$$$$ f(b) = m \\cdot \\sum_{i=1}^m b_i.$$$$$$\nYou are given a sequence $$$a$$$ of length $$$n$$$ and an integer $$$k$$$.\nYour task is to partition the sequence $$$a$$$ into\nexactly\n$$$k$$$\nnon-empty subsequences\n$$$^{\\text{∗}}$$$, denoted as $$$s_1, s_2, \\ldots, s_k$$$. Every element of the original sequence $$$a$$$ must belong to exactly one of these subsequences.\nFind the minimum possible value of the total cost: $$$$$$ \\sum_{i=1}^k f(s_i).$$$$$$\n$$$^{\\text{∗}}$$$A sequence $$$c$$$ is a subsequence of a sequence $$$d$$$ if $$$c$$$ can be obtained from $$$d$$$ by the deletion of several (possibly, zero or all) element from arbitrary positions.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line contains two integers $$$n$$$ and $$$k$$$ ($$$1\\le k\\le n \\le 2\\cdot 10^5$$$) — the length of the sequence and the number of subsequences required.\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$\\mathbf{-10^9} \\le a_i \\le \\mathbf{10^9}$$$) — the elements of the sequence $$$a$$$.\nIt is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$2\\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer – the minimum sum of cost over all subsequences.",
+    "note": "Note\nIn the first test case, it is optimal to split into $$$[1,-2]$$$ and $$$[3]$$$. The total score is $$$2(1-2)+1(3)=1$$$.\nIn the second test case, the only possible way to partition is with $$$1$$$ subsequence $$$[1,3,-2]$$$. The score is $$$3(1+3-2)=6$$$.",
+    "tags": [
+        "binary search",
+        "dp",
+        "greedy",
+        "sortings"
+    ],
+    "rating": 3500
+}

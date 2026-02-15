@@ -1,0 +1,15 @@
+{
+    "contestId": 2170,
+    "index": "D",
+    "title": "D. Almost Roman",
+    "statement": "Let's define a value of a string, consisting of letters \"\nXVI\n\", as follows:\nthe value of '\nX\n' is $$$10$$$;\nthe value of '\nV\n' is $$$5$$$;\nthe value of '\nI\n' is $$$1$$$ or $$$-1$$$: $$$-1$$$ if the next position contains a letter '\nX\n' or '\nV\n'; $$$1$$$ otherwise;\nthe value of the entire string is the sum of the values of all letters in it.\nYou are given a string of characters \"\nXVI?\n\" and asked $$$q$$$ queries about it.\nIn the $$$i$$$-th query, three integers are provided:\n$$$c_X~c_V~c_I$$$ — the number of available letters '\nX\n', '\nV\n', and '\nI\n', respectively.\nWhat is the minimum value of the string that can be obtained if all question marks are replaced with the letters '\nX\n', '\nV\n', '\nI\n' so that the number of used letters does not exceed the number of available letters of each type?",
+    "inputSpecification": "Input\nThe first line contains one integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe first line of each test case contains two integers $$$n$$$ and $$$q$$$ ($$$1 \\le n, q \\le 3 \\cdot 10^5$$$) — the length of the string and the number of queries, respectively.\nThe second line contains a string consisting of $$$n$$$ characters '\nX\n', '\nV\n', '\nI\n' and/or '\n?\n'.\nThe $$$i$$$-th of the following $$$q$$$ lines contains three integers $$$c_X, c_V$$$, and $$$c_I$$$ ($$$0 \\le c_X, c_V, c_I \\le n$$$) — the number of available letters '\nX\n', '\nV\n' and '\nI\n' in the $$$i$$$-th query.\nAdditional constraints on the input:\nthe sum of $$$n$$$ over all test cases does not exceed $$$3 \\cdot 10^5$$$;\nthe sum of $$$q$$$ over all test cases does not exceed $$$3 \\cdot 10^5$$$;\n$$$c_X + c_V + c_I$$$ is greater than or equal to the number of '\n?\n' characters in the given string.",
+    "outputSpecification": "Output\nFor each query, print a single integer — the minimum value of the string that can be obtained by replacing all question marks with the available letters '\nX\n', '\nV\n', and/or '\nI\n'.",
+    "note": "",
+    "tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation"
+    ],
+    "rating": 2200
+}

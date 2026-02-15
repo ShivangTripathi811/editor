@@ -1,0 +1,16 @@
+{
+    "contestId": 2184,
+    "index": "E",
+    "title": "E. Exquisite Array",
+    "statement": "We call an array of numbers $$$k$$$-exquisite if it has at least two elements and any two adjacent numbers differ by at least $$$k$$$.\nYou are given a permutation$$$^{\\text{∗}}$$$ $$$p$$$ of length $$$n$$$. For each $$$k$$$ from $$$1$$$ to $$$n - 1$$$, find the number of $$$k$$$-exquisite subarrays$$$^{\\text{†}}$$$.\n$$$^{\\text{∗}}$$$A permutation of length $$$n$$$ is an array that contains each integer from $$$1$$$ to $$$n$$$ exactly once, in any order.\n$$$^{\\text{†}}$$$A subarray of an array is a sequence of one or more consecutive elements of the array.",
+    "inputSpecification": "Input\nEach test consists of several test cases. The first line contains a single integer $$$t$$$ $$$(1 \\le t \\le 25000)$$$ — the number of test cases. The descriptions of the test cases follow.\nIn the first line of each test case, an integer $$$n$$$ is given — the length of the permutation $$$(2 \\le n \\le 10^5)$$$.\nIn the second line of each test case, $$$n$$$ integers $$$p_i$$$ are given — the elements of the permutation $$$(1 \\le p_i \\le n)$$$. It is guaranteed that $$$p_i$$$ are distinct.\nIt is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output the number of $$$k$$$-exquisite subarrays for all $$$k$$$ from $$$1$$$ to $$$n - 1$$$.",
+    "note": "",
+    "tags": [
+        "combinatorics",
+        "data structures",
+        "dsu",
+        "sortings"
+    ],
+    "rating": 1800
+}

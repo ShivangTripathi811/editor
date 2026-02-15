@@ -1,0 +1,79 @@
+{
+  "name": "code-editor",
+  "version": "1.0.0",
+  "description": "A VS Code-like code editor built with Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "concurrently --kill-others \"vite --config vite.config.js\" \"wait-on http://localhost:5173 && electron . --no-sandbox\"",
+    "build": "vite build --config vite.config.js",
+    "build:linux": "vite build --config vite.config.js && electron-builder --linux AppImage",
+    "electron": "electron . --no-sandbox",
+    "dev": "concurrently --kill-others \"vite --config vite.config.js\" \"wait-on http://localhost:5173 && electron . --no-sandbox\""
+  },
+  "build": {
+  "appId": "com.geekscode.editor",
+  "productName": "GeeksCode",
+  "directories": {
+    "output": "dist_electron"
+  },
+  "files": [
+    "dist/**/*",
+    "main.js",
+    "preload.js",
+    "package.json",
+    "styles.css" 
+  ],
+  "extraResources": [
+    {
+      "from": "src",
+      "to": "src",
+      "filter": ["**/*"]
+    }
+  ],
+  "linux": {
+    "target": "AppImage",
+    "category": "Development"
+  },
+  "win": {
+    "target": "nsis",
+    "icon": "build/icon.ico"
+  },
+  "mac": {
+    "target": "dmg",
+    "category": "public.app-category.developer-tools"
+  },
+  "asar": true
+},
+  "dependencies": {
+    "@monaco-editor/react": "^4.6.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@vscode/codicons": "^0.0.44",
+    "axios": "^1.13.5",
+    "lucide-react": "^0.564.0",
+    "monaco-editor": "^0.44.0",
+    "node-llama-cpp": "^3.15.1",
+    "node-pty": "^1.0.0",
+    "pdf-parse": "1.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^16.1.0",
+    "remark-gfm": "^4.0.1",
+    "vectra": "^0.12.3",
+    "vite": "^6.1.0",
+    "xterm": "^5.3.0",
+    "xterm-addon-fit": "^0.8.0"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.0.3",
+    "autoprefixer": "^10.4.24",
+    "concurrently": "^9.2.1",
+    "electron-builder": "^26.7.0",
+    "electron": "^40.4.1",
+    "node-gyp": "^10.0.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.1",
+    "wait-on": "^8.0.5"
+  }
+
+}

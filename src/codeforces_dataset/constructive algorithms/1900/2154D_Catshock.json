@@ -1,0 +1,17 @@
+{
+    "contestId": 2154,
+    "index": "D",
+    "title": "D. Catshock",
+    "statement": "A cat lives on a tree with $$$n$$$ nodes. The cat starts on node $$$1$$$, and you live on node $$$n$$$. You are going to leave the cat a note written in the parkour language to help it reach you.\nThe parkour language has two types of instructions:\n$$$1$$$ — This means that the cat should move to any adjacent node to it, if there are multiple options, it will pick one of them arbitrarily. If there are no adjacent nodes to it, then it will not move.\n$$$2\\,u$$$ — This means to destroy node $$$u$$$ and all adjacent edges to it. If the cat is currently on node $$$u$$$, it will die, so this should be avoided. If node $$$u$$$ was already destroyed, then nothing will happen.\nAdditionally, there cannot be two consecutive instances of the second instruction.\nUnfortunately, the parkour language is ambiguous because the cat may have multiple options for each instance of the first instruction. So you should construct a sequence of instructions of length at most $$$3n$$$ so that if the cat follows them, it will end at node $$$n$$$, no matter what choices it makes. It can be proven that such a sequence exists for any tree.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each testcase contains an integer $$$n$$$ ($$$2 \\le n \\le 2 \\cdot 10^5$$$) — the size of the tree.\nThen $$$n - 1$$$ lines follow, each of them contains two integers $$$u$$$ and $$$v$$$ ($$$1 \\le u,v \\le n, u \\ne v$$$) which describe a pair of vertices connected by an edge. It is guaranteed that the given graph is a tree and has no loops or multiple edges.\nThe sum of $$$n$$$ across all testcases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each testcase, output a single integer $$$k$$$ ($$$0 \\le k \\le 3n$$$) — the number of operations you will perform.\nThen output $$$k$$$ lines of either of the following formats:\n$$$1$$$ — make the cat move to an adjacent node if there are nodes adjacent to it.\n$$$2\\,u$$$ ($$$1 \\le u \\le n$$$) — delete node $$$u$$$ along with all adjacent edges",
+    "note": "Note\nThere are extra spaces between the output of different test cases only for\nclarity\n, and the participants are not expected to print them.\nThe path of the cat in the first testcase is shown below.\nIt can be shown that this is the only possible path, and so the cat will always end at node $$$5$$$.\nAn example of a sequence of instructions that does not work for the first testcase is: $$$\\mathtt{1}$$$, $$$\\mathtt{2}$$$ $$$\\mathtt{2}$$$. As the following may happen:\nHere the cat died at node $$$2$$$.",
+    "tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "graphs",
+        "trees",
+        "two pointers"
+    ],
+    "rating": 1900
+}

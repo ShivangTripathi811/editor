@@ -1,0 +1,13 @@
+{
+    "contestId": 2182,
+    "index": "B",
+    "title": "B. New Year Cake",
+    "statement": "Monocarp is going to bake a New Year cake.\nThe cake must consist of\nat least one\nlayer. The size of the top layer of the cake must be $$$1$$$; the size of the layer below it must be $$$2$$$; the layer below that must be $$$4$$$, and so on (each layer, except for the top one, is twice the size of the layer above it).\nAdditionally, each layer must be covered with either white or dark chocolate. To cover a layer of size $$$k$$$, Monocarp will need $$$k$$$ kilograms of chocolate. Each layer must be covered with exactly one type of chocolate, and\nthese types must alternate\n(if some layer is covered with dark chocolate, both the layer directly below it and the layer directly above it must be covered with white chocolate, and vice versa).\nMonocarp has $$$a$$$ kilograms of white chocolate and $$$b$$$ kilograms of dark chocolate. He wants to calculate the maximum number of layers that the cake can consist of, ensuring that he has enough chocolate of both types.",
+    "inputSpecification": "Input\nThe first line contains one integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nEach test case consists of one line containing two integers $$$a$$$ and $$$b$$$ ($$$1 \\le a, b \\le 10^6$$$).",
+    "outputSpecification": "Output\nFor each test case, output one integer — the maximum possible number of layers in the cake.",
+    "note": "Note\nIn the first example, Monocarp can bake a cake with one layer of size $$$1$$$ and cover it with any type of chocolate.\nIn the second example, Monocarp can bake a cake with two layers: the top layer of size $$$1$$$ with white chocolate, and below it a layer of size $$$2$$$ with dark chocolate.\nIn the third example, Monocarp can bake a cake with two layers: the top layer of size $$$1$$$ with dark chocolate, and below it a layer of size $$$2$$$ with white chocolate.\nIn the fourth example, Monocarp can bake a cake with two layers: the top layer of size $$$1$$$ with dark chocolate, and below it a layer of size $$$2$$$ with white chocolate. Note that a cake with three layers, where the top layer of size $$$1$$$ and the layer below it of size $$$2$$$ are both dark chocolate, and the bottom layer of size $$$4$$$ is white chocolate, is not valid, as the types of layers must alternate.",
+    "tags": [
+        "brute force"
+    ],
+    "rating": 800
+}

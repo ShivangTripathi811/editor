@@ -1,0 +1,16 @@
+{
+    "contestId": 2181,
+    "index": "J",
+    "title": "J. Jinx or Jackpot",
+    "statement": "Jack is in his favourite casino and has $$$1000$$$ dollars. The casino has literally nothing but a single slot machine. Jack knows the history of this casino. Once upon a time, the future owner of the casino was walking and suddenly saw an array of $$$n$$$ integer\nchoices\n$$$p_{1}, \\dots, p_{n}$$$ each from $$$0$$$ to $$$100$$$. He picked an index $$$i$$$ ($$$1 \\leq i \\leq n$$$) uniformly at random and thought that it was a good idea to create a casino in which there is only one slot machine with jackpot probability of $$$\\frac{p_i}{100}$$$. And he created it.\nJack knows the array of choices $$$p_{1}, \\dots, p_{n}$$$ that suddenly appeared to the owner during the walk, but he does not know which $$$i$$$ the owner picked. However, the chosen index $$$i$$$ is fixed forever; the slot machine always uses the same $$$p_i$$$ as explained below.\nOn the slot machine, Jack can bet $$$x$$$ dollars, where $$$x$$$ is a\nnon-negative\ninteger, and pull the lever. Then:\nWith probability $$$\\frac{p_i}{100}$$$ it will be a jackpot, and the slot machine returns $$$2x$$$ dollars to him, so he gains $$$x$$$ dollars.\nWith probability $$$1 - \\frac{p_i}{100}$$$ it will be a jinx, and the slot machine returns nothing to him, so he loses $$$x$$$ dollars.\nEven if Jack bets $$$0$$$ dollars, he will understand whether it was a jinx or a jackpot.\nAlso, the slot machine is not very durable, so Jack can play at most $$$k$$$ rounds on it.\nFind the maximum expected\nprofit\nJack can achieve by an optimal strategy. Here a profit is defined as the final amount of money Jack has minus his initial $$$1000$$$ dollars.\nOf course, Jack can't make a bet that is more than his current balance.",
+    "inputSpecification": "Input\nThe first line contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\leq n \\leq 100\\,000$$$; $$$1 \\leq k \\leq 30$$$) — the number of choices and the limit on the number of rounds. The second line contains $$$n$$$ integers $$$p_{1}, \\dots, p_{n}$$$ ($$$0 \\le p_i \\le 100$$$) — the choices.",
+    "outputSpecification": "Output\nOutput a single real number — the expected profit Jack can achieve by an optimal strategy. Your answer will be considered correct if its absolute or relative error is at most $$$10^{-4}$$$.",
+    "note": "",
+    "tags": [
+        "brute force",
+        "dp",
+        "math",
+        "probabilities"
+    ],
+    "rating": 2300
+}

@@ -1,0 +1,14 @@
+{
+    "contestId": 2167,
+    "index": "B",
+    "title": "B. Your Name",
+    "statement": "khba is writing his girlfriend's name. He has $$$n$$$ cubes, each with one lowercase Latin letter written on it. They are arranged in a row, forming a string $$$s$$$. His girlfriend's name is also a string $$$t$$$, consisting of $$$n$$$ lowercase Latin letters.\nTo prove his love, he must check whether it is possible to rearrange the letters of string $$$s$$$ so that it becomes her name $$$t$$$.",
+    "inputSpecification": "Input\nThe first line contains an integer $$$q$$$ ($$$1 \\le q \\le 1000$$$) — the number of test cases.\nThe first line of each test case contains an integer $$$n$$$ ($$$1 \\le n \\le 20$$$).\nThe second line of each test case contains two distinct strings $$$s$$$ and $$$t$$$, each consisting of $$$n$$$ lowercase Latin letters.",
+    "outputSpecification": "Output\nFor each test case, output \"\nYES\n\" if the letters of $$$s$$$ can be arranged to form $$$t$$$; otherwise, output \"\nNO\n\".\nYou can output the answer in any case (upper or lower). For example, the strings \"\nyEs\n\", \"\nyes\n\", \"\nYes\n\" and \"\nYES\n\" will be recognized as positive responses.",
+    "note": "Note\nIn the first example, the initial string is \"\nhumitsa\n\", and the following operations can be performed:\nswap the first and third characters, resulting in \"\nmuhitsa\n\"\nswap the second and fourth characters, resulting in \"\nmihutsa\n\"\nswap the third and fifth characters, resulting in \"\nmithusa\n\"\nswap the fourth and sixth characters, resulting in \"\nmitsuha\n\"\nIn the second example, the initial string is \"\norhi\n\", and the following operations can be performed:\nswap the second and third characters, resulting in \"\nohri\n\"\nswap the first and second characters, resulting in \"\nhori\n\"",
+    "tags": [
+        "sortings",
+        "strings"
+    ],
+    "rating": 800
+}

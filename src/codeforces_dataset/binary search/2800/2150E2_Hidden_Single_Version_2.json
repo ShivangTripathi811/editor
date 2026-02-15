@@ -1,0 +1,17 @@
+{
+    "contestId": 2150,
+    "index": "E2",
+    "title": "E2. Hidden Single (Version 2)",
+    "statement": "AdhesiveWombat - Overdrive\n⠀\nThe two versions have different constraints on $$$t$$$, $$$n$$$, and the maximum number of queries, and solving one of the two versions does not necessarily solve the other. You may want to read both versions. Hacks are disabled in both versions.\nThis is an interactive problem.\nThere is a hidden array $$$a_1, a_2, \\ldots, a_{2n-1}$$$ containing all the numbers from $$$1$$$ to $$$n$$$, and all of them appear twice except one (which only appears once).\nYou can ask queries in the following format, where $$$S$$$ is a subset of $$$\\{1, 2, \\ldots, 2n-1\\}$$$ and $$$x$$$ is an integer in $$$[1, n]$$$:\n$$$\\texttt{ask(S, x)}$$$: does there exist $$$i \\in S$$$ such that $$$a_i = x$$$?\nFind the number appearing exactly once, using at most $$$925$$$ queries. You don't need to find its position.\nNote that the interactor is\nnot\nadaptive, which means that the hidden array does not depend on the queries you make.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 20$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$n = 300$$$) — the maximum value in the hidden array $$$a_1, a_2, \\ldots, a_{2n-1}$$$.\nThere are exactly $$$50$$$ tests in this problem (including the example). The example has $$$t = 1$$$, and all the other tests have $$$t = 20$$$.",
+    "outputSpecification": "",
+    "note": "Note\nIn the first test case, $$$n = 300$$$, so the hidden array has length $$$2n-1 = 599$$$.\n#\nContestant prints\nInteractor replies\nExplanation\n1\n? 187 1 1\n0\nQuery: does $$$a_1=187$$$? No.\n2\n! 187\nWe feel lucky, and claim that the answer is $$$187$$$. Fortunately, the answer is correct.\nWe have asked $$$1$$$ query (printing the answer does not count as a query), which is less than the maximum allowed number of queries ($$$925$$$).",
+    "tags": [
+        "binary search",
+        "divide and conquer",
+        "interactive",
+        "math",
+        "probabilities"
+    ],
+    "rating": 2800
+}

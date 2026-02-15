@@ -1,0 +1,16 @@
+{
+    "contestId": 2158,
+    "index": "F1",
+    "title": "F1. Distinct GCDs (Easy Version)",
+    "statement": "This is the easy version of the problem. The difference between the versions is that in this version, $$$n \\leq 700$$$. You can hack only if you solved all versions of this problem.\nLegend has it that when Gauss was a young schoolboy, his teacher tasked the class with summing the integers from $$$1$$$ to $$$100$$$, likely as a way to keep them occupied for a while. However, young Gauss quickly came up with the formula $$$\\text{sum} = \\frac{n(n+1)}{2}$$$ and found the answer in mere moments. Centuries later, Gauss appears before you in a nightmare with a daunting task...\nYou are given a positive integer $$$n$$$, find a sequence of integers $$$[a_1, a_2, \\ldots, a_n]$$$ such that $$$1 \\leq a_i \\leq 10^{18}$$$ for all $$$1 \\leq i \\leq n$$$, and the\nGCDs\nof pairwise adjacent elements of $$$a$$$ are all distinct. Formally,\n$$$\\gcd(a_i, a_{i+1}) \\neq \\gcd(a_j, a_{j+1})$$$ for each $$$1 \\leq i  \\lt  j  \\lt  n$$$\nAdditionally, $$$a$$$ should have the\nminimum possible\nnumber of distinct elements.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 200$$$). The description of the test cases follows.\nThe first and only line of each test case contains a single integer $$$n$$$ ($$$2 \\leq n \\leq 700$$$) — the size of the sequence to be found.",
+    "outputSpecification": "Output\nFor each test case, output $$$n$$$ space-separated positive integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\leq a_i \\leq 10^{18}$$$) on a new line that satisfy the condition in the statement. If there are multiple solutions, print any of them.\nIt can be proven that under the problem constraints, a solution always exists.",
+    "note": "Note\nFor the second test case, the GCDs of adjacent elements are $$$[\\gcd(1, 4), \\gcd(4, 4), \\gcd(4, 6), \\gcd(6, 6)] = [1, 4, 2, 6]$$$, all of which are distinct.\nFor the third test case, the GCDs of adjacent elements are $$$[\\gcd(4, 4), \\gcd(4, 6), \\gcd(6, 6), \\gcd(6, 9), \\gcd(9, 9), \\gcd(9, 4)] = [4, 2, 6, 3, 9, 1]$$$, all of which are distinct.\nFor each test case, it can be proven that no sequence with fewer distinct elements exists such that all adjacent GCDs are distinct.",
+    "tags": [
+        "constructive algorithms",
+        "graphs",
+        "math",
+        "number theory"
+    ],
+    "rating": 2600
+}

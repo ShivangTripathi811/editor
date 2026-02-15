@@ -1,0 +1,16 @@
+{
+    "contestId": 2180,
+    "index": "D",
+    "title": "D. Insolvable Disks",
+    "statement": "You are given $$$n$$$ different integer points $$$x_1  \\lt  x_2  \\lt  \\ldots  \\lt  x_n$$$ on the X-axis of the plane. For each $$$1 \\le i \\le n$$$, you have to pick a real value $$$r_i  \\gt  0$$$ and draw a disk with radius $$$r_i$$$ and center $$$x_i$$$ such that no two disks overlap.\nYou want to choose values $$$r_i$$$ in such a way that the number of tangent pairs of disks is maximized, and you have to find this maximum value.\nWe say that two disks overlap if the area of their intersection is positive. In particular, two outer tangent disks\ndo not\noverlap.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$1 \\le n \\le 2\\cdot10^6$$$) — the number of points in that test case.\nThe second line of each test case contains $$$n$$$ integers $$$x_1, x_2, \\ldots x_n$$$ ($$$0 \\le x_1  \\lt  x_2  \\lt  \\ldots  \\lt  x_n \\le 10^9$$$) — the coordinates of the points in that test case.\nIt's also guaranteed that the sum of $$$n$$$ over all test cases is at most $$$2\\cdot10^6$$$.",
+    "outputSpecification": "Output\nFor each test case, print a single integer denoting the maximum number of tangent pairs of disks in that test case.",
+    "note": "Note\nIn the first test case, you can let $$$r_1 = r_3 = 0.25$$$ and $$$r_2 = 0.75$$$ so the 1-st and 2-nd disks and the 2-nd and 3-rd disks will be pairwise tangent.\nBest solution for the first test case\nIn the second test case, you can let $$$r_1 = 0.4$$$, $$$r_2 = 0.6$$$, $$$r_3 = 0.2$$$, and $$$r_4 = 0.8$$$ so the 1-st and 2-nd disks and 3-rd and 4-th disks will be pairwise tangent.\nBest solution for the second test case\nThe best solution in the third test case is to set $$$r_i = 0.5$$$ for each $$$1 \\le i \\le 6$$$ so the 1-st and 2-nd disks, 3-rd and 4-th disks, and 5-th and 6-th disks will be pairwise tangent.\nLink to the visualizer",
+    "tags": [
+        "data structures",
+        "dp",
+        "greedy",
+        "math"
+    ],
+    "rating": 1900
+}

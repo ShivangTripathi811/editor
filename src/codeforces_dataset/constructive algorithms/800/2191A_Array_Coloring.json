@@ -1,0 +1,13 @@
+{
+    "contestId": 2191,
+    "index": "A",
+    "title": "A. Array Coloring",
+    "statement": "You have $$$n$$$ cards arranged in a row. The $$$i$$$-th card has the integer $$$a_i$$$ written on it. All integers are distinct.\nYou must color each card either $$$\\color{red}{\\text{red}}$$$ or $$$\\color{blue}{\\text{blue}}$$$ such that the following conditions are satisfied:\nAny two adjacent cards in the row have different colors.\nIf you rearrange the cards so that the numbers on them are in increasing order, any two adjacent cards in the new row must also have different colors.\nDetermine if such a coloring exists.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 200$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$2 \\le n \\le 100$$$) — the length of the array.\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le n$$$).\nIt is guaranteed that all elements of $$$a$$$ are distinct.",
+    "outputSpecification": "Output\nFor each test case, output \"\nYES\n\" if you can color the cards so that the conditions are satisfied, and \"\nNO\n\" otherwise.\nYou can output the answer in any case (upper or lower). For example, the strings \"\nyEs\n\", \"\nyes\n\", \"\nYes\n\", and \"\nYES\n\" will be recognized as positive responses.",
+    "note": "Note\nIn the first example, the cards are colored as $$$a = [\\color{red}{2}, \\color{blue}{3}, \\color{red}{4}, \\color{blue}{1}]$$$. After sorting, the cards become $$$[\\color{blue}{1}, \\color{red}{2}, \\color{blue}{3}, \\color{red}{4}]$$$. Both sequences satisfy the condition, so the answer is\nYES\n.\nIn the second example, no valid coloring exists. For instance, if we color the cards as $$$a = [\\color{blue}{2}, \\color{red}{3}, \\color{blue}{1}]$$$, the sorted sequence becomes $$$[\\color{blue}{1}, \\color{blue}{2}, \\color{red}{3}]$$$. Here, the adjacent elements $$$1$$$ and $$$2$$$ have the same color, so the condition is not satisfied.\nIn the third example, a possible coloring is $$$a = [\\color{blue}{3}, \\color{red}{4}, \\color{blue}{1}, \\color{red}{2}, \\color{blue}{5}]$$$. After sorting, the cards become $$$[\\color{blue}{1}, \\color{red}{2}, \\color{blue}{3}, \\color{red}{4}, \\color{blue}{5}]$$$.",
+    "tags": [
+        "constructive algorithms"
+    ],
+    "rating": 800
+}

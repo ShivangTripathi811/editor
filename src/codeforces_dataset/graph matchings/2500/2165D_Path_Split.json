@@ -1,0 +1,14 @@
+{
+    "contestId": 2165,
+    "index": "D",
+    "title": "D. Path Split",
+    "statement": "You are given a sequence of $$$n$$$ integers $$$a_1,a_2,\\ldots,a_n$$$.\nYou would like to partition $$$a$$$ into several\nsubsequences\n$$$^{\\text{∗}}$$$ $$$b_1,b_2,\\ldots,b_k$$$, satisfying the following conditions:\nEach element in $$$a$$$ belongs to exactly one of $$$b_i$$$.\nFor each sequence $$$b_i$$$, let its elements be $$$b_{i,1},b_{i,2},\\ldots,b_{i,p_i}$$$. For every $$$1\\le j<p_i$$$, $$$|b_{i,j}-b_{i,j+1}|=1$$$ should hold.\nPlease calculate the minimum number of subsequences you can partition $$$a$$$ into.\n$$$^{\\text{∗}}$$$A sequence $$$b_i$$$ is a subsequence of a sequence $$$a$$$ if $$$b_i$$$ can be obtained from $$$a$$$ by the deletion of several (possibly, zero or all) element from arbitrary positions.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$1\\le n\\le10^6$$$) — the length of the sequence $$$a$$$.\nThe second line of each test case contains $$$n$$$ integers $$$a_1,a_2,\\ldots,a_n$$$ ($$$1\\le a_i\\le2n$$$) — the sequence $$$a$$$.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$10^6$$$.",
+    "outputSpecification": "Output\nFor each test case, print a single integer on one line — the minimum number of subsequences $$$a$$$ can be partitioned into.",
+    "note": "Note\nIn the first test case, we can partition $$$a$$$ into subsequences $$$[1]$$$. It is obvious that we cannot partition $$$a$$$ into fewer subsequences; thus, $$$1$$$ is the answer.\nIn the third test case, we can partition $$$a$$$ into subsequences $$$[11,10,11,10],[13],[11],[11],[13]$$$. Please note that $$$[11,10,11,11,11,10]$$$ is not a valid sequence, since $$$|11-11|=0\\neq1$$$.",
+    "tags": [
+        "graph matchings",
+        "greedy"
+    ],
+    "rating": 2500
+}

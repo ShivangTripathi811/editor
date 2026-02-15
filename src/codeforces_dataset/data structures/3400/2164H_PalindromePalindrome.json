@@ -1,0 +1,14 @@
+{
+    "contestId": 2164,
+    "index": "H",
+    "title": "H. PalindromePalindrome",
+    "statement": "We define the\nhumor value\nof a string $$$t$$$ as the length of the longest palindrome string which occurs at least twice in it.\nFormally, a string $$$p$$$ is\nhumor with respect to $$$t$$$\n, if and only if both of the following conditions are met:\n$$$p$$$ is a palindrome, and\nthere exist\nat least two different\nindices $$$i \\in [1, |t| - |p| + 1]$$$, such that $$$t[i, i + |p| - 1] = p$$$.\nThe\nhumor value\nof $$$t$$$ is defined as the maximum length among all\nhumor\nstrings\nwith respect to $$$t$$$\n.\nYou are given a string $$$s$$$ of length $$$n$$$ which only contains lowercase Latin letters and $$$q$$$ queries. Each query contains two integers $$$l_i$$$, $$$r_i$$$, and you need to find the humor value of the string $$$s[l_i, r_i]$$$.\nHere, $$$a[l, r]$$$ is defined as the string $$$a_l,a_{l+1},\\ldots,a_r$$$.",
+    "inputSpecification": "Input\nThe first line contains two integers $$$n$$$, $$$q$$$ ($$$1\\le n,q\\le 5\\cdot10^5$$$).\nThe second line contains a string $$$s$$$.\nThe next $$$q$$$ lines contain the description of queries. The $$$i$$$-th line contains two integers $$$l_i$$$, $$$r_i$$$ ($$$1\\le l_i\\le r_i\\le n$$$).",
+    "outputSpecification": "Output\nOn the $$$i$$$-th line, output the answer to the $$$i$$$-th query.",
+    "note": "Note\nIn the first query, the following palindrome strings occur at least twice:\na,aa,aaa,aaaa,b,bb,bbb\n. The longest one is\naaaa\n, so the\nhumor value\nis $$$4$$$.\nIn the second query, one of the longest\nhumor\nstrings with respect to $$$s[2, 7]$$$ is\naa\n.",
+    "tags": [
+        "data structures",
+        "strings"
+    ],
+    "rating": 3400
+}

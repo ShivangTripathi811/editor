@@ -1,0 +1,18 @@
+{
+    "contestId": 2196,
+    "index": "E1",
+    "title": "E1. Fuzzy Concatenation (Easy Version)",
+    "statement": "This is the easy version of the problem. The difference between the versions is that in this version, $$$n \\le 10^{5}, m \\le 10^{4}$$$. You can hack only if you solved all versions of this problem.\nThere are two strings $$$s$$$ and $$$t$$$, both consisting of lowercase Latin letters. You also have an empty string $$$p$$$.\nYou can perform the following operation, which consists of several stages:\nchoose any two integers $$$l$$$ and $$$r$$$ ($$$1 \\le l \\le r \\le |s|$$$);\ncopy the substring $$$s_{l},\\ldots, s_{r}$$$ and append it to the end of string $$$p$$$;\namong the last $$$r - l + 1$$$ characters of string $$$p$$$, change\nat most one\ncharacter to any lowercase Latin letter.\nFor example, if the string $$$s = $$$ \"\ndhhtyhwbsl\n\" and $$$p = $$$ \"\", you can choose $$$l = 3, r = 6$$$ and add \"\nhtyh\n\" to the end of $$$p$$$, and then change the character \"\ny\n\" to \"\na\n\", resulting in $$$p = $$$ \"\nhtah\n\".\nYour task is to determine the minimum number of operations required for string $$$p$$$ to become equal to $$$t$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$ and $$$m$$$ ($$$1 \\le n \\le 10^{5}$$$, $$$1 \\le m \\le 10^{4}$$$) — the lengths of strings $$$s$$$ and $$$t$$$.\nThe second line of each test case contains the string $$$s$$$ of length $$$n$$$, consisting of lowercase Latin letters.\nThe third line of each test case contains the string $$$t$$$ of length $$$m$$$, consisting of lowercase Latin letters.\nIt is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$10^{5}$$$, and the sum of $$$m$$$ across all test cases does not exceed $$$10^{4}$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer — the answer to the problem.",
+    "note": "Note\nIn the first test case, you can take the substring $$$«\\mathtt{a}»$$$ from the string $$$s$$$, change a single letter in this string to $$$«\\mathtt{b}»$$$, and append it to the end of the string $$$p$$$, resulting in $$$p$$$ becoming equal to $$$t$$$.\nIn the second test case, $$$t$$$ can be obtained in $$$3$$$ operations as follows:\n$$$$$$«\\mathtt{a\\color{red}{b}}» + «\\mathtt{\\color{red}{z}}» + «\\mathtt{\\color{red}{b}a}»$$$$$$\nThe modified characters are highlighted in red.\nIn the third test case, the string $$$t$$$ can be obtained as follows:\n$$$$$$«\\mathtt{ht\\color{red}{a}h}» + «\\mathtt{bs\\color{red}{e}}» + «\\mathtt{htyh\\color{red}{z}b}»$$$$$$",
+    "tags": [
+        "binary search",
+        "bitmasks",
+        "brute force",
+        "data structures",
+        "greedy",
+        "string suffix structures"
+    ],
+    "rating": "Unrated"
+}

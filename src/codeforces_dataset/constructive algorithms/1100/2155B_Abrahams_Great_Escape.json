@@ -1,0 +1,14 @@
+{
+    "contestId": 2155,
+    "index": "B",
+    "title": "B. Abraham's Great Escape",
+    "statement": "Abraham is a brave explorer who goes where no other programmer has gone before. For his next expedition, he plans to investigate a peculiar maze. He knows that the maze is an $$$n \\times n$$$ grid with an arrow in each cell that points in one of four directions: up, down, left and right. Abraham also knows that if he stands on an arrow, he will be forced to follow the arrows starting from that cell. Each arrow moves Abraham exactly $$$1$$$ cell in the direction that it is pointing. If he reaches an arrow that points towards the outside of the maze, Abraham will escape the maze.\nAbraham doesn't know how the arrows are arranged, so he wants to plan for multiple scenarios. He tasks you with finding an arrangement of arrows in the grid such that there are exactly $$$k$$$ starting cells from which he can escape the maze.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 1000$$$). The description of the test cases follows.\nThe only line of each test case contains two integers $$$n$$$, $$$k$$$ ($$$2 \\le n \\le 100$$$, $$$0 \\le k \\le n^2$$$) — the size of the grid and the number of cells from which Abraham should be able to escape.\nIt is guaranteed that the sum of $$$n^2$$$ over all test cases does not exceed $$$10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, do one of the following:\nIf there exists a grid satisfying the requirement, print\nYES\nand then print $$$n$$$ lines with $$$n$$$ characters in each line indicating the direction of the arrows. Each character should be one of\nU\n(up),\nR\n(right),\nL\n(left), or\nD\n(down).\nOtherwise, declare that the task is impossible by printing\nNO\n.\nIf there are multiple solutions, print any of them.\nYou can output the answer in any case (upper or lower). For example, the strings \"\nyEs\n\", \"\nyes\n\", \"\nYes\n\", and \"\nYES\n\" will be recognized as positive responses.",
+    "note": "Note\nIn the first test case, no matter which cell Abraham stands in initially, he will eventually exit the maze as he will move upward successively; thus, he can escape from all $$$4$$$ cells, as required.\nIn the second test case, Abraham eventually escapes if he stands on one of the following:\nAny cell in the first row (all of which are\nU\n)\nAny cell in the third column (one of which is\nU\nand the other two\nR\n)\nThere is no other cell where he can stand and escape. We see that Abraham can escape from exactly $$$5$$$ cells in this arrangement, as required.\nIn the third test case, it can be proved that there's no arrangement of arrows so that Abraham can escape from exactly $$$3$$$ cells.",
+    "tags": [
+        "constructive algorithms",
+        "graphs"
+    ],
+    "rating": 1100
+}

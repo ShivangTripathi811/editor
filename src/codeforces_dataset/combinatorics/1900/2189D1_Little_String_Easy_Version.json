@@ -1,0 +1,17 @@
+{
+    "contestId": 2189,
+    "index": "D1",
+    "title": "D1. Little String (Easy Version)",
+    "statement": "This is the\neasy\nversion of the problem. The difference between the versions is that in this version, it is guaranteed that the string $$$s$$$ does not contain the character\n?\n.\nFor the string $$$w_1w_2 \\ldots w_n$$$, consisting of characters\n0\nand\n1\n, we define $$$f(w)$$$ as the number of permutations $$$p_1, p_2, \\ldots, p_n$$$ of the array $$$[0, 1, \\ldots, n-1]$$$, such that for all $$$i$$$ from $$$1$$$ to $$$n$$$ the following holds:\nif $$$w_i = \\texttt{1}$$$, then there exist such $$$1 \\leq l \\leq r \\leq n$$$ that $$$\\operatorname{mex}([p_l, p_{l+1}, \\ldots, p_r]) = i$$$;$$$^{\\text{∗}}$$$\nif $$$w_i = \\texttt{0}$$$, then there do not exist such $$$1 \\leq l \\leq r \\leq n$$$ that $$$\\operatorname{mex}([p_l, p_{l+1}, \\ldots, p_r]) = i$$$.\nGiven a string $$$s_1s_2 \\ldots s_n$$$, consisting of characters\n0\nand\n1\n, and a positive integer $$$c$$$.\nNote that in this version of the problem, the string $$$s$$$ doesn't contain\n?\n. Consider all strings $$$w$$$ that can be obtained from $$$s$$$ by replacing all characters\n?\nwith characters\n0\nand\n1\n. Find the smallest value of $$$f(w)$$$ among all such strings $$$w$$$ that is not divisible by $$$c$$$, or determine that such a string $$$w$$$ does not exist. Since the answer may be large, find it modulo $$$10^9+7$$$.\n$$$^{\\text{∗}}$$$The minimum excluded (MEX) of a collection of integers $$$c_1, c_2, \\ldots, c_k$$$ is defined as the smallest non-negative integer $$$x$$$ which does not occur in the collection $$$c$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$ and $$$c$$$ ($$$3 \\leq n \\leq 2 \\cdot 10^5$$$, $$$1 \\leq c \\leq 10^9$$$) — the length of the string and the number that limits the value of the function.\nThe second line of each test case contains a string of length $$$n$$$, consisting of characters\n0\nand\n1\n— the string $$$s$$$.\nIt is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, if there exists such a string $$$w$$$ that can be obtained from $$$s$$$ by replacing all characters\n?\nwith characters\n0\nand\n1\n, such that $$$f(w)$$$ is not divisible by $$$c$$$, then output the minimum value of $$$f(w)$$$ among all such strings $$$w$$$. The answer should be output modulo $$$10^9+7$$$. If such a string does not exist, output $$$-1$$$.",
+    "note": "Note\nIn the second test case, there is no suitable string $$$w$$$, since $$$f(w)$$$ is always divisible by $$$1$$$.\nIn the third test case, we can only take $$$w = s$$$, then $$$f(w) = 4$$$, as there are exactly $$$4$$$ suitable permutations:\n$$$p = [0, 2, 3, 1]$$$;\n$$$p = [0, 3, 2, 1]$$$;\n$$$p = [1, 2, 3, 0]$$$;\n$$$p = [1, 3, 2, 0]$$$.\nIn the sixth test case, one can take the string $$$w = \\mathtt{10001}$$$, then $$$f(w)$$$ will be equal to $$$12$$$. One of the suitable permutations is $$$[0, 4, 3, 2, 1]$$$, while, for example, the permutation $$$[0, 1, 2, 3, 4]$$$ does not fit. It can be shown that $$$12$$$ is the smallest value not divisible by $$$8$$$ that can be obtained.",
+    "tags": [
+        "combinatorics",
+        "dp",
+        "greedy",
+        "math",
+        "number theory"
+    ],
+    "rating": 1900
+}

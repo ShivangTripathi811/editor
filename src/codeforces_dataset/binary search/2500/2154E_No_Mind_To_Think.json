@@ -1,0 +1,18 @@
+{
+    "contestId": 2154,
+    "index": "E",
+    "title": "E. No Mind To Think",
+    "statement": "You are given an array of positive integers $$$a$$$ of length $$$n$$$ and a positive integer $$$k$$$, and you will play the following game with them:\nAt the start of the game, you will choose an\nodd\ninteger $$$x$$$ ($$$1 \\le x \\le n$$$).\nThen do the following\nat most\n$$$k$$$ times (possibly none):\nSelect a\nsubsequence\nof $$$a$$$ of length $$$x$$$, then replace every value in the subsequence with the median$$$^{\\text{∗}}$$$ of that subsequence. More formally, pick $$$x$$$ integers $$$i_1,\\ldots,i_x$$$ ($$$1 \\le i_1 < i_2 < \\ldots < i_x \\le n$$$). Then simultaneously do $$$a_{i_d}$$$:= $$$\\mathrm{median}([a_{i_1},a_{i_2},\\ldots,a_{i_x}])$$$ for all $$$d$$$ ($$$1 \\le d \\le x$$$).\nNote that the integer $$$x$$$ you choose\ncannot\nchange between operations.\nDetermine the maximum value for the sum of $$$a$$$ obtainable after playing the game.\n$$$^{\\text{∗}}$$$The\nmedian\nof an array $$$a$$$ of length $$$n$$$ (written $$$\\mathrm{median}(a)$$$) is the $$$\\left\\lfloor\\frac{n + 1}{2}\\right\\rfloor$$$-th smallest element in $$$a$$$, where $$$\\left\\lfloor x \\right\\rfloor$$$ denotes the largest integer which is smaller than or equal to $$$x$$$. For example, $$$\\mathrm{median}([4, 3, 1, 2, 5]) = 3$$$ and $$$\\mathrm{median}([4, 3, 5, 3]) = 3$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains integers $$$n$$$ and $$$k$$$ ($$$3 \\le n \\le 2 \\cdot 10^5$$$, $$$1 \\le k \\le 2 \\cdot 10^5$$$) — the length of the array $$$a$$$, and the maximum number of times you can perform the operation.\nThe second line of each test case contains $$$n$$$ integers $$$a_1,a_2,\\ldots,a_n$$$ ($$$1 \\le a_i \\le 10^9$$$).\nThe sum of $$$n$$$ across all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output the maximum sum of $$$a$$$ achievable after playing the game.",
+    "note": "Note\nA way to achieve $$$25$$$ in the first test case is to select $$$x = 5$$$ and then do:\n$$$[\\color{red}1, \\color{red}1, \\color{red}5, \\color{red}5, \\color{red}5] \\rightarrow [5, 5, 5, 5, 5]$$$\nA way to achieve $$$13$$$ in the third test case is to pick $$$x = 3$$$ and then do:\n$$$[\\color{red}1, 1, \\color{red}2, 3, 1, \\color{red}2] \\rightarrow [\\color{red}2, 1, \\color{red}2, 3, \\color{red}1, 2] \\rightarrow [2, \\color{red}1, \\color{red}2, 3, \\color{red}2, 2] \\rightarrow [2, 2, 2, 3, 2, 2]$$$",
+    "tags": [
+        "binary search",
+        "divide and conquer",
+        "greedy",
+        "sortings",
+        "ternary search",
+        "two pointers"
+    ],
+    "rating": 2500
+}

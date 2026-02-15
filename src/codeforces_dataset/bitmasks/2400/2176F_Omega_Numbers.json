@@ -1,0 +1,17 @@
+{
+    "contestId": 2176,
+    "index": "F",
+    "title": "F. Omega Numbers",
+    "statement": "For a given number $$$n$$$, consider the function $$$\\omega(n)$$$, which is equal to the number of unique prime numbers in the prime factorization of the number $$$n$$$.\nFor example, $$$\\omega (12) = \\omega (2^2 \\cdot 3) = 2$$$. And $$$\\omega (120) = \\omega (2^3 \\cdot 3 \\cdot 5) = 3$$$.\nFor an array of natural numbers $$$a$$$ and a natural number $$$k$$$, we define $$$\\operatorname{f}(a, k) = \\sum_{i < j} \\omega(a_i \\cdot a_j)^k$$$ for all $$$i < j$$$.\nYou are given an array of natural numbers $$$a$$$ of length $$$n$$$ and a natural number $$$k$$$. Calculate $$$\\operatorname{f}(a, k)$$$ modulo $$$998\\,244\\,353$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains 2 integers $$$n$$$ and $$$k$$$ ($$$1 \\leq n \\leq 2 \\cdot 10^5, 1 \\leq k \\leq 10^9$$$) —the length of the array $$$a$$$ and the exponent of the operation, respectively.\nThe second line of each test case contains $$$n$$$ natural numbers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\leq a_i \\leq n$$$) —the array $$$a$$$.\nIt is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single line containing an integer — the value of the function $$$\\operatorname{f}(a, k)$$$ modulo $$$998\\,244\\,353$$$.",
+    "note": "Note\nExplanation of the first test case example:\nFor any pair ($$$i,j$$$), the value $$$\\omega(x)$$$ for the product is $$$\\omega(3^2) = 1$$$. There are a total of $$$6$$$ pairs, and the exponent is $$$1$$$. The final answer is $$$6$$$.\nExplanation of the second test case example:\nIn any pair of the second test case, the product of the numbers in the pair equals $$$1$$$, so the number of primes in it is $$$0$$$. Therefore, the final answer is also $$$0$$$.\nExplanation of the third test case example:\nConsider all pairs ($$$i,j$$$):\n($$$1,2$$$): the product of the numbers at positions $$$1$$$ and $$$2$$$ equals $$$a_1 \\cdot a_2 = 1 \\cdot 2$$$, $$$\\omega(2) = 1$$$.\n($$$1,3$$$): the product of the numbers at positions $$$1$$$ and $$$3$$$ equals $$$a_1 \\cdot a_3 = 1 \\cdot 3$$$, $$$\\omega(3) = 1$$$.\n($$$1,4$$$): the product of the numbers at positions $$$1$$$ and $$$4$$$ equals $$$a_1 \\cdot a_4 = 1 \\cdot 4$$$, $$$\\omega(2^2) = 1$$$.\n($$$2,3$$$): the product of the numbers at positions $$$2$$$ and $$$3$$$ equals $$$a_2 \\cdot a_3 = 2 \\cdot 3$$$, $$$\\omega(2 \\cdot 3) = 2$$$.\n($$$2,4$$$): the product of the numbers at positions $$$2$$$ and $$$4$$$ equals $$$a_2 \\cdot a_4 = 2 \\cdot 4$$$, $$$\\omega(2^3) = 1$$$.\n($$$3,4$$$): the product of the numbers at positions $$$3$$$ and $$$4$$$ equals $$$a_3 \\cdot a_4 = 3 \\cdot 4$$$, $$$\\omega(3 \\cdot 2^2) = 2$$$.\nIn the answer, the values of $$$\\omega(x)$$$ are raised to the power of $$$2$$$, so $$$1^2 + 1^2 + 1^2 + 2^2 + 1^2 + 2^2 = 12$$$.",
+    "tags": [
+        "bitmasks",
+        "combinatorics",
+        "dp",
+        "math",
+        "number theory"
+    ],
+    "rating": 2400
+}

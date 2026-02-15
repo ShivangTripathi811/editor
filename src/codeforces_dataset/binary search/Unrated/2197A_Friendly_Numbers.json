@@ -1,0 +1,15 @@
+{
+    "contestId": 2197,
+    "index": "A",
+    "title": "A. Friendly Numbers",
+    "statement": "For an integer $$$x$$$, we call another integer $$$y$$$\nfriendly\nif the following condition holds:\n$$$y - d(y) = x$$$, where $$$d(y)$$$ is the sum of the digits of $$$y$$$.\nFor a given integer $$$x$$$, determine how many\nfriendly\nnumbers it has.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 500$$$). The description of the test cases follows.\nEach test case consists of a single line containing one integer $$$x$$$ ($$$1 \\le x \\le 10^{9}$$$).",
+    "outputSpecification": "Output\nFor each test case, output one integer — the answer to the problem.",
+    "note": "Note\nThe number $$$1$$$ does not have any\nfriendly\nnumbers.\nThe number $$$18$$$ has $$$10$$$\nfriendly\nnumbers: These are all the numbers from $$$20$$$ to $$$29$$$. For example, $$$20 - d(20) = 20 - 2 = 18$$$.\nThe number $$$998\\,244\\,360$$$ has $$$10$$$\nfriendly\nnumbers:\n$$$998\\,244\\,400$$$\n$$$998\\,244\\,401$$$\n$$$998\\,244\\,402$$$\n$$$998\\,244\\,403$$$\n$$$998\\,244\\,404$$$\n$$$998\\,244\\,405$$$\n$$$998\\,244\\,406$$$\n$$$998\\,244\\,407$$$\n$$$998\\,244\\,408$$$\n$$$998\\,244\\,409$$$",
+    "tags": [
+        "binary search",
+        "brute force",
+        "math"
+    ],
+    "rating": "Unrated"
+}

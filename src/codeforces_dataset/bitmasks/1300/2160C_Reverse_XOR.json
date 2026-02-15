@@ -1,0 +1,13 @@
+{
+    "contestId": 2160,
+    "index": "C",
+    "title": "C. Reverse XOR",
+    "statement": "Given a\npositive\ninteger $$$x$$$, let $$$f(x)$$$ be the positive integer formed by reversing the binary representation of $$$x$$$ without leading zeroes. For example, if $$$x=12=1100_2$$$, then $$$f(x)=0011_2=3$$$.\nYou are given an integer $$$n$$$. Please determine if there exists a positive integer $$$x$$$ such that $$$x \\oplus f(x) = n$$$$$$^{\\text{∗}}$$$.\n$$$^{\\text{∗}}$$$Here, $$$\\oplus$$$ denotes the\nbitwise XOR operation\n.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains an integer $$$n$$$ ($$$0 \\leq n <2^{30}$$$).",
+    "outputSpecification": "Output\nFor each test case, output\nYES\nif there exists a positive integer $$$x$$$ such that $$$x \\oplus f(x) = n$$$, and\nNO\notherwise.\nYou can output the answer in any case. For example, the strings \"\nyEs\n\", \"\nyes\n\", and \"\nYes\n\" are also recognized as positive responses.",
+    "note": "Note\nIn the first case, when $$$x=1$$$, $$$f(x)=1$$$, and $$$x \\oplus f(x)=0$$$. Thus, the answer is\nYES\n.\nIn the second case, when $$$x=2$$$, $$$f(x)=1$$$, and $$$x \\oplus f(x)=3$$$. Thus, the answer is\nYES\n.\nIn the fourth test case, we can show there is no $$$x$$$ that satisfies $$$x \\oplus f(x)=8$$$, so the answer is\nNO\n.",
+    "tags": [
+        "bitmasks"
+    ],
+    "rating": 1300
+}

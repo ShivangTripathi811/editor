@@ -1,0 +1,16 @@
+{
+    "contestId": 2185,
+    "index": "D",
+    "title": "D. OutOfMemoryError",
+    "statement": "Bessie has an array of $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$. Bessie performs $$$m$$$ operations on the array. The $$$i$$$-th operation sets $$$a_{b_i} = a_{b_i} + c_i$$$.\nUnfortunately, due to rising RAM costs, Bessie's computer has limited memory, and whenever any element of the array is greater than $$$h$$$, her computer crashes, and every element in the array is reset to its original value.\nAfter all operations have been performed, output the array $$$a$$$.",
+    "inputSpecification": "Input\nThe first line of the input contains a single integer $$$t$$$ ($$$1 \\leq t \\leq 10^4$$$) — the number of test cases.\nThe first line of each test case contains three integers $$$n, m, h$$$ ($$$1 \\le n, m \\le 2 \\cdot 10^5$$$, $$$1 \\leq h \\leq 10^9$$$) — the length of array $$$a$$$, the number of operations performed, and the maximum value that Bessie's computer can store without crashing.\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$0 \\le a_i \\le h$$$) — the array $$$a$$$.\nThe next $$$m$$$ lines contain two integers $$$b_i, c_i$$$ ($$$1 \\leq b_i \\leq n$$$, $$$0 \\leq c_i \\leq 10^9$$$) — the operations that Bessie performs on the array.\nIt is guaranteed that the sum of $$$n$$$ and the sum of $$$m$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output the array $$$a$$$ after all operations have been performed.",
+    "note": "Note\nFor the first test case, the array $$$a$$$ is changed as follows:\nBefore all operations, $$$a = [1, 2, 1]$$$.\nAfter the first operation, $$$a = [5, 2, 1]$$$.\nAfter the second operation, $$$a = [5, 6, 1]$$$, but since $$$6  \\gt  h$$$, the computer crashes, and $$$a = [1, 2, 1]$$$.\nAfter the third operation, $$$a = [1, 2, 4]$$$.\nAfter the fourth operation, $$$a = [1, 2, 4]$$$.\nFor the third test case, each operation causes the computer to crash, so $$$a = [1, 0, 0, 0]$$$.",
+    "tags": [
+        "data structures",
+        "implementation",
+        "math",
+        "two pointers"
+    ],
+    "rating": 1100
+}

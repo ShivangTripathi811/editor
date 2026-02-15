@@ -1,0 +1,17 @@
+{
+    "contestId": 2173,
+    "index": "D",
+    "title": "D. Taiga's Carry Chains",
+    "statement": "Miracles don't happen to those who just wait.\n—\nToradora!\nAfter classes at Ohashi High School, Ryuuji hands Taiga a positive integer $$$n$$$ and sets a simple challenge.\nThey will play for exactly $$$k$$$ moves. In a single move, Taiga chooses a non-negative integer $$$\\ell$$$ and sets $$$n \\gets n + 2^{\\ell}$$$.\nRyuuji defines the\nscore\nof one move as the number of binary carries that occur when adding $$$2^{\\ell}$$$ to the current number in base $$$2$$$. The total\nscore\nis the sum of\nscore\nover all $$$k$$$ moves.\nTaiga wants the total\nscore\nto be as large as possible after $$$k$$$ moves. What is the maximum total\nscore\nshe can achieve?",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 1000$$$). The description of the test cases follows.\nThe only line of each test case contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le n < 2^{30}$$$, $$$0 \\le k \\le 10^9$$$) — the initial integer and the number of moves.",
+    "outputSpecification": "Output\nFor each test case, output a single integer — the maximum total\nscore\nthat Taiga can achieve.",
+    "note": "Note\nIn the first test case, $$$(n,k)=(7,1)$$$ and $$$7=\\mathtt{111}_2$$$. Adding $$$2^0$$$ gives $$$\\mathtt{111}+\\mathtt{1}=\\mathtt{1000}$$$, which produces carries at bits $$$0,1,2$$$. So the total score is $$$3$$$.\nIn the second test case, $$$(n,k)=(13,2)$$$ with $$$13=\\mathtt{1101}_2$$$. First we add $$$2^0$$$: $$$\\mathtt{1101}+\\mathtt{0001}=\\mathtt{1110}$$$, which creates one carry. Then we add $$$2^1$$$: $$$\\mathtt{1110}+\\mathtt{0010}=\\mathtt{10000}$$$, with carries propagating through bits $$$1,2,3$$$. In total there are $$$1+3=4$$$ carries, so the score is $$${4}$$$.\nIn the third test case, $$$(n,k)=(42,2)$$$ and $$$42=\\mathtt{101010}_2$$$. First we add $$$2^1$$$: $$$\\mathtt{101010}+\\mathtt{000010}=\\mathtt{101100}$$$, giving one carry. Next we add $$$2^2$$$: $$$\\mathtt{101100}+\\mathtt{000100}=\\mathtt{110000}$$$, which generates carries at bits $$$2$$$ and $$$3$$$. Thus the total number of carries is $$$1+2=3$$$.\nIn the fifth test case, $$$(n,k)=(23,2)$$$ and $$$23=\\mathtt{10111}_2$$$. First we add $$$2^0$$$: $$$\\mathtt{10111}+\\mathtt{00001}=\\mathtt{11000}$$$, which produces carries at bits $$$0,1,2$$$. Then we add $$$2^3$$$: $$$\\mathtt{11000}+\\mathtt{01000}=\\mathtt{100000}$$$, producing carries at bits $$$3$$$ and $$$4$$$. Altogether there are $$$3+2=5$$$ carries, so the total score is $$${5}$$$.",
+    "tags": [
+        "bitmasks",
+        "brute force",
+        "dp",
+        "greedy",
+        "math"
+    ],
+    "rating": 1900
+}

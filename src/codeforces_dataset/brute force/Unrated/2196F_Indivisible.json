@@ -1,0 +1,15 @@
+{
+    "contestId": 2196,
+    "index": "F",
+    "title": "F. Indivisible",
+    "statement": "You are given two numbers $$$n$$$ and $$$m$$$.\nAn undirected graph is called\nbeautiful\nif it satisfies the following conditions:\nIt has no loops or multiple edges.\nIt has exactly $$$n$$$ vertices and $$$m$$$ edges.\nIts vertices\ncannot\nbe divided into $$$2$$$ sets such that the sums of the degrees of all vertices in the first set and the sums of the degrees of all vertices in the second set are equal.\nYou need to either report that a\nbeautiful\nundirected graph with the given $$$n, m$$$ does not exist, or provide one.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe only line of each test case contains two integers $$$n, m$$$ ($$$12 \\leq n \\leq 10^5, 1 \\leq m \\leq \\min(2 \\cdot 10^5, \\frac{n(n-1)}{2})$$$) — the number of vertices and edges in the graph.\nIt is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$10^5$$$, and the sum of $$$m$$$ across all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output\n\"No\"\nif such a graph does not exist. Otherwise, output\n\"Yes\"\n, and then, in the following $$$m$$$ lines — the edges of the\nbeautiful\ngraph in arbitrary order. If there are multiple answers, you may output any of them.",
+    "note": "Note\nIn the first test case, the graph is a simple cycle of $$$7$$$ vertices. The degrees of the vertices are $$$\\{2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0\\}$$$. It is easy to see that in such a graph, it is impossible to divide the vertices into $$$2$$$ parts with equal sums of degrees.\nIn the second test case, since $$$m = 1$$$, it is easy to see that the vertices can always be divided into $$$2$$$ parts with equal sums of degrees. Therefore, no solution exists.",
+    "tags": [
+        "brute force",
+        "constructive algorithms",
+        "graphs"
+    ],
+    "rating": "Unrated"
+}

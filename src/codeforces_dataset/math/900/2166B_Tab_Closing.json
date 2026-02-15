@@ -1,0 +1,13 @@
+{
+    "contestId": 2166,
+    "index": "B",
+    "title": "B. Tab Closing",
+    "statement": "You've been staring at your computer screen for too long; it is time to give it a break and go touch some grass.\nYour screen is a line of length $$$a$$$, and there are $$$n$$$ tabs displayed on it. You want to close all of the tabs by clicking on the x's at their right endpoint.\nEvery tab is a segment of length $$$\\textrm{len}=\\min(b,\\frac{a}{m})$$$, where $$$m$$$ is the number of remaining tabs. The tabs are always tightly arranged in sequence from the left endpoint of the screen; that is, the x's will be at $$$\\textrm{len},2\\cdot \\textrm{len},3\\cdot \\textrm{len},\\ldots,m\\cdot\\textrm{len}$$$ units away from the left endpoint. Please note that the length of each tab will change as you are closing tabs.\nNow your cursor is at the left endpoint of the screen. You wonder what the minimum number of\ntimes\nyou need to move the mouse to close all tabs is.\nIf you have difficulty understanding the statement, you may also refer to your browser tab for a visualization, or click\nhere\n.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nEach test case is a line of three integers $$$a$$$, $$$b$$$, and $$$n$$$ ($$$1\\le b\\le a \\le 10^9$$$, $$$1\\le n \\le 10^9$$$).",
+    "outputSpecification": "Output\nFor each test case, output a single integer — the minimum number of times you need to move the mouse to close all tabs.",
+    "note": "Note\nIn the first test case, a possible course of action is to move your cursor to $$$1$$$ and press $$$6$$$ times.\nIn the second test case, a possible course of action is to move your cursor to $$$4.5$$$ and press once, then move it to $$$6$$$ and press again. It can be proved that the tabs cannot be closed with less than $$$2$$$ moves.",
+    "tags": [
+        "math"
+    ],
+    "rating": 900
+}

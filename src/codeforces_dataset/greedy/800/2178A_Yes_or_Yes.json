@@ -1,0 +1,14 @@
+{
+    "contestId": 2178,
+    "index": "A",
+    "title": "A. Yes or Yes",
+    "statement": "Last Christmas, your friend Fernando gifted you a string $$$s$$$ consisting only of the characters $$$\\mathtt{Y}$$$ and $$$\\mathtt{N}$$$, representing \"Yes\" and \"No\", respectively.\nYou can repeatedly apply the following operation on $$$s$$$:\nChoose any two adjacent characters and replace them with their\nlogical OR\n.\nFormally, in each operation, you can choose an index $$$i$$$ ($$$1 \\leq i \\leq |s|-1$$$), remove the characters $$$s_i$$$ and $$$s_{i+1}$$$, then insert:\nA single $$$\\mathtt{Y}$$$ if at least one of $$$s_i$$$ or $$$s_{i+1}$$$ is $$$\\mathtt{Y}$$$;\nA single $$$\\mathtt{N}$$$ if both $$$s_i$$$ and $$$s_{i+1}$$$ are $$$\\mathtt{N}$$$.\nNote that after each operation, the length of $$$s$$$ decreases by $$$1$$$.\nUnfortunately, Fernando does not want you to combine \"Yes OR Yes\", as he has experienced trauma relating to a certain song.\nDetermine whether it is possible to reduce $$$s$$$ to a single character by repeatedly applying the operation above,\nwithout\never combining two $$$\\mathtt{Y}$$$'s.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 500$$$). The description of the test cases follows.\nThe only line of each test case contains the string $$$s$$$ ($$$2\\le |s|\\le 100$$$). It is guaranteed that $$$s_i = \\mathtt{Y}$$$ or $$$\\mathtt{N}$$$.",
+    "outputSpecification": "Output\nFor each test case, print \"\nYES\n\" if the string can be reduced to a single character by repeatedly applying the described operation, and \"\nNO\n\" otherwise.\nYou can output the answer in any case (upper or lower). For example, the strings \"\nyEs\n\", \"\nyes\n\", \"\nYes\n\", and \"\nYES\n\" will be recognized as positive responses.",
+    "note": "Note\nIn the first test case, you cannot combine $$$s_1$$$ and $$$s_2$$$ since they are both $$$\\mathtt{Y}$$$. Thus, the answer is\nNO\n.\nIn the third test case, the following is a valid sequence of operations: $$$\\mathtt{\\underline{NN}Y}\\to\\mathtt{\\underline{NY}}\\to\\mathtt{Y}$$$. Thus, the answer is\nYES\n.\nIn the fourth test case, there are two possibilities for the first operation: $$$\\mathtt{YY\\underline{YN}Y}\\to \\mathtt{YYYY}$$$ or $$$\\mathtt{YYY\\underline{NY}}\\to \\mathtt{YYYY}$$$. However, in either case, it is not possible to perform any more operations without combining two $$$\\mathtt{Y}$$$'s. Thus, the answer is\nNO\n.\nIn the fifth test case, the following is a valid sequence of operations: $$$\\mathtt{N\\underline{NN}NN}\\to\\mathtt{\\underline{NN}NN}\\to\\mathtt{N\\underline{NN}}\\to\\mathtt{\\underline{NN}}\\to\\mathtt{N}$$$. Thus, the answer is\nYES\n.",
+    "tags": [
+        "greedy",
+        "strings"
+    ],
+    "rating": 800
+}

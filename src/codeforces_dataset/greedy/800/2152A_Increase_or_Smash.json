@@ -1,0 +1,14 @@
+{
+    "contestId": 2152,
+    "index": "A",
+    "title": "A. Increase or Smash",
+    "statement": "Geumjae has an array $$$a$$$ consisting of $$$n$$$ zeros. His goal is to transform it into a given target array using a minimum number of operations.\nHe can perform the following two types of operations any number of times, in any order:\nIncrease\n: Choose any positive integer $$$x$$$. Increase\nall\nelements of the array $$$a$$$ by $$$x$$$. In other words, he chooses a positive integer $$$x$$$, and for each $$$i$$$ ($$$1 \\le i \\le n$$$), he replaces $$$a_i$$$ with $$$a_i + x$$$.\nSmash\n: Set\nsome\nelements (possibly none or all) of the array $$$a$$$ to $$$0$$$. In other words, for each $$$i$$$ ($$$1 \\le i \\le n$$$), he either replaces $$$a_i$$$ with $$$0$$$ or leaves it as before.\nGiven the final target state of the array $$$a$$$, find the minimum total number of operations (both\nIncrease\nand\nSmash\n) Geumjae needs to perform.\nIt can be shown that for any given final array, a sequence of operations always exists.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 1000$$$). The description of the test cases follows.\nThe first line contains a single integer $$$n$$$ ($$$1 \\le n \\le 100$$$) — the number of elements in the array $$$a$$$.\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le 100$$$) — the elements of the target array $$$a$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer — the minimum number of operations required.",
+    "note": "Note\nExplanation of the first test case:\nThe target array is $$$[1, 1, 3]$$$. A possible sequence of 3 operations (which is the minimum) is:\nInitially, the array is $$$[0, 0, 0]$$$. After an\nIncrease\noperation with $$$x = 2$$$, the array becomes $$$[2, 2, 2]$$$.\nNext, after a\nSmash\noperation on the first two elements, the array becomes $$$[0, 0, 2]$$$.\nFinally, after an\nIncrease\noperation with $$$x = 1$$$, the array becomes $$$[1, 1, 3]$$$.\nWe used $$$2$$$\nIncrease\noperations and $$$1$$$\nSmash\noperation for a total of $$$3$$$ operations.\nExplanation of the second test case:\nThe target array is $$$[100]$$$. A single\nIncrease\noperation with $$$x = 100$$$ gives the target array.",
+    "tags": [
+        "greedy",
+        "implementation"
+    ],
+    "rating": 800
+}

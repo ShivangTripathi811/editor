@@ -1,0 +1,14 @@
+{
+    "contestId": 2187,
+    "index": "A",
+    "title": "A. Restricted Sorting",
+    "statement": "You are given an array $$$a$$$ of length $$$n$$$. For an integer $$$k$$$, we call it\npiggy\nif and only if it is possible to sort $$$a$$$ in non-descending order by performing the following operation an arbitrary number of times (possibly zero):\nFirst, select two indices $$$i$$$ and $$$j$$$ ($$$1 \\le i < j \\le n$$$) such that $$$|a_i - a_j| \\ge k$$$;\nThen, swap $$$a_i$$$ and $$$a_j$$$.\nYou need to determine the largest\npiggy\ninteger $$$k$$$. If such an integer does not exist, output $$$-1$$$.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$) — the length of $$$a$$$.\nThe second line contains $$$n$$$ integers $$$a_1,a_2,\\ldots,a_n$$$ ($$$1 \\le a_i \\le 10^9$$$) — the elements of $$$a$$$.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2\\cdot10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single integer — the largest\npiggy\ninteger $$$k$$$.\nIf such an integer does not exist, output $$$-1$$$ instead.",
+    "note": "Note\nIn the first and the second test case, no matter how large $$$k$$$ is, you can always sort $$$a$$$ in non-descending order by not performing any operations.\nIn the third test case, the largest\npiggy\n$$$k$$$ is $$$2$$$. We can select $$$i=2$$$ and $$$j=3$$$ in the first operation, since $$$|a_2-a_3|=|4-2|=2 \\ge k$$$, and $$$a$$$ is sorted in non-descending order. It can be proven that no\npiggy\nintegers larger than $$$2$$$ exist.",
+    "tags": [
+        "greedy",
+        "sortings"
+    ],
+    "rating": 1300
+}

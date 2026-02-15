@@ -1,0 +1,14 @@
+{
+    "contestId": 2153,
+    "index": "B",
+    "title": "B. Bitwise Reversion",
+    "statement": "You are given three non-negative integers $$$x$$$, $$$y$$$ and $$$z$$$. Determine whether there exist three non-negative integers $$$a$$$, $$$b$$$ and $$$c$$$ satisfying the following three conditions:\n$$$a \\mathbin{\\&} b = x$$$\n$$$b \\mathbin{\\&} c = y$$$\n$$$a \\mathbin{\\&} c = z$$$\nwhere $$$\\mathbin{\\&}$$$ denotes the\nbitwise AND operation\n.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first and only line of each test case contains three integers $$$x$$$, $$$y$$$ and $$$z$$$ ($$$0\\le x, y, z\\le 10^9$$$) — the target values of $$$a \\mathbin{\\&} b$$$, $$$b \\mathbin{\\&} c$$$ and $$$a \\mathbin{\\&} c$$$, respectively.",
+    "outputSpecification": "Output\nFor each test case, output \"\nYES\n\" if there exists three non-negative integers $$$a$$$, $$$b$$$, and $$$c$$$ satisfying the above conditions, and \"\nNO\n\" otherwise.\nYou can output the answer in any case (upper or lower). For example, the strings \"\nyEs\n\", \"\nyes\n\", \"\nYes\n\", and \"\nYES\n\" will be recognized as positive responses.",
+    "note": "Note\nIn the first test case, $$$a = 3$$$, $$$b = 5$$$, and $$$c = 9$$$ satisfies the condition as $$$3 \\mathbin{\\&} 5 = 1$$$, $$$5 \\mathbin{\\&} 9 = 1$$$, and $$$3 \\mathbin{\\&} 9 = 1$$$.\nIn the second test case, $$$a = 7$$$, $$$b = 3$$$, and $$$c = 22$$$ satisfies the condition as $$$7 \\mathbin{\\&} 3 = 3$$$, $$$3 \\mathbin{\\&} 22 = 2$$$, and $$$7 \\mathbin{\\&} 22 = 6$$$.\nIn the third test case, it can be proven that there are no three non-negative integers $$$a$$$, $$$b$$$, and $$$c$$$ such that $$$a \\mathbin{\\&} b = 4$$$, $$$b \\mathbin{\\&} c = 8$$$, and $$$a \\mathbin{\\&} c = 12$$$.",
+    "tags": [
+        "bitmasks",
+        "greedy"
+    ],
+    "rating": 800
+}

@@ -1,0 +1,73 @@
+Title: Indivisible
+Tags: brute force, constructive algorithms, graphs
+Rating: Unrated
+--------------------
+F. Indivisible
+time limit per test
+2 seconds
+memory limit per test
+256 megabytes
+input
+standard input
+output
+standard output
+You are given two numbers $$$n$$$ and $$$m$$$.
+An undirected graph is called
+beautiful
+if it satisfies the following conditions:
+It has no loops or multiple edges.
+It has exactly $$$n$$$ vertices and $$$m$$$ edges.
+Its vertices
+cannot
+be divided into $$$2$$$ sets such that the sums of the degrees of all vertices in the first set and the sums of the degrees of all vertices in the second set are equal.
+You need to either report that a
+beautiful
+undirected graph with the given $$$n, m$$$ does not exist, or provide one.
+Input
+Each test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \le t \le 10^4$$$). The description of the test cases follows.
+The only line of each test case contains two integers $$$n, m$$$ ($$$12 \leq n \leq 10^5, 1 \leq m \leq \min(2 \cdot 10^5, \frac{n(n-1)}{2})$$$) — the number of vertices and edges in the graph.
+It is guaranteed that the sum of $$$n$$$ across all test cases does not exceed $$$10^5$$$, and the sum of $$$m$$$ across all test cases does not exceed $$$2 \cdot 10^5$$$.
+Output
+For each test case, output
+"No"
+if such a graph does not exist. Otherwise, output
+"Yes"
+, and then, in the following $$$m$$$ lines — the edges of the
+beautiful
+graph in arbitrary order. If there are multiple answers, you may output any of them.
+Example
+Input
+5
+12 7
+12 1
+90000 12
+30 434
+30 435
+Output
+Yes
+1 2
+2 3
+3 4
+4 5
+5 1
+1 3
+2 4
+No
+Yes
+1 4
+1 5
+1 6
+2 4
+2 5
+2 6
+3 4
+3 5
+3 6
+4 5
+4 6
+5 6
+No
+No
+Note
+In the first test case, the graph is a simple cycle of $$$7$$$ vertices. The degrees of the vertices are $$$\{2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0\}$$$. It is easy to see that in such a graph, it is impossible to divide the vertices into $$$2$$$ parts with equal sums of degrees.
+In the second test case, since $$$m = 1$$$, it is easy to see that the vertices can always be divided into $$$2$$$ parts with equal sums of degrees. Therefore, no solution exists.

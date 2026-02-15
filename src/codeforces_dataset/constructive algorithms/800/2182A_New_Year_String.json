@@ -1,0 +1,16 @@
+{
+    "contestId": 2182,
+    "index": "A",
+    "title": "A. New Year String",
+    "statement": "We will call a string consisting of characters\n0\n,\n2\n,\n5\n, and/or\n6\na\nNew Year string\nif\nat least one\nof the two conditions is met:\nit contains the string\n2026\nas a continuous substring;\nit does not contain the string\n2025\nas a continuous substring.\nFor example, the strings\n20252026\n,\n21026\n,\n20262026\n,\n000\nare New Year strings. The strings\n2025\n,\n20256\n,\n20252025\n,\n000202500020226\nare not New Year strings.\nYou are given a string $$$s$$$. You can perform the following operation any number of times (possibly zero):\nchoose a character in the string $$$s$$$ and replace it with\n0\n,\n2\n,\n5\n, or\n6\n(you can choose any one of these four characters).\nCalculate the minimum number of operations needed to make the string $$$s$$$ a New Year string.",
+    "inputSpecification": "Input\nThe first line contains one integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nEach test case consists of two lines:\nthe first line contains one integer $$$n$$$ ($$$4 \\le n \\le 20$$$) — the number of characters in $$$s$$$;\nthe second line contains $$$s$$$ — a sequence of $$$n$$$ characters\n0\n,\n2\n,\n5\n, and/or\n6\n.",
+    "outputSpecification": "Output\nFor each test case, output one integer — the minimum number of operations needed to make the string $$$s$$$ a New Year string.",
+    "note": "Note\nIn the second example from the statement, you can replace the $$$2$$$-nd character of the string with\n2\n. Then the string will become\n2225\n.\nIn the fifth example from the statement, you can replace the $$$4$$$-th character with\n6\n. Then the string will become\n20262025\n.\nIn the sixth example from the statement, you can replace the $$$8$$$-th character with\n6\n. Then the string will become\n202520266\n.",
+    "tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "strings"
+    ],
+    "rating": 800
+}

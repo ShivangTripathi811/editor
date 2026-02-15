@@ -1,0 +1,15 @@
+{
+    "contestId": 2194,
+    "index": "B",
+    "title": "B. Offshores",
+    "statement": "Mark loves money very much, and he keeps most of it in the bank. He stores his money in $$$n$$$ different banks. In the $$$i$$$-th bank, he has $$$a_i$$$ rubles.\nOne day, Mark decided to gather all his money in one bank, so he will be transferring money from one bank account to another. All interbank transfers are arranged the same way: he can transfer only $$$x$$$ rubles in one transfer, and considering all fees, $$$y$$$ rubles will be credited to the other account (since banks want to make a profit, it holds that $$$y \\leq x$$$).\nIt is possible that Mark will not be able to transfer all his money to one bank, but he wants to find the maximum number of rubles that can end up in any bank.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains three integers $$$n$$$, $$$x$$$, and $$$y$$$ ($$$2 \\le n \\le 2 \\cdot 10^5$$$, $$$1 \\le y \\le x \\le 10^9$$$) — the number of banks, the transfer amount, and the credited amount.\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le 10^9$$$) — the initial amount of rubles in each bank.\nIt is guaranteed that the sum of the values of $$$n$$$ across all test cases does not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output a single number — the maximum number of rubles that can be obtained in any bank.",
+    "note": "Note\nIn the first test case, the optimal sequence of transfers may look as follows: $$$$$$ 1\\to4,\\; 1\\to4,\\; 4\\to3,\\; 4\\to3,\\; 4\\to3,\\; 3\\to2,\\; 3\\to2,\\; 3\\to2,\\; 3\\to2. $$$$$$ Let's show the changes in sums after each step: $$$$$$ (10,9,8,7) $$$$$$ $$$$$$ \\xrightarrow{1\\to4} (5,9,8,11) \\xrightarrow{1\\to4} (0,9,8,15) $$$$$$ $$$$$$ \\xrightarrow{4\\to3} (0,9,12,10) \\xrightarrow{4\\to3} (0,9,16,5) \\xrightarrow{4\\to3} (0,9,20,0) $$$$$$ $$$$$$ \\xrightarrow{3\\to2} (0,13,15,0) \\xrightarrow{3\\to2} (0,17,10,0) \\xrightarrow{3\\to2} (0,21,5,0) \\xrightarrow{3\\to2} (0,25,0,0). $$$$$$\nAs a result, in one bank (specifically the second one), it is possible to obtain $$$25$$$ rubles, and this value is the answer for this test case.\nIn the third test case, it is possible to transfer one ruble from the first bank to the second bank $$$1000$$$ times and obtain $$$2000$$$ rubles in the second bank.",
+    "tags": [
+        "greedy",
+        "implementation",
+        "math"
+    ],
+    "rating": "Unrated"
+}

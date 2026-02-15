@@ -1,0 +1,14 @@
+{
+    "contestId": 2172,
+    "index": "L",
+    "title": "L. Maximum Color Segment",
+    "statement": "You are given a rope $$$n$$$ units long, where each unit is painted either red or black. The rope can be represented as a string of length $$$n$$$ consisting of characters\nR\n(red) and\nB\n(black). You are also given two integers $$$m$$$ and $$$k$$$.\nYou may perform the following operation\nat most\n$$$m$$$ times (possibly, zero times):\nChoose any contiguous substring$$$^{\\text{∗}}$$$ of the rope of length exactly $$$k$$$.\nFlip the color of every unit in the substring: each\nR\nbecomes\nB\n, and each\nB\nbecomes\nR\n.\nFor example, consider the rope\nRRRRBRRR\nwith $$$k = 4$$$. If you choose the $$$3$$$-rd to $$$6$$$-th characters (\nRR\nRRBR\nRR\n), then after flipping, the rope becomes\nRR\nBBRB\nRR\n.\nDefine the\nnumber of color segments\nas the smallest number of contiguous segments into which the rope can be divided so that each segment consists of units of a single color. For instance, the rope\nRRBRRRBB\nhas $$$4$$$ color segments:\nRR\n,\nB\n,\nRRR\n, and\nBB\n.\nYour task is to determine the maximum possible number of color segments after performing\nat most\n$$$m$$$ operations.\n$$$^{\\text{∗}}$$$A string $$$t$$$ is a substring of a string $$$s$$$ if $$$t$$$ can be obtained from $$$s$$$ by the deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.",
+    "inputSpecification": "Input\nThe first line contains three integers $$$n$$$, $$$m$$$, and $$$k$$$, representing the length of the rope, the maximum number of operations allowed, and the length of each operation's flip window, respectively.\nThe second line contains a string of length $$$n$$$ consisting only of the characters\nR\nand\nB\n, representing the initial content of the rope.\n$$$1 \\le n \\le 3000$$$\n$$$0 \\le m \\le 3000$$$\n$$$1 \\le k \\le n$$$",
+    "outputSpecification": "Output\nOutput an integer in a single line, representing the maximum possible number of color segments after performing at most $$$m$$$ operations.",
+    "note": "",
+    "tags": [
+        "dp",
+        "implementation"
+    ],
+    "rating": 2300
+}

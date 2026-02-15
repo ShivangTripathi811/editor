@@ -1,0 +1,15 @@
+{
+    "contestId": 2145,
+    "index": "D",
+    "title": "D. Inversion Value of a Permutation",
+    "statement": "A permutation of length $$$n$$$ is an array of $$$n$$$ integers, where each number from $$$1$$$ to $$$n$$$ appears exactly once. An\ninversion\nin a permutation $$$p$$$ is a pair of indices $$$(i, j)$$$ such that $$$i  \\lt  j$$$ and $$$p_i  \\gt  p_j$$$.\nFor a permutation $$$p$$$, we define its\ninversion value\nas the number of its subsegments that contain at least one inversion. Formally, this is the number of pairs of integers $$$(l, r)$$$ ($$$1 \\le l  \\lt  r \\le n$$$) for which there exists a pair of indices $$$(i, j)$$$ satisfying the following conditions: $$$l \\le i  \\lt  j \\le r$$$ and $$$p_i  \\gt  p_j$$$.\nFor example, for the permutation $$$[3, 1, 4, 2]$$$, the inversion value is $$$5$$$.\nYou are given two integers $$$n$$$ and $$$k$$$. Your task is to construct a permutation of length $$$n$$$ with an\ninversion value equal to exactly $$$k$$$\n.",
+    "inputSpecification": "Input\nThe first line contains one integer $$$t$$$ ($$$1 \\le t \\le 500$$$) — the number of test cases.\nEach test case consists of a single line containing two integers $$$n$$$ and $$$k$$$ ($$$2 \\le n \\le 30$$$; $$$0 \\le k \\le \\dfrac{n(n-1)}{2}$$$).",
+    "outputSpecification": "Output\nFor each test case, output the answer as follows:\nif the desired permutation does not exist, output a single integer $$$0$$$;\notherwise, output $$$n$$$ distinct integers from $$$1$$$ to $$$n$$$ — the desired permutation. If there are multiple such permutations, you may output any of them.",
+    "note": "",
+    "tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "dp"
+    ],
+    "rating": 1800
+}

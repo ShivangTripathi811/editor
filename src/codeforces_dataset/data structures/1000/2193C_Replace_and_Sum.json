@@ -1,0 +1,14 @@
+{
+    "contestId": 2193,
+    "index": "C",
+    "title": "C. Replace and Sum",
+    "statement": "Today, KQ has an exam at the Grail Academy. A strict teacher gave a task that KQ could not solve. He was given two arrays $$$a$$$ and $$$b$$$ of length $$$n$$$. KQ is allowed to perform the following operations on the arrays:\nChoose an index $$$i$$$ ($$$1\\le i\\lt n$$$) and replace $$$a_i$$$ with $$$a_{i+1}$$$.\nChoose an index $$$i$$$ ($$$1\\le i\\le n$$$) and replace $$$a_i$$$ with $$$b_i$$$.\nNow he has $$$q$$$ queries. Each query is described by two numbers $$$l$$$ and $$$r$$$. His task is to find the maximum value of the sum $$$(a_l + a_{l+1} + a_{l+2} + \\dots + a_r)$$$ for each query, if he can perform any number of operations on any elements of the array. Since he is not skilled enough for this, he asks for your help.",
+    "inputSpecification": "Input\nEach test consists of several test cases. The first line contains one integer $$$t$$$ ($$$1\\le t\\le 10^4$$$) — the number of test cases. The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$, $$$q$$$ $$$(1\\le n, q\\le 2 \\cdot 10^5)$$$.\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2,...,a_n$$$ $$$(1\\le a_i\\le 10^4)$$$.\nThe third line of each test case contains $$$n$$$ integers $$$b_1, b_2,...,b_n$$$ $$$(1\\le b_i\\le 10^4)$$$.\nThe following $$$q$$$ lines contain two integers $$$l$$$ and $$$r$$$ $$$(1\\le l\\le r\\le n)$$$.\nIt is guaranteed that the sum of the values of $$$n$$$ and the sum of the values of $$$q$$$ across all test cases do not exceed $$$2 \\cdot 10^5$$$.",
+    "outputSpecification": "Output\nFor each test case, output $$$q$$$ numbers separated by spaces — the maximum values of the sums $$$(a_l + a_{l+1} + a_{l+2} + \\dots + a_r)$$$.",
+    "note": "Note\nConsider the first test case. Replace $$$a_3$$$ with $$$b_3$$$, $$$a = [3, 2, 3]$$$. Replace $$$a_2$$$ with $$$a_3$$$, $$$a = [3, 3, 3]$$$. The sum $$$a_1 + a_2 + a_3 = 9$$$.",
+    "tags": [
+        "data structures",
+        "greedy"
+    ],
+    "rating": 1000
+}

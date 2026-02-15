@@ -1,0 +1,13 @@
+{
+    "contestId": 2147,
+    "index": "B",
+    "title": "B. Multiple Construction",
+    "statement": "You are given an integer $$$n$$$. Your task is to construct an array of length $$$2 \\cdot n$$$ such that:\nEach integer from $$$1$$$ to $$$n$$$ appears exactly twice in the array.\nFor each integer $$$x$$$ ($$$1 \\le x \\le n$$$), the distance between the two occurrences of $$$x$$$ is a multiple of $$$x$$$. In other words, if $$$p_x$$$ and $$$q_x$$$ are the indices of the two occurrences of $$$x$$$, $$$| q_x - p_x |$$$ must be divisible by $$$x$$$.\nIt can be shown that a solution always exists.",
+    "inputSpecification": "Input\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nEach of the next $$$t$$$ lines contains a single integer $$$n$$$ ($$$1 \\le n \\le 2 \\cdot 10^{5}$$$).\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^{5}$$$.",
+    "outputSpecification": "Output\nFor each test case, print a line containing $$$2 \\cdot n$$$ integers — the array that satisfies the given conditions.\nIf there are multiple valid answers, print any of them.",
+    "note": "Note\nVisualizer link\nIn the first test case:\nThe number $$$1$$$ appears at positions $$$1$$$ and $$$3$$$: the distance is $$$2$$$, which is divisible by $$$1$$$.\nThe number $$$2$$$ appears at positions $$$2$$$ and $$$4$$$: the distance is $$$2$$$, which is divisible by $$$2$$$.\nIn the second test case:\nThe number $$$1$$$ appears at positions $$$1$$$ and $$$3$$$: the distance is $$$2$$$, which is divisible by $$$1$$$.\nThe number $$$2$$$ appears at positions $$$4$$$ and $$$6$$$: the distance is $$$2$$$, which is divisible by $$$2$$$.\nThe number $$$3$$$ appears at positions $$$2$$$ and $$$5$$$: the distance is $$$3$$$, which is divisible by $$$3$$$.\nIn the third test case, the two occurrences of $$$1$$$ are at positions $$$1$$$ and $$$2$$$, so the distance between them is $$$1$$$, which is a multiple of $$$1$$$.",
+    "tags": [
+        "constructive algorithms"
+    ],
+    "rating": 1000
+}

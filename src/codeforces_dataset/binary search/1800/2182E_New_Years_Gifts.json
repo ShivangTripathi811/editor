@@ -1,0 +1,17 @@
+{
+    "contestId": 2182,
+    "index": "E",
+    "title": "E. New Year's Gifts",
+    "statement": "Monocarp has $$$n$$$ friends and decided to give a New Year's gift to each of them. He has also prepared $$$m$$$ boxes to place the gifts in; the beauty of the $$$i$$$-th box is $$$a_i$$$. Every box can contain at most one gift.\nMonocarp wants to give a gift worth at least $$$y_i$$$ coins to the $$$i$$$-th friend. Additionally, he knows that the $$$i$$$-th friend will be happy if\nat least one\nof the following conditions holds:\nthe gift is in a box with beauty at least $$$x_i$$$;\nthe gift is worth at least $$$z_i$$$ ($$$z_i > y_i$$$).\nYour task is to help Monocarp calculate the maximum possible number of friends he can make happy if he has $$$k$$$ coins.\nNote that Monocarp must purchase a gift for each friend, and the gift may not necessarily come in a box\n.",
+    "inputSpecification": "Input\nThe first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe first line of each test case contains three integers $$$n$$$, $$$m$$$ and $$$k$$$ ($$$1 \\le n, m \\le 2 \\cdot 10^5$$$; $$$1 \\le k \\le 10^{15}$$$).\nThe second line contains $$$m$$$ integers $$$a_1, a_2, \\dots, a_m$$$ ($$$1 \\le a_i \\le m$$$).\nThen $$$n$$$ lines follow; the $$$i$$$-th of them contains three integers $$$x_i$$$, $$$y_i$$$ and $$$z_i$$$ ($$$1 \\le x_i \\le m$$$; $$$1 \\le y_i < z_i \\le 10^9$$$).\nAdditional constraints on the input:\n$$$\\sum\\limits_{i=1}^{n} y_i \\le k$$$.\nthe sum of $$$n$$$ over all test cases doesn't exceed $$$2 \\cdot 10^5$$$;\nthe sum of $$$m$$$ over all test cases doesn't exceed $$$2 \\cdot 10^5$$$;",
+    "outputSpecification": "Output\nFor each test case, print a single integer — the maximum possible number of friends Monocarp can make happy if he has $$$k$$$ coins.",
+    "note": "Note\nIn the first example, Monocarp can make both friends happy as follows: give the first friend a gift for $$$3$$$ coins, and give the second friend a gift for $$$2$$$ coins in a box with $$$1$$$ beauty.\nIn the second example, Monocarp cannot make any of his friends happy, because he does not have enough money to buy a gift for $$$z_i$$$ coins for even one of them; also, all the boxes have less beauty than any of the $$$x_i$$$.\nIn the third example, Monocarp can make two friends (the $$$2$$$-nd friend and the $$$3$$$-rd friend) happy as follows: give the first friend a gift for $$$2$$$ coins, and give the second friend a gift for $$$6$$$ coins, and give the third friend a gift for $$$3$$$ coins.",
+    "tags": [
+        "binary search",
+        "data structures",
+        "greedy",
+        "sortings",
+        "two pointers"
+    ],
+    "rating": 1800
+}
