@@ -6,8 +6,10 @@ const pty = require('node-pty');
 const axios = require('axios');
 const crypto = require('crypto');
 
-const ragService = require('./src/utils/ragService');
-const codeModel = require('./src/utils/codeModel');
+// ✅ FIX: Proper path resolution for both dev and production
+const isDev = !app.isPackaged;
+const ragService = require(isDev ? './src/utils/ragService' : path.join(__dirname, 'src/utils/ragService'));
+const codeModel = require(isDev ? './src/utils/codeModel' : path.join(__dirname, 'src/utils/codeModel'));
 const { LucideEthernetPort } = require('lucide-react');
 
 let mainWindow;
@@ -102,7 +104,6 @@ function createWindow() {
   mainWindow = new BrowserWindow(windowOptions);
 
   // In dev mode, load from Vite dev server; in production load the built output
-  const isDev = !app.isPackaged;
   if (isDev) {
     mainWindow.loadURL('http://localhost:5173');
   } else {
@@ -241,926 +242,488 @@ async function getSequenceWithRetry(context, retryCount = 0) {
                      globalAutocompleteSequence.dispose();
                      globalAutocompleteSequence = null;
                      console.log("AI: Force-killed autocomplete sequence to free resources.");
-                     // Retry immediately
-                     return await getSequenceWithRetry(context, retryCount + 1);
-                 } catch(e) {
-                     console.warn("Error disposing autocomplete sequence:", e);
+                 } catch (e) {
+                     console.error("AI: Error force-killing autocomplete sequence:", e);
                  }
              }
-
-             // 1. Recycle ANY disposed sequence that might be hanging?
-             // (node-llama-cpp might track them, but we can only dispose our tracked ones)
              
-             // 2. Aggressively recycle the oldest session from our map
-             const iterator = sessions.keys();
-             const oldestSessionId = iterator.next().value;
-             
-             if (oldestSessionId) {
-                 const oldSessionData = sessions.get(oldestSessionId);
-                 if (oldSessionData && oldSessionData.sequence) {
-                     try {
-                         if (!oldSessionData.sequence.disposed) {
-                             oldSessionData.sequence.dispose();
-                             console.log(`AI: Force-recycled session: ${oldestSessionId}`);
-                         }
-                     } catch (e) {
-                         console.warn(`Error disposing session ${oldestSessionId}:`, e);
-                     }
-                 }
-                 sessions.delete(oldestSessionId);
-             } else {
-                 // If no sessions map entries, but still no sequences, it means ephemeral sequences (autocomplete/submit) are hogging.
-                 // We can't easily reach them unless we tracked them.
-                 // But waiting a bit might help if they are in 'finally' blocks.
-                 console.warn("AI: No sessions to recycle. Waiting for ephemeral sequences to free up...");
-                 await new Promise(r => setTimeout(r, 200 * (retryCount + 1)));
-             }
-             
-             return await getSequenceWithRetry(context, retryCount + 1);
+             // 1. Recycle and retry
+             context.recycle();
+             await new Promise(resolve => setTimeout(resolve, 200 + retryCount * 100)); // Backoff
+             return getSequenceWithRetry(context, retryCount + 1);
         }
         throw err;
     }
 }
 
-ipcMain.handle('submit-code', async (event, code) => {
-  // 1. Ensure AI is initialized
-  if (!context) {
-    console.log("AI: Context not initialized for submit-code. Auto-initializing...");
-    const activeModel = AI_MODELS[activeModelId];
-    if (activeModel) {
-      try {
-        await initAIModel(path.join(app.getPath('userData'), activeModel.filename), 'submit-code-session', false);
-      } catch (e) {
-        console.error("AI: Auto-init failed:", e);
-      }
-    }
-  }
-
-  if (!context) {
-      console.error("AI: Failed to initialize for submit-code.");
-      const tmpDir = os.tmpdir()
-      const cppPath = path.join(tmpDir, 'temp.cpp')
-      fs.writeFileSync(cppPath, code)
-      return { success: true, cppPath: cppPath }; 
-  }
-
-  let finalCppCode = code;
-  
-  try {
-      const { LlamaChatSession } = await import("node-llama-cpp");
-      const markerRegex = /!@#\$\("([^"]+)"\);?/g;
-      const matches = [];
-      let match;
-      
-      // Find all markers first
-      while ((match = markerRegex.exec(code)) !== null) {
-          matches.push({
-              index: match.index,
-              length: match[0].length,
-              prompt: match[1],
-              fullMatch: match[0]
-          });
-      }
-      
-      const replacements = [];
-      
-      // We process matches to generate code
-      for (const m of matches) {
-          // Calculate line number for context
-          const stringsBefore = code.substring(0, m.index);
-          const lineNumber = stringsBefore.split('\n').length;
-          
-          // Context extraction (similar to inline-prompt)
-          // Context extraction (similar to inline-prompt)
-          const lines = code.split('\n');
-          const startLine = Math.max(0, lineNumber - 50);
-          const endLine = Math.min(lines.length, lineNumber + 20);
-          
-          // Mask the marker in the context to prevent AI from repeating it
-          const contextLines = lines
-              .slice(startLine, endLine)
-              .map((line, idx) => {
-                  const currentLineNum = startLine + idx + 1;
-                  if (currentLineNum === lineNumber) {
-                      return `${currentLineNum}: // Generate code for: ${m.prompt}`; 
-                  }
-                  return `${currentLineNum}: ${line}`;
-              });
-              
-          const contextBlock = contextLines.join('\n');
-          
-          // 2. Construct Prompt (Strict Code-Only)
-          const systemInstruction = `You are an expert coding assistant.
-Task: Write valid C++ code to replace the comment "// Generate code for: ${m.prompt}".
-Rules:
-1. Output ONLY the code.
-2. NO markdown backticks.
-3. NO explanations or conversational text.
-4. Maintain indentation.`;
-
-          const userMsg = `Context:
-${contextBlock}
-
-Instruction: Write the C++ code to replace "// Generate code for: ${m.prompt}" at line ${lineNumber}.
-Return ONLY the code.`;
-
-          let generatedCode = `// AI Generation Code for: ${m.prompt}`; // Default in case of failure
-
-          const generateWithRetry = async (retryCount = 0) => {
-              let sequence = null;
-              try {
-                  sequence = await getSequenceWithRetry(context);
-                  const tempSession = new LlamaChatSession({ 
-                      contextSequence: sequence 
-                  });
-                  
-                  console.log(`AI: Processing marker "${m.prompt}" (Attempt ${retryCount + 1})`);
-                  
-                  const response = await tempSession.prompt(userMsg, {
-                      systemPrompt: systemInstruction,
-                      temperature: 0.2, // Low temperature for code
-                      maxTokens: 2048
-                  });
-                  
-                  // Cleanup Response (Robust extraction)
-                  let cleanResponse = response.trim();
-                  const codeBlockMatch = cleanResponse.match(/```(?:[a-zA-Z]*)\n([\s\S]*?)```/);
-                  if (codeBlockMatch) {
-                      cleanResponse = codeBlockMatch[1].trim();
-                  } else {
-                       const respLines = cleanResponse.split('\n');
-                       if (respLines.length > 0 && /^(sure|here|okay|certainly|i can|below is)/i.test(respLines[0])) {
-                           cleanResponse = respLines.slice(1).join('\n').trim();
-                       }
-                  }
-                  
-                  generatedCode = cleanResponse; // Success!
-                  return true;
-
-              } catch (err) {
-                  if (err.message.includes("No sequences left") && retryCount < 2) {
-                       console.warn("AI: No sequences left, forcing disposal and retrying...");
-                       // Try to kill global autocomplete if needed (handled in getSequenceWithRetry mostly, but recursive call helps)
-                       return await generateWithRetry(retryCount + 1);
-                  }
-                  
-                  console.error(`AI generation failed for marker "${m.prompt}":`, err);
-                  generatedCode = `// Error generating code for: ${m.prompt} (${err.message})`;
-                  return false;
-              } finally {
-                  if (sequence && !sequence.disposed) {
-                      try {
-                          sequence.dispose();
-                      } catch (e) { console.error("Error disposing sequence:", e); }
-                  }
-              }
-          };
-
-          await generateWithRetry();
-          
-          replacements.push({
-              ...m,
-              replacement: generatedCode
-          });
-      }
-      
-      // Apply replacements from back to front
-      for (let i = replacements.length - 1; i >= 0; i--) {
-          const item = replacements[i];
-          finalCppCode = finalCppCode.substring(0, item.index) + item.replacement + finalCppCode.substring(item.index + item.length);
-      }
-      
-  } catch (error) {
-      console.error("submit-code error:", error);
-      // Fallback to original code if something major crashes
-  }
-
-  const tmpDir = os.tmpdir()
-  const cppPath = path.join(tmpDir, 'temp.cpp')
-  fs.writeFileSync(cppPath, finalCppCode)
-
-  return {
-    success: true,
-    cppPath: cppPath
-  }
-})
-
-
-app.whenReady().then(createWindow);
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
-});
-
-app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) createWindow();
-});
-
-// ─── IPC: App/Zoom ──────────────────────────────────────────
-ipcMain.handle('app:set-zoom', (_, level) => {
-  if (mainWindow) {
-    mainWindow.webContents.setZoomLevel(level);
-    return true;
-  }
-  return false;
-});
-
-ipcMain.handle('app:get-zoom', () => {
-  if (mainWindow) {
-    return mainWindow.webContents.getZoomLevel();
-  }
-  return 0;
-});
-
-// ─── IPC: Dialog ────────────────────────────────────────────
-ipcMain.handle('dialog:openFolder', async () => {
-  const result = await dialog.showOpenDialog(mainWindow, {
-    properties: ['openDirectory'],
-  });
-  if (result.canceled || result.filePaths.length === 0) return null;
-  return result.filePaths[0];
-});
-
-// ─── IPC: File System ───────────────────────────────────────
-ipcMain.handle('fs:readDir', async (_, dirPath) => {
-  try {
-    const entries = fs.readdirSync(dirPath, { withFileTypes: true });
-    const results = [];
-    for (const entry of entries) {
-      if (entry.name.startsWith('.')) continue; // skip hidden
-      results.push({
-        name: entry.name,
-        path: path.join(dirPath, entry.name),
-        isDirectory: entry.isDirectory(),
-      });
-    }
-    // Sort: directories first, then alphabetical
-    results.sort((a, b) => {
-      if (a.isDirectory && !b.isDirectory) return -1;
-      if (!a.isDirectory && b.isDirectory) return 1;
-      return a.name.localeCompare(b.name);
-    });
-    return results;
-  } catch (e) {
-    console.error('fs:readDir error', e);
-    return [];
-  }
-});
-
-ipcMain.handle('fs:readFile', async (_, filePath) => {
-  try {
-    return fs.readFileSync(filePath, 'utf-8');
-  } catch (e) {
-    console.error('fs:readFile error', e);
-    return null;
-  }
-});
-
-ipcMain.handle('fs:writeFile', async (_, filePath, content) => {
-  try {
-    fs.writeFileSync(filePath, content, 'utf-8');
-    return true;
-  } catch (e) {
-    console.error('fs:writeFile error', e);
-    return false;
-  }
-});
-
-ipcMain.handle('fs:createFile', async (_, filePath) => {
-  try {
-    if (fs.existsSync(filePath)) return false;
-    fs.writeFileSync(filePath, '', 'utf-8');
-    return true;
-  } catch (e) {
-    console.error('fs:createFile error', e);
-    return false;
-  }
-});
-
-ipcMain.handle('fs:createFolder', async (_, folderPath) => {
-  try {
-    if (fs.existsSync(folderPath)) return false;
-    fs.mkdirSync(folderPath, { recursive: true });
-    return true;
-  } catch (e) {
-    console.error('fs:createFolder error', e);
-    return false;
-  }
-});
-
-// ─── IPC: RAG Agent ─────────────────────────────────────────
-ipcMain.handle('rag:index', async (event, projectFiles) => {
-  // Ensure RAG service is initialized with model if possible
-  if (!ragService.modelPath) {
-    const nomicPath = path.join(app.getPath('userData'), NOMIC_FILENAME);
-    if (fs.existsSync(nomicPath)) {
-      console.log("RAG: Auto-initializing for Project index...");
-      await ragService.init(app.getPath('userData'), nomicPath);
-    } else {
-      console.warn("RAG: Cannot index Project, model not found at", nomicPath);
-      return false;
-    }
-  }
-
-  await ragService.indexProject(projectFiles, (current, total, filename) => {
-    if (!event.sender.isDestroyed()) {
-      event.sender.send('rag:progress', { current, total, filename, type: 'project' });
-    }
-  });
-  return true;
-});
-
-ipcMain.handle('rag:query', async (_, query) => {
-  return ragService.query(query);
-});
-
-// ... (fs:indexProject existing code) ...
-
-// ... (existing code) ...
-
-ipcMain.handle('rag:index-kb', async (event) => {
-  const kbPath = path.join(__dirname, 'src', 'cp_dsa_knowledge_base');
-
-  // Ensure RAG service is initialized with model if possible
-  if (!ragService.modelPath) {
-    const nomicPath = path.join(app.getPath('userData'), NOMIC_FILENAME);
-    if (fs.existsSync(nomicPath)) {
-      console.log("RAG: Auto-initializing for KB index...");
-      await ragService.init(app.getPath('userData'), nomicPath);
-    } else {
-      console.warn("RAG: Cannot index KB, model not found at", nomicPath);
-      return false;
-    }
-  }
-
-  if (fs.existsSync(kbPath)) {
-    await ragService.indexDirectory(kbPath, (current, total, filename) => {
-      if (!event.sender.isDestroyed()) {
-        event.sender.send('rag:progress', { current, total, filename, type: 'kb' });
-      }
-    });
-    return true;
-  }
-  return false;
-});
-
-ipcMain.handle('fs:indexProject', async (_, rootPath) => {
-  const results = [];
-  const walk = (dir) => {
-    try {
-      const files = fs.readdirSync(dir, { withFileTypes: true });
-      for (const file of files) {
-        const fullPath = path.join(dir, file.name);
-        if (file.isDirectory()) {
-          // Ignore heavy/vcs dirs
-          if (['node_modules', '.git', 'dist', 'build', '.next', '.venv'].includes(file.name)) continue;
-          walk(fullPath);
-        } else {
-          const ext = path.extname(file.name).toLowerCase();
-          const allowedExts = ['.cpp', '.h', '.hpp', '.c', '.js', '.jsx', '.json', '.css', '.md', '.py', '.txt', '.sh'];
-          if (allowedExts.includes(ext)) {
-            results.push({
-              name: file.name,
-              path: fullPath,
-              relativePath: path.relative(rootPath, fullPath)
-            });
-          }
-        }
-      }
-    } catch (e) {
-      console.warn(`Error walking dir ${dir}:`, e);
-    }
-  };
-
-  try {
-    if (!rootPath || !fs.existsSync(rootPath)) return [];
-    walk(rootPath);
-    return results;
-  } catch (err) {
-    console.error('fs:indexProject error', err);
-    return [];
-  }
-});
-
-ipcMain.handle('fs:search', async (_, rootPath, query, options = {}) => {
-  console.log(`fs:search called with root=${rootPath}, query=${query}, options=${JSON.stringify(options)}`);
-  const results = [];
-  if (!rootPath || !query) return [];
-  const queryLower = query.toLowerCase();
-  
-  const walk = (dir) => {
-    try {
-      const files = fs.readdirSync(dir, { withFileTypes: true });
-      for (const file of files) {
-        const fullPath = path.join(dir, file.name);
-        if (file.isDirectory()) {
-          if (['node_modules', '.git', 'dist', 'build', '.next', '.venv', '.gemini'].includes(file.name)) continue;
-          walk(fullPath);
-        } else {
-          const ext = path.extname(file.name).toLowerCase();
-          const allowedExtensions = options.extensions || ['.cpp', '.hpp', '.h', '.c']; 
-          
-          if (allowedExtensions.includes(ext)) {
-            try {
-              const content = fs.readFileSync(fullPath, 'utf-8');
-              const lines = content.split('\n');
-              for (let i = 0; i < lines.length; i++) {
-                const line = lines[i];
-                if (line.toLowerCase().includes(queryLower)) {
-                  results.push({
-                    filePath: fullPath,
-                    fileName: file.name,
-                    line: i + 1,
-                    text: line.trim()
-                  });
-                  if (results.length > 500) return;
-                }
-              }
-            } catch (e) { }
-          }
-        }
-        if (results.length > 500) return;
-      }
-    } catch (e) {
-      console.warn(`Error walking dir ${dir}:`, e);
-    }
-  };
-
-  try {
-    walk(rootPath);
-    console.log(`fs:search found ${results.length} results`);
-    return results;
-  } catch (err) {
-    console.error('fs:search error', err);
-    return [];
-  }
-});
-
-ipcMain.handle('shell:run', async (_, command, cwd) => {
-  return new Promise((resolve) => {
-    const { exec } = require('child_process');
-    exec(command, { cwd: cwd || os.homedir() }, (error, stdout, stderr) => {
-      resolve({
-        success: !error,
-        stdout: stdout,
-        stderr: stderr,
-        exitCode: error ? error.code : 0
-      });
-    });
-  });
-});
-
-// ─── IPC: Terminal (node-pty) ───────────────────────────────
-ipcMain.handle('terminal:create', (_, cols, rows) => {
-  if (ptyProcess) {
-    ptyProcess.kill();
-  }
-
-  const shell = process.platform === 'win32' ? 'powershell.exe' : process.env.SHELL || '/bin/zsh';
-
-  ptyProcess = pty.spawn(shell, [], {
-    name: 'xterm-256color',
-    cols: cols || 80,
-    rows: rows || 24,
-    cwd: os.homedir(),
-    env: process.env,
-  });
-
-  ptyProcess.onData((data) => {
-    if (mainWindow && !mainWindow.isDestroyed()) {
-      mainWindow.webContents.send('terminal:data', data);
-    }
-  });
-
-  return true;
-});
-
-ipcMain.on('terminal:write', (_, data) => {
-  if (ptyProcess) {
-    ptyProcess.write(data);
-  }
-});
-
-ipcMain.on('terminal:resize', (_, cols, rows) => {
-  if (ptyProcess) {
-    try {
-      ptyProcess.resize(cols, rows);
-    } catch (e) {
-      // ignore resize errors
-    }
-  }
-});
-
-ipcMain.on('terminal:cwd', (_, cwd) => {
-  // Kill existing and respawn in new cwd
-  if (ptyProcess) {
-    ptyProcess.kill();
-  }
-  const shell = process.platform === 'win32' ? 'powershell.exe' : process.env.SHELL || '/bin/zsh';
-  ptyProcess = pty.spawn(shell, [], {
-    name: 'xterm-256color',
-    cols: 80,
-    rows: 24,
-    cwd: cwd,
-    env: process.env,
-  });
-  ptyProcess.onData((data) => {
-    if (mainWindow && !mainWindow.isDestroyed()) {
-      mainWindow.webContents.send('terminal:data', data);
-    }
-  });
-});
-
-// ─── AI Integration ─────────────────────────────────────────
-
-async function downloadModel(event, url, filename, expectedSize = null, displayName = "Model") {
-  const savePath = path.join(app.getPath('userData'), filename);
-
-  if (fs.existsSync(savePath)) {
-    const stats = fs.statSync(savePath);
-    if (!expectedSize || stats.size === expectedSize) {
-      console.log(`${displayName} already exists and size matches (or no size check).`);
-      return savePath;
-    }
-    console.warn(`${displayName} size mismatch: found ${stats.size}, expected ${expectedSize}. Re-downloading...`);
-    fs.unlinkSync(savePath); // remove corrupted file
-  }
-
-  try {
-    const response = await axios({
-      url: url,
-      method: 'GET',
-      responseType: 'stream'
-    });
-
-    const totalSize = parseInt(response.headers['content-length'], 10) || expectedSize;
-    let downloaded = 0;
-
-    return new Promise((resolve, reject) => {
-      const writer = fs.createWriteStream(savePath);
-      response.data.on('data', (chunk) => {
-        downloaded += chunk.length;
-        if (event && !event.sender.isDestroyed()) {
-          const progress = totalSize ? ((downloaded / totalSize) * 100).toFixed(2) : 0;
-          event.sender.send('ai:download-progress', progress, `Downloading ${displayName}...`);
-        }
-      });
-
-      response.data.pipe(writer);
-
-      writer.on('finish', () => {
-        // Second verification after download
-        const stats = fs.statSync(savePath);
-        if (totalSize && stats.size !== totalSize) {
-          fs.unlink(savePath, () => { });
-          reject(new Error(`Download incomplete for ${displayName}: expected ${totalSize} bytes, got ${stats.size} bytes`));
-        } else {
-          resolve(savePath);
-        }
-      });
-      writer.on('error', (err) => {
-        fs.unlink(savePath, () => { }); // cleanup partial file
-        reject(err);
-      });
-    });
-  } catch (error) {
-    console.error(`Download failed for ${displayName}:`, error);
-    throw error;
-  }
-}
-
-// 2. Start the AI
 let globalAIInitPromise = null;
-let sessionInitLock = false;
-let currentLoadedModelPath = null;
 
-async function initAIModel(modelPath, sessionId = 'default', createSession = true) {
-  if (sessions.has(sessionId) && currentLoadedModelPath === modelPath) return true;
-  
-  // If we don't need a session, just check if context exists
-  if (!createSession && context && currentLoadedModelPath === modelPath) return true;
-
-  while (sessionInitLock) await new Promise(r => setTimeout(r, 50));
-  if (sessions.has(sessionId) && currentLoadedModelPath === modelPath) return true;
-
-  sessionInitLock = true;
-  try {
-    // If model path changed, we must reset
-    if (currentLoadedModelPath !== modelPath) {
-        console.log(`AI: Model path changed from ${currentLoadedModelPath} to ${modelPath}. Resetting backend...`);
-        model = null;
-        context = null;
-        sessions.clear();
-        globalAIInitPromise = null;
-        currentLoadedModelPath = modelPath;
+// Initialize AI model (async)
+async function initAIModel(modelPath, sessionId = 'default', download = true) {
+    // If already initializing, wait for that initialization
+    if (globalAIInitPromise) {
+        console.log("AI: Initialization already in progress. Waiting...");
+        return globalAIInitPromise;
     }
-
-    if (!globalAIInitPromise) {
-        globalAIInitPromise = (async () => {
-             const { getLlama } = await import("node-llama-cpp");
-             console.log("AI: Initializing Llama backend...");
-             
-             // Conservative initialization: CPU-only to avoid SIGILL/CUDA issues
-             let currentLlama = await getLlama({ gpu: false });
-             llama = currentLlama;
-             
-             console.log("AI: Backend initialized. Loading model...");
-             if (!model) {
-                 try {
-                     model = await llama.loadModel({ 
-                         modelPath,
-                         // gpuLayers: 0
-                     });
-                     console.log("AI: Model loaded successfully.");
-                 } catch (loadErr) {
-                     console.error("AI: Critical error during model load:", loadErr);
-                     throw loadErr;
-                 }
-             }
-             
-             if (!context) {
-                 console.log("AI: Creating context...");
-                 context = await model.createContext({
-                     contextSize: 2048,
-                     sequences: 2 // Allow Chat + Complexity sessions (Recycling handles the rest)
-                 });
-                 console.log("AI: Context created.");
-             }
-             return { model, context };
-        })();
+    
+    // If already initialized, just reuse it
+    if (model && context) {
+        console.log("AI: Model already initialized. Reusing...");
+        const { LlamaChatSession } = await import("node-llama-cpp");
+        
+        if (sessions.has(sessionId)) {
+            console.log(`AI: Reusing existing session for ${sessionId}`);
+            return sessions.get(sessionId);
+        }
+        
+        const sequence = await getSequenceWithRetry(context);
+        const session = new LlamaChatSession({
+            contextSequence: sequence
+        });
+        sessions.set(sessionId, session);
+        console.log(`AI: New session created for ${sessionId}`);
+        return session;
     }
+    
+    // Start new initialization
+    globalAIInitPromise = (async () => {
+        try {
+            const { fileURLToPath } = await import('url');
+            const { dirname } = await import('path');
+            const { getLlama, LlamaChatSession } = await import("node-llama-cpp");
 
-    const { context: aiContext } = await globalAIInitPromise;
+            console.log("AI: Initializing model...");
 
-    if (!createSession) {
-        // Just ensuring context is ready
-        return true;
-    }
-
-    if (aiContext.sequencesLeft === 0) {
-        console.warn("No sequences left. Recycling the oldest session...");
-        // Find the oldest session (first key in Map) to recycle
-        const iterator = sessions.keys();
-        const oldestSessionId = iterator.next().value;
-        if (oldestSessionId) {
-            const oldSessionData = sessions.get(oldestSessionId);
-            if (oldSessionData && oldSessionData.sequence) {
-                try {
-                    if (!oldSessionData.sequence.disposed) {
-                        oldSessionData.sequence.dispose();
-                        console.log(`Recycled session: ${oldestSessionId}`);
-                    }
-                } catch (e) {
-                    console.warn(`Error disposing session ${oldestSessionId}:`, e);
+            if (!fs.existsSync(modelPath)) {
+                if (download) {
+                    console.log("AI: Model not found. Downloading...");
+                    await downloadModel(modelPath);
+                } else {
+                    throw new Error("AI: Model file not found.");
                 }
             }
-            sessions.delete(oldestSessionId);
-        }
-    }
 
-    const { LlamaChatSession } = await import("node-llama-cpp");
-    const sequence = aiContext.getSequence();
-    const chatSession = new LlamaChatSession({ 
-      contextSequence: sequence,
-      systemPrompt: "You are a helpful coding assistant. When asked for code, always provide implementation in C++ unless another language is explicitly requested."
-    });
+            llama = await getLlama();
+            model = await llama.loadModel({
+                modelPath,
+            });
+            
+            // Adjust contextSize and sequences intelligently
+            const contextSize = 4096; 
+            const sequences = 5; // Increased from 2 for handling multiple concurrent tasks
+            
+            context = await model.createContext({
+                contextSize,
+                sequences
+            });
+            
+            console.log(`AI: Model loaded and context created (contextSize=${contextSize}, sequences=${sequences})`);
+
+            // Create initial session for the first sessionId
+            const sequence = await getSequenceWithRetry(context);
+            const session = new LlamaChatSession({
+                contextSequence: sequence
+            });
+            sessions.set(sessionId, session);
+            console.log(`AI: Session initialized for ${sessionId}`);
+            
+            return session;
+        } catch (error) {
+            console.error("AI Initialization error:", error);
+            throw error;
+        } finally {
+            // Clear the promise after initialization (success or failure)
+            globalAIInitPromise = null;
+        }
+    })();
     
-    sessions.set(sessionId, { session: chatSession, sequence });
-    console.log(`AI Session initialized: ${sessionId}`);
-    return true;
-  } catch (err) {
-    console.error(`AI Init failed for session ${sessionId}:`, err);
-    return false;
-  } finally {
-      sessionInitLock = false;
-  }
+    return globalAIInitPromise;
 }
 
-// IPC Handlers
-ipcMain.handle('ai:init', async (event, sessionId = 'default') => {
-    try {
-        // Download Active Model
-        const activeModel = AI_MODELS[activeModelId];
-        const modelPath = await downloadModel(event, activeModel.url, activeModel.filename, activeModel.expectedSize, activeModel.name);
-        
-        // Download Nomic
-        const nomicPath = await downloadModel(event, NOMIC_MODEL_URL, NOMIC_FILENAME, null, "Nomic Embed");
+async function downloadModel(modelPath) {
+    const activeModel = AI_MODELS[activeModelId];
+    if (!activeModel) {
+        throw new Error(`Unknown model: ${activeModelId}`);
+    }
 
-    // Initialize RAG Service
-    await ragService.init(app.getPath('userData'), nomicPath);
+    const { url, expectedSize } = activeModel;
 
+    console.log(`Downloading ${activeModelId} model from ${url}...`);
+    
+    const response = await axios({
+        url,
+        method: 'GET',
+        responseType: 'stream',
+    });
 
-        await initAIModel(path.join(app.getPath('userData'), activeModel.filename), sessionId);
+    const writer = fs.createWriteStream(modelPath);
+    const totalSize = parseInt(response.headers['content-length'], 10) || expectedSize;
+    let downloadedSize = 0;
 
-        /*
-        // Auto-index Knowledge Base if not already done
-        const kbPath = path.join(__dirname, 'src', 'cp_dsa_knowledge_base');
-        if (fs.existsSync(kbPath)) {
-            console.log("RAG: Auto-indexing KB after initial download...");
-            // Use the optimized indexDirectory which skips already indexed files
-            await ragService.indexDirectory(kbPath, (current, total, filename) => {
-                if (!event.sender.isDestroyed()) {
-                    event.sender.send('rag:progress', { current, total, filename, type: 'kb' });
-                }
+    response.data.on('data', (chunk) => {
+        downloadedSize += chunk.length;
+        const progress = totalSize ? Math.round((downloadedSize / totalSize) * 100) : 0;
+        if (mainWindow && !mainWindow.isDestroyed()) {
+            mainWindow.webContents.send('download-progress', { 
+                model: activeModelId,
+                progress, 
+                downloaded: downloadedSize, 
+                total: totalSize 
             });
         }
-        */
+    });
 
+    response.data.pipe(writer);
+
+    return new Promise((resolve, reject) => {
+        writer.on('finish', () => {
+            console.log(`${activeModelId} model downloaded successfully.`);
+            if (mainWindow && !mainWindow.isDestroyed()) {
+                mainWindow.webContents.send('download-complete', { model: activeModelId });
+            }
+            resolve();
+        });
+        writer.on('error', (err) => {
+            console.error(`Error downloading ${activeModelId} model:`, err);
+            reject(err);
+        });
+    });
+}
+
+// Terminal handling
+ipcMain.on('terminal:input', (event, data) => {
+    if (ptyProcess) {
+        ptyProcess.write(data);
+    }
+});
+
+ipcMain.on('terminal:create', (event, { cwd }) => {
+    if (ptyProcess) {
+        ptyProcess.kill();
+        ptyProcess = null;
+    }
+
+    const shell = process.platform === 'win32' ? 'powershell.exe' : 'bash';
+
+    ptyProcess = pty.spawn(shell, [], {
+        name: 'xterm-256color',
+        cols: 80,
+        rows: 24,
+        cwd: cwd || os.homedir(),
+        env: process.env,
+    });
+
+    ptyProcess.onData((data) => {
+        if (mainWindow && !mainWindow.isDestroyed()) {
+            mainWindow.webContents.send('terminal:output', data);
+        }
+    });
+
+    ptyProcess.onExit(({ exitCode }) => {
+        console.log(`Terminal exited with code: ${exitCode}`);
+        ptyProcess = null;
+    });
+});
+
+ipcMain.on('terminal:resize', (event, { cols, rows }) => {
+    if (ptyProcess) {
+        ptyProcess.resize(cols, rows);
+    }
+});
+
+// AI Chat Handler
+ipcMain.handle('ai:chat', async (event, message, sessionId = 'default') => {
+    const activeModel = AI_MODELS[activeModelId];
+    if (!activeModel) {
+        return { error: "No active model selected" };
+    }
+
+    const modelPath = path.join(app.getPath('userData'), activeModel.filename);
+
+    try {
+        // Auto-initialize if not already done or session doesn't exist
+        if (!sessions.has(sessionId)) {
+            console.log(`AI: Session ${sessionId} not found. Initializing...`);
+            // If model and context exist, we just need to create a new session
+            if (context && model) {
+                const { LlamaChatSession } = await import("node-llama-cpp");
+                const sequence = await getSequenceWithRetry(context);
+                const session = new LlamaChatSession({
+                    contextSequence: sequence
+                });
+                sessions.set(sessionId, session);
+                console.log(`AI: New session created for ${sessionId}`);
+            } else {
+                // Needs full init
+                await initAIModel(modelPath, sessionId);
+            }
+        }
+
+        const session = sessions.get(sessionId);
+        if (!session) {
+            throw new Error("Failed to create or retrieve session");
+        }
+
+        console.log(`AI: Processing message for session ${sessionId}: "${message.substring(0, 30)}..."`);
+        
+        // Add retry logic for chat
+        let attempts = 0;
+        const maxAttempts = 3;
+        let lastError = null;
+        
+        while (attempts < maxAttempts) {
+            try {
+                const response = await session.prompt(message, {
+                    maxTokens: 2048,
+                    temperature: 0.7,
+                });
+                
+                console.log(`AI: Response generated for session ${sessionId} (${response.length} chars)`);
+                return { response };
+            } catch (err) {
+                lastError = err;
+                attempts++;
+                console.warn(`AI: Chat attempt ${attempts} failed:`, err.message);
+                
+                if (err.message.includes("No sequences left") && attempts < maxAttempts) {
+                    // Context is full, try recreating the session
+                    console.log("AI: Context full, recycling and recreating session...");
+                    context.recycle();
+                    
+                    const { LlamaChatSession } = await import("node-llama-cpp");
+                    const newSequence = await getSequenceWithRetry(context);
+                    const newSession = new LlamaChatSession({
+                        contextSequence: newSequence
+                    });
+                    sessions.set(sessionId, newSession);
+                    
+                    await new Promise(resolve => setTimeout(resolve, 300));
+                    // Retry with new session
+                    continue;
+                }
+                throw err;
+            }
+        }
+        
+        throw lastError || new Error("Failed after retries");
+        
+    } catch (error) {
+        console.error("AI Chat error:", error);
+        return { error: error.message };
+    }
+});
+
+// ─── IPC: File Operations ────────────────────────────────────────
+ipcMain.handle('file:open', async () => {
+    const result = await dialog.showOpenDialog({
+        properties: ['openFile'],
+        filters: [
+            { name: 'Text Files', extensions: ['txt', 'md', 'js', 'json', 'html', 'css', 'cpp', 'c', 'py', 'java'] },
+            { name: 'All Files', extensions: ['*'] },
+        ],
+    });
+
+    if (result.canceled || result.filePaths.length === 0) {
+        return null;
+    }
+
+    const filePath = result.filePaths[0];
+    const content = fs.readFileSync(filePath, 'utf8');
+    return { path: filePath, content };
+});
+
+ipcMain.handle('file:save', async (_, { path, content }) => {
+    fs.writeFileSync(path, content, 'utf8');
+    return true;
+});
+
+ipcMain.handle('file:save-as', async (_, content) => {
+    const result = await dialog.showSaveDialog({
+        filters: [
+            { name: 'Text Files', extensions: ['txt', 'md', 'js', 'json', 'html', 'css', 'cpp', 'c', 'py', 'java'] },
+            { name: 'All Files', extensions: ['*'] },
+        ],
+    });
+
+    if (result.canceled || !result.filePath) {
+        return null;
+    }
+
+    fs.writeFileSync(result.filePath, content, 'utf8');
+    return result.filePath;
+});
+
+// IPC: Execute code
+ipcMain.handle('code:execute', async (event, { code, language }) => {
+    const command = getExecutionCommand(code, language);
+    if (!command) {
+        return { success: false, error: 'Unsupported language' };
+    }
+
+    try {
+        const { execSync } = require('child_process');
+        const output = execSync(command, {
+            encoding: 'utf8',
+            timeout: 10000,
+        });
+        return { success: true, output };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+});
+
+function getExecutionCommand(code, language) {
+    const tempFile = path.join(os.tmpdir(), `temp_${Date.now()}`);
+    fs.writeFileSync(tempFile, code);
+
+    switch (language) {
+        case 'javascript':
+            return `node ${tempFile}`;
+        case 'python':
+            return `python ${tempFile}`;
+        case 'cpp':
+            const exeFile = tempFile + '.exe';
+            return `g++ ${tempFile} -o ${exeFile} && ${exeFile}`;
+        default:
+            return null;
+    }
+}
+
+// IPC Handlers for AI Model Management
+ipcMain.handle('ai:get-model-status', async () => {
+    const activeModel = AI_MODELS[activeModelId];
+    if (!activeModel) {
+        return { downloaded: false, active: false, model: null };
+    }
+    
+    const modelPath = path.join(app.getPath('userData'), activeModel.filename);
+    const downloaded = fs.existsSync(modelPath);
+    const active = downloaded && model !== null;
+    
+    return {
+        downloaded,
+        active,
+        model: activeModel
+    };
+});
+
+ipcMain.handle('ai:download-model', async () => {
+    const activeModel = AI_MODELS[activeModelId];
+    if (!activeModel) {
+        throw new Error("No active model selected");
+    }
+    
+    const modelPath = path.join(app.getPath('userData'), activeModel.filename);
+    
+    if (fs.existsSync(modelPath)) {
+        return { success: true, message: 'Model already downloaded' };
+    }
+
+    try {
+        await downloadModel(modelPath);
         return { success: true };
     } catch (error) {
         return { success: false, error: error.message };
     }
 });
 
-
-
-ipcMain.handle('ai:check-model', () => {
-    const activeModel = AI_MODELS[activeModelId];
-    if (!activeModel) return false;
-
-    const modelPath = path.join(app.getPath('userData'), activeModel.filename);
-    const nomicPath = path.join(app.getPath('userData'), NOMIC_FILENAME);
-    
-    // Check Active Model
-    if (!fs.existsSync(modelPath)) return false;
-    // Only check size if expectedSize is known
-    if (activeModel.expectedSize) {
-        const stats = fs.statSync(modelPath);
-        if (stats.size !== activeModel.expectedSize) return false;
-    }
-    
-    // Check Nomic (optional size check if we knew it, for now just existence)
-    if (!fs.existsSync(nomicPath)) return false;
-    
-    return true;
-});
-
-ipcMain.handle('ai:get-active-model', () => {
-    return activeModelId;
-});
-
-ipcMain.handle('ai:set-model', (_, modelId) => {
-    if (AI_MODELS[modelId]) {
-        activeModelId = modelId;
-        return true;
-    }
-    return false;
-});
-
 ipcMain.handle('ai:get-models', () => {
-    return AI_MODELS;
+    return Object.values(AI_MODELS).map(model => ({
+        ...model,
+        downloaded: fs.existsSync(path.join(app.getPath('userData'), model.filename)),
+        active: model.id === activeModelId
+    }));
 });
 
-ipcMain.handle('ai:ask', async (event, userPrompt, sessionId = 'default') => {
-  let sessionData = sessions.get(sessionId);
-  
-  // Auto-initialize if session is missing (e.g., recycled)
-  if (!sessionData) {
-      console.log(`AI: Session "${sessionId}" not found (likely recycled). Re-initializing...`);
-      const activeModel = AI_MODELS[activeModelId];
-      if (activeModel) {
-        await initAIModel(path.join(app.getPath('userData'), activeModel.filename), sessionId);
-        sessionData = sessions.get(sessionId);
-      }
-  }
-
-  if (!sessionData) {
-      console.warn(`AI Ask failed: Session ${sessionId} still not initialized`);
-      return "AI is not initialized. Please wait.";
-  }
-  const { session } = sessionData;
-  try {
-      let augmentedPrompt = userPrompt;
-
-      // Only perform RAG retrieval for general chat, skip for specialized tasks like complexity analysis
-      // We also check if the prompt looks like it's asking for personal/config stuff that shouldn't search docs
-      // skip RAG for very short messages or greetings
-      const isGreeting = /^(hi|hello|hey|hola|yo|hello there)/i.test(userPrompt.trim());
-      const tooShort = userPrompt.trim().length < 10;
-      const skipRAG = sessionId === 'complexity-session' || sessionId.startsWith('system-') || isGreeting || tooShort;
-      
-      if (!skipRAG) {
-          console.log(`AI: [Session ${sessionId}] Retrieving RAG context...`);
-          // Strictly request only 3 chunks
-          const contextItems = await ragService.query(userPrompt, 3).catch(e => {
-              console.warn("RAG: Query failed, skipping context", e);
-              return [];
-          });
-          
-          if (contextItems.length > 0) {
-              const contextString = contextItems.map(item => `[Source: ${item.source}]\n${item.text}`).join("\n\n");
-              // Final safety truncation of context string
-              const truncatedContext = contextString.substring(0, 4000); 
-              augmentedPrompt = `Relevant Context:\n---------------------\n${truncatedContext}\n---------------------\nInstruction: Use the context above if relevant, otherwise use your general knowledge. Respond to: ${userPrompt}`;
-              console.log(`AI: [Session ${sessionId}] Augmented prompt with ${contextItems.length} chunks.`);
-          }
-      } else {
-          console.log(`AI: [Session ${sessionId}] Skipping RAG augmentation (Session: ${sessionId}, Greeting/Short: ${isGreeting||tooShort}).`);
-      }
-
-      console.log(`AI: [Session ${sessionId}] Sending prompt to model...`);
-      const response = await session.prompt(augmentedPrompt);
-      console.log(`AI: [Session ${sessionId}] Response received.`);
-      return response || "(Empty response from AI)";
-  } catch (error) {
-      console.error(`AI: [Session ${sessionId}] Prompt failed:`, error);
-      return `Error: ${error.message}`;
-  }
-});
-
-ipcMain.handle('ai:destroy-session', async (event, sessionId) => {
-  if (sessions.has(sessionId)) {
-    const sessionData = sessions.get(sessionId);
-    // Dispose context sequence if available
-    if (sessionData.sequence) {
-      try {
-        if (!sessionData.sequence.disposed) {
-          sessionData.sequence.dispose();
-        }
-      } catch (e) {
-        console.warn(`Error disposing session ${sessionId}:`, e);
-      }
+ipcMain.handle('ai:set-active-model', async (_, modelId) => {
+    if (!AI_MODELS[modelId]) {
+        throw new Error(`Unknown model: ${modelId}`);
     }
-    sessions.delete(sessionId);
-    console.log(`AI Session destroyed: ${sessionId}`);
-    return true;
-  }
-  return false;
+    
+    // Clean up existing model if loaded
+    if (model) {
+        sessions.clear();
+        context = null;
+        model = null;
+        llama = null;
+        globalAIInitPromise = null;
+        console.log("AI: Previous model cleaned up");
+    }
+    
+    activeModelId = modelId;
+    console.log(`AI: Active model set to ${modelId}`);
+    
+    return { success: true, activeModel: AI_MODELS[modelId] };
 });
 
-// ─── Codeforces credentials ──────────────────────────────
-const CF_CONFIG_PATH = path.join(app.getPath('userData'), 'cf_config.json');
+// Knowledge Base IPC Handlers
+const DATASET_PATH = path.join(app.getPath('userData'), 'codeforces_dataset');
 
-ipcMain.handle('codeforces:save-creds', async (_, creds) => {
+ipcMain.handle('kb:add-problem', async (event, { content, metadata }) => {
+  const { title, contestId, index, rating, tags, topic } = metadata;
+
+  const topicPath = path.join(DATASET_PATH, topic);
+  const ratingPath = path.join(topicPath, rating.toString());
+
+  // Ensure directories exist
+  if (!fs.existsSync(ratingPath)) {
+    fs.mkdirSync(ratingPath, { recursive: true });
+  }
+
+  const filename = `${contestId}${index}.json`;
+  const filePath = path.join(ratingPath, filename);
+
+  const data = {
+    title,
+    contestId,
+    index,
+    rating,
+    tags,
+    content
+  };
+
   try {
-    fs.writeFileSync(CF_CONFIG_PATH, JSON.stringify(creds), 'utf-8');
-    return true;
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    console.log(`Problem saved: ${filePath}`);
+    return { success: true, path: filePath };
   } catch (e) {
-    console.error('Error saving CF creds:', e);
-    return false;
+    console.error('Error saving problem:', e);
+    return { success: false, error: e.message };
   }
 });
 
-const generateCodeforcesSig = (methodName, params, secret) => {
-    const rand = Math.floor(Math.random() * 899999) + 100000;
-    const sortedParams = Object.keys(params).sort().map(key => `${key}=${params[key]}`).join('&');
-    const text = `${rand}/${methodName}?${sortedParams}#${secret}`;
-    const hash = crypto.createHash('sha512').update(text).digest('hex');
-    return `${rand}${hash}`;
-};
-
-ipcMain.handle('codeforces:get-submissions', async (_, handle) => {
-    try {
-        const response = await axios.get(`https://codeforces.com/api/user.status?handle=${handle}&from=1&count=20`, {
-            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36' }
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Codeforces submissions Error:', error.message);
-        if (error.response) {
-            return { status: 'FAILED', comment: error.response.data.comment || `HTTP ${error.response.status}` };
-        }
-        return { status: 'FAILED', comment: error.message };
-    }
-});
-
-ipcMain.handle('codeforces:get-user-info', async (_, handle) => {
-    try {
-        const response = await axios.get(`https://codeforces.com/api/user.info?handles=${handle}`, {
-            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36' }
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Codeforces user.info Error:', error.message);
-        if (error.response) {
-            return { status: 'FAILED', comment: error.response.data.comment || `HTTP ${error.response.status}` };
-        }
-        return { status: 'FAILED', comment: error.message };
-    }
-});
-
-async function getCFCreds() {
-    if (fs.existsSync(CF_CONFIG_PATH)) {
-        try {
-            return JSON.parse(fs.readFileSync(CF_CONFIG_PATH, 'utf8'));
-        } catch (e) {
-            return null;
-        }
-    }
-    return null;
-}
-
-ipcMain.handle('codeforces:get-creds', async () => {
-    return getCFCreds();
-});
-
-
-// ─── Codeforces Dataset Filtering ──────────────────────────
-const DATASET_PATH = path.join(__dirname, 'src', 'codeforces_dataset');
-
-ipcMain.handle('codeforces:get-dataset-metadata', async () => {
+ipcMain.handle('kb:get-problem', async (event, problemPath) => {
   try {
-    if (!fs.existsSync(DATASET_PATH)) return { topics: [], ratings: [], tags: [] };
+    if (!fs.existsSync(problemPath)) {
+      return { success: false, error: 'Problem not found' };
+    }
+    const data = JSON.parse(fs.readFileSync(problemPath, 'utf-8'));
+    return { success: true, data };
+  } catch (e) {
+    console.error('Error reading problem:', e);
+    return { success: false, error: e.message };
+  }
+});
+
+ipcMain.handle('kb:delete-problem', async (event, problemPath) => {
+  try {
+    if (fs.existsSync(problemPath)) {
+      fs.unlinkSync(problemPath);
+      return { success: true };
+    }
+    return { success: false, error: 'File not found' };
+  } catch (e) {
+    console.error('Error deleting problem:', e);
+    return { success: false, error: e.message };
+  }
+});
+
+// Fetch CF metadata (topics, ratings, tags)
+ipcMain.handle('codeforces:get-metadata', async () => {
+  try {
+    if (!fs.existsSync(DATASET_PATH)) {
+      return { topics: [], ratings: [], tags: [] };
+    }
 
     const topics = fs.readdirSync(DATASET_PATH).filter(f => fs.statSync(path.join(DATASET_PATH, f)).isDirectory());
     const ratingsSet = new Set();
@@ -1409,5 +972,19 @@ Write the code for "${prompt}". Only return the code.`;
                 console.error("Error disposing inline prompt sequence:", e);
             }
         }
+    }
+});
+
+app.whenReady().then(createWindow);
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindow();
     }
 });
